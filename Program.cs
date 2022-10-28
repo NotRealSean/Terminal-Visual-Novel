@@ -42,13 +42,13 @@ class coreGame
             if (i >= text.Length)
             {
                 Thread.Sleep(500);
-                Console.WriteLine("\n\n-\tPress any key to continue\t-");
+                Console.WriteLine("\n\n-\tPress space bar or enter to continue\t-");
                 break;
             }
             Console.Write(text[i]);
             Thread.Sleep(1);
         }
-        Console.ReadKey();
+        while (Console.ReadKey(true).Key != ConsoleKey.Enter && Console.ReadKey(true).Key != ConsoleKey.Spacebar){}
     }
 }
 class Menu
@@ -75,7 +75,7 @@ class Menu
                 Console.WriteLine("\t\tHello and Welcome\n");
                 Console.WriteLine("Welcome to my first text-base game! this game is NOT full game just yet(And it maybe demo forever)\n\n");
                 Console.WriteLine("\t\tHow to play this game\n");
-                Console.WriteLine("just press \"any key\" to continue reading(That's all no save file)\n");
+                Console.WriteLine("just press \"space bar or enter\" to continue reading(That's all no save file)\n");
 
                 string end  = "Press anykey to go back to main menu...";
                 textGen(end);
