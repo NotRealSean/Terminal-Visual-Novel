@@ -59,9 +59,9 @@ class Menu
         {
             Console.Clear();
             //Main menu
-            Console.WriteLine("=====================================================");
-            Console.WriteLine("\t\tA Text-base game name\n\t1 Play\n\t2 Guide\n\t3 Exit\n\n");
-            Console.WriteLine("=====================================================");
+            Console.WriteLine("=======================================================");
+            Console.WriteLine("\t\tA Text-base game name(Demo)\n\t1 Play\n\t2 Guide\n\t3 Exit\n\n");
+            Console.WriteLine("=======================================================");
             Console.Write("Key command -=>");
             string inPut = Console.ReadLine();
             if (inPut == "1")
@@ -73,9 +73,9 @@ class Menu
                 //Guide
                 Console.Clear();
                 Console.WriteLine("\t\tHello and Welcome\n");
-                Console.WriteLine("Welcome to my first text-base game! this game is not full game yet(And it maybe demo forever)\n\n");
+                Console.WriteLine("Welcome to my first text-base game! this game is NOT full game just yet(And it maybe demo forever)\n\n");
                 Console.WriteLine("\t\tHow to play this game\n");
-                Console.WriteLine("just press \"any key\" to continue reading(That's all)\n");
+                Console.WriteLine("just press \"any key\" to continue reading(That's all no save file)\n");
 
                 string end  = "Press anykey to go back to main menu...";
                 textGen(end);
