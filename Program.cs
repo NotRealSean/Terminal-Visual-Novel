@@ -14,31 +14,25 @@ using System.Threading;
 
 class coreGame
 {
-    public static void Game()
+    public static void chapter1()
     {
-        /*
-        string story0 = "";
-        textGenStory(story0);
-        */
+        //textTool.textGen("enter smt",1 /*text speed*/, true /*clear console*/, true /*add press continue*/);
+        textTool.textGen("Hi this is my first story test text genetator.", 1, true, true);
+        textTool.textGen("Test story text generator 2", 1, true, true);
+
         Console.Clear();
-        string story0 = "Hi this is my first story test text genetator.";
-        textTool.textGen(story0, 1, true, true);
-        string story1 = "Test story text generator 2";
-        textTool.textGen(story1, 1, true, true);
-
-        string story2s1 = "This is very ";
-        string story2s2 = "very ";
-        string story2s3 = "cool text generation";
-        Console.Clear();
-        textTool.textGen(story2s1);
+        textTool.textGen("This is very ");
         Thread.Sleep(1000);
-        textTool.textGen(story2s2);
+        textTool.textGen("very ");
         Thread.Sleep(1000);
-        textTool.textGen(story2s3, 1, false, true);
+        textTool.textGen("cool text generation", 1, false, true);
 
 
-        string storyEnd = "The End";
-        textTool.textGen(storyEnd, 1, true, true);
+        textTool.textGen("The End", 1, true, true);
+    }
+    public static void chapter2()
+    {
+        textTool.textGen("This is chapter 2 test text",1 ,true ,true);
     }
 }
 class Menu
@@ -50,29 +44,66 @@ class Menu
             Console.Clear();
             //Main menu
             Console.WriteLine("=======================================================");
-            Console.WriteLine("\t\tA Text-base game name(Demo)\n\t1 Play\n\t2 Guide\n\t3 Exit\n\n");
+            Console.WriteLine("\t\tA Text-base game name(Demo)\n\t1 Play\n\t2 Load(Not work yet)\n\t3 Guide\n\t4 Credits\n\t5 Exit\n\n");
             Console.WriteLine("=======================================================");
-            string keyCom = "Key command -=>";
-            textTool.textGen(keyCom);
+            textTool.textGen("Key command -=>");
             string inPut = Console.ReadLine();
             if (inPut == "1")
             {
-                coreGame.Game();
+                while (true)
+                {
+                    Console.Clear();
+                    Console.WriteLine("=======================================================");
+                    Console.WriteLine("\t\tSelect Chapter\n\tChapter 1\n\tChapter 2\n\n\t9 Back to main menu");
+                    Console.WriteLine("=======================================================");
+                    textTool.textGen("Key command -=>");
+                    string chapterSelect = Console.ReadLine();
+                    if (chapterSelect == "1")
+                    {
+                        coreGame.chapter1();
+                    }
+                    else if (chapterSelect == "2")
+                    {
+                        coreGame.chapter2();
+                    }
+                    else if (chapterSelect == "9")
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.Write("You enter worng key");
+                        Console.ReadKey();
+                    }
+                }
             }
-            else if (inPut == "2")
+            else if (inPut ==  "2")
+            {
+                //Some load-save code idk :/
+                textTool.textGen("Sorry but this load-save system is still in development\nPlease stay tune <3\n\n",1 ,true);
+                textTool.textGen("Press anykey to go back to main menu...");
+                Console.ReadKey();
+            }
+            else if (inPut == "3")
             {
                 //Guide
                 Console.Clear();
                 Console.WriteLine("\t\tHello and Welcome\n");
-                Console.WriteLine("Welcome to my first text-base game! this game is NOT full game just yet(And it maybe demo forever)\n\n");
+                Console.WriteLine("Welcome to my first text-base visual novel game! this game is NOT full game just yet(And it maybe demo forever)\n\n");
                 Console.WriteLine("\t\tHow to play this game\n");
-                Console.WriteLine("just press \"space bar or enter\" to continue reading(That's all no save file)\n");
+                Console.WriteLine("Just press \"space bar or enter\" to continue reading\n");
 
-                string end  = "Press anykey to go back to main menu...";
-                textTool.textGen(end);
+                textTool.textGen("Press anykey to go back to main menu...");
                 Console.ReadKey();
             }
-            else if (inPut == "3")
+            else if (inPut == "4")
+            {
+                Console.Clear();
+                Console.WriteLine("\t\tHead project\nNotRealSean\n\n\t\tStory writer\nClearX2\n");
+                textTool.textGen("Press anykey to go back to main menu...");
+                Console.ReadKey();
+            }
+            else if (inPut == "5")
             {
                 break;
             }
@@ -83,7 +114,7 @@ class Menu
             }
             else
             {
-                Console.Write("You input worng key!");
+                Console.Write("You enter worng key");
                 Console.ReadKey();
             }
         }

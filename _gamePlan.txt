@@ -1,0 +1,5 @@
+To do list
+- Make better framework
+- Make story line(with multi-ending)
+- Make save-load system
+- Make UI easier to control(somehow?)
