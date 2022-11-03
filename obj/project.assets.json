@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sean\\Desktop\\code\\cs\\consoleapp\\app1\\cs.csproj",
+      "projectUniqueName": "c:\\Users\\Sean\\Desktop\\code\\cs\\ConsoleApp\\VNgame\\cs.csproj",
       "projectName": "cs",
-      "projectPath": "C:\\Users\\Sean\\Desktop\\code\\cs\\consoleapp\\app1\\cs.csproj",
+      "projectPath": "c:\\Users\\Sean\\Desktop\\code\\cs\\ConsoleApp\\VNgame\\cs.csproj",
       "packagesPath": "C:\\Users\\Sean\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sean\\Desktop\\code\\cs\\consoleapp\\app1\\obj\\",
+      "outputPath": "c:\\Users\\Sean\\Desktop\\code\\cs\\ConsoleApp\\VNgame\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Sean\\AppData\\Roaming\\NuGet\\NuGet.Config",

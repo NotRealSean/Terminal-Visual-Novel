@@ -1,5 +1,4 @@
-﻿using System.Net.Mime;
-using System;
+﻿using System;
 using System.Net.NetworkInformation;
 using System.Dynamic;
 using System.Globalization;
@@ -105,8 +104,8 @@ class Menu
             else if (inPut == "5")
             {
                 Console.Clear();
-                Console.WriteLine("\t\tUpdate");
-                Console.WriteLine("- Add update option to keep things up-to-date\n- Update framework(add delay after text generate)\n- Change exit key to 9\n");
+                string update = File.ReadAllText("_update.txt");
+                Console.WriteLine(update);
                 textTool.textGen("Press anykey to go back to main menu...");
                 Console.ReadKey();
             }
@@ -219,7 +218,22 @@ class textTool
         }
     }
 }
-class save
+class saveTool
 {
-    //some save code
+    public static void save(string chapter)
+    {
+        
+    }
+    public static void load(string chapter)
+    {
+
+    }
+    public static void delete(string chapter)
+    {
+
+    }
+}
+public class dataSave
+{
+    public string save {get; set;}
 }

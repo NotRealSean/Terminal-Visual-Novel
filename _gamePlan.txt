@@ -1,5 +1,11 @@
 To do list
-- Make better framework
-- Make story line(with multi-ending)
-- Make save-load system(using JSON file)
-- Make UI easier to control(somehow?)
+- Make better framework(Tool, Function)
+-- Make json save load function
+--- Learn more about how to save-load json file
+-- Make function/tool easier to navigate when debug
+
+- Make story line
+-- Make character
+-- Make start and end point of story
+
+- Make UI easier to navigate

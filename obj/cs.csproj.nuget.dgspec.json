@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Sean\\Desktop\\code\\cs\\ConsoleApp\\App1\\cs.csproj": {}
+    "C:\\Users\\Sean\\desktop\\code\\cs\\consoleapp\\vngame\\cs.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Sean\\Desktop\\code\\cs\\ConsoleApp\\App1\\cs.csproj": {
+    "C:\\Users\\Sean\\desktop\\code\\cs\\consoleapp\\vngame\\cs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Sean\\Desktop\\code\\cs\\ConsoleApp\\App1\\cs.csproj",
+        "projectUniqueName": "C:\\Users\\Sean\\desktop\\code\\cs\\consoleapp\\vngame\\cs.csproj",
         "projectName": "cs",
-        "projectPath": "c:\\Users\\Sean\\Desktop\\code\\cs\\ConsoleApp\\App1\\cs.csproj",
+        "projectPath": "C:\\Users\\Sean\\desktop\\code\\cs\\consoleapp\\vngame\\cs.csproj",
         "packagesPath": "C:\\Users\\Sean\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Sean\\Desktop\\code\\cs\\ConsoleApp\\App1\\obj\\",
+        "outputPath": "C:\\Users\\Sean\\desktop\\code\\cs\\consoleapp\\vngame\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Sean\\AppData\\Roaming\\NuGet\\NuGet.Config",
