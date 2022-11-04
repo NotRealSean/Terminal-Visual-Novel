@@ -1,6 +1,6 @@
         Update
 Framework
-- Prepare to save load data with json
+- Saveload is now pretty much done
 
 
         Future Update
@@ -8,4 +8,8 @@ Code quality
 - Improve overall code quality
 
 Framework
-- Save-load function
+- Better Saveload function
+
+UI
+- Load screen UI
+- Show auto-save icon
