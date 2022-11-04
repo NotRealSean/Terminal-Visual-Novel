@@ -10,8 +10,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
-class coreGame
+public class coreGame
 {
     public static void chapter1()
     {
@@ -238,7 +240,7 @@ class textTool
         }
     }
 }
-class saveTool
+class Saveload : coreGame
 {
     public static void save(string chapter)
     {
@@ -263,6 +265,7 @@ class saveTool
     {
 
     }
+    
 }
 public class dataSave
 {

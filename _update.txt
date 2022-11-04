@@ -1,13 +1,2 @@
         Update
-Framework
-- Prepare to save load data with json
-
-
-        Future Update
-Code quality
-- Improve overall code quality
-
-Framework
-- Save-load function
-
-test
+FIXING GAME DUE TO BUG DURING GIT COMMIT
