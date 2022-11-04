@@ -1,2 +1,19 @@
-        Update
-FIXING GAME DUE TO BUG DURING GIT COMMIT
+                Update
+Code quality
+- Fix quick load
+
+Framework
+- Fix Saveload function
+- Add Json Serialization and Node
+
+                Future Update
+Code quality
+- Make code better to write and read
+- Make better Saveload function
+
+Framework
+- Make select Saveload option in menu(May take long time to do)
+- No save file json handler
+
+Others plan
+- Make backup

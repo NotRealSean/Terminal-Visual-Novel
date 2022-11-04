@@ -30,10 +30,12 @@ public class coreGame
 
         textTool.textGen("The End", 1, true, false, 1000);
         textTool.textGen("\n<Chapter I - Normal Ending>", 100, false, true, 3000);
+        Saveload.save("1","1");
     }
     public static void chapter2()
     {
         textTool.textGen("This is chapter 2 test text",1 ,true ,true);
+        Saveload.save("2","1");
     }
 }
 class Menu
@@ -45,7 +47,7 @@ class Menu
             Console.Clear();
             //Main menu
             Console.WriteLine("=======================================================");
-            Console.WriteLine("\t\tA Text-base game name(Demo)\n\t1 Play\n\t2 Load(Not work yet)\n\t3 Guide\n\t4 Credits\n\t5 Update\n\n\t9 Exit");
+            Console.WriteLine("\t\tA Text-base game name(Demo)\n\t1 Play\n\t2 Quick Load\n\t3 Guide\n\t4 Credits\n\t5 Update\n\n\t9 Exit");
             Console.WriteLine("=======================================================");
             textTool.textGen("Key command -=>");
             string inPut = Console.ReadLine();
@@ -80,8 +82,9 @@ class Menu
             }
             else if (inPut ==  "2")
             {
-                Console.WriteLine("test load");
-                Console.ReadKey();
+                JsonNode _jsonData = Saveload.read()!;
+                string _loadData = _jsonData[0]["save"].ToString();
+                Saveload.load(_loadData);
             }
             else if (inPut == "3")
             {
@@ -223,7 +226,6 @@ public class Saveload : coreGame
 {
     public static void save(string chapter, string route)
     {
-        
         string _filename = "save.json";
         object[] arr = new object[1];
         var _save = new dataSave
@@ -239,7 +241,6 @@ public class Saveload : coreGame
     }
     public static void load(string chapter)
     {
-
         if (chapter == "1")
         {
             chapter1();
@@ -255,7 +256,6 @@ public class Saveload : coreGame
     }
     public static void delete(string chapter)
     {
-
         string _filename = "save.json";
         string del = "";
         File.WriteAllText(_filename,del);
