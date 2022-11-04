@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Nodes;
 
 public class coreGame
 {
@@ -79,30 +80,8 @@ class Menu
             }
             else if (inPut ==  "2")
             {
-                while (true)
-                {
-                    Console.Clear();
-                    JsonNode _nodedata = Saveload.read();
-                    string _stringSaveList = _nodedata[0]["save"].ToString();
-                    Console.WriteLine("Your last save is " + _stringSaveList + "(9 Exit)");
-                    TextTool.TextGen("Key command -=>");
-                    string loadChapter = Console.ReadLine();
-                    if (loadChapter == "9")
-                    {
-                        break;
-                    }
-                    try
-                    {
-                        int loadChapterInt = Convert.ToInt32(loadChapter);
-                        string _stringChapter = _nodedata[loadChapterInt-1]["save"].ToString();
-                        Saveload.load(_stringChapter);
-                    }
-                    catch (Exception)
-                    {
-                        TextTool.TextGen("You enter worng key or chapter doesn\'t exist");
-                        Console.ReadKey();
-                    }
-                }
+                Console.WriteLine("test load");
+                Console.ReadKey();
             }
             else if (inPut == "3")
             {
@@ -240,14 +219,27 @@ class textTool
         }
     }
 }
-class Saveload : coreGame
+public class Saveload : coreGame
 {
-    public static void save(string chapter)
+    public static void save(string chapter, string route)
     {
         
+        string _filename = "save.json";
+        object[] arr = new object[1];
+        var _save = new dataSave
+        {
+            save = chapter,
+            route = route
+        };
+
+        arr[0] = _save;
+
+        string _savedata = JsonSerializer.Serialize(arr);
+        File.WriteAllText(_filename, _savedata);
     }
-    public static void load(int chapter, int maxList)
+    public static void load(string chapter)
     {
+
         if (chapter == "1")
         {
             chapter1();
@@ -264,10 +256,20 @@ class Saveload : coreGame
     public static void delete(string chapter)
     {
 
+        string _filename = "save.json";
+        string del = "";
+        File.WriteAllText(_filename,del);
     }
-    
+    public static JsonNode read()
+    {
+        string _filename = "save.json";
+        string jsondata = File.ReadAllText(_filename);
+        var _loadJson = JsonNode.Parse(jsondata);
+        return _loadJson;
+    }
 }
 public class dataSave
 {
     public string save {get; set;}
+    public string route {get; set;}
 }
