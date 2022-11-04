@@ -59,7 +59,7 @@ class Menu
                 {
                     Console.Clear();
                     Console.WriteLine("=======================================================");
-                    Console.WriteLine("\t\tSelect Chapter\n\tChapter 1\n\tChapter 2\n\n\t9 Back to main menu");
+                    Console.WriteLine("\t\tSelect Chapter\n\tChapter 1\n\tChapter 2\n\n\t9 Back to main menu teest");
                     Console.WriteLine("=======================================================");
                     TextTool.TextGen("Key command -=>");
                     string chapterSelect = Console.ReadLine();
@@ -87,26 +87,30 @@ class Menu
                 while (true)
                 {
                     Console.Clear();
-                    JsonNode _nodedata = Saveload.read();
-                    string _stringSaveList = _nodedata[0]["save"].ToString();
-                    Console.WriteLine("Your last save is " + _stringSaveList + "(9 Exit)");
-                    TextTool.TextGen("Key command -=>");
-                    string loadChapter = Console.ReadLine();
-                    if (loadChapter == "9")
-                    {
-                        break;
-                    }
-                    try
-                    {
-                        int loadChapterInt = Convert.ToInt32(loadChapter);
-                        string _stringChapter = _nodedata[loadChapterInt-1]["save"].ToString();
-                        Saveload.load(_stringChapter);
-                    }
-                    catch (Exception)
-                    {
+                    
+                        JsonNode _nodedata = Saveload.read();
+                        string _stringSaveList = _nodedata[0]["save"].ToString();
+                        int _intSaveList = Convert.ToInt32(_stringSaveList);
+                        for (int i = 0; i < _intSaveList; i++)
+                        {
+                            Console.WriteLine("Chapter " + i+1);
+                        }
+                        TextTool.TextGen("Key command -=>");
+                        string loadChapter = Console.ReadLine();
+                        if (loadChapter == "9")
+                        {
+                            break;
+                        }
+                        int _intLoadChapter = Convert.ToInt32(loadChapter);
+                        Saveload.load(_intLoadChapter, _intSaveList);
+
                         TextTool.TextGen("You enter worng key or chapter doesn\'t exist");
                         Console.ReadKey();
-                    }
+                    
+
+                        TextTool.TextGen("something went worng");
+                        Console.ReadKey();
+                        break;
                 }
             }
             else if (inPut == "3")
@@ -262,19 +266,19 @@ public class Saveload : coreGame
         string _savedata = JsonSerializer.Serialize(arr);
         File.WriteAllText(_filename, _savedata);
     }
-    public static void load(string chapter)
+    public static void load(int chapter, int maxList)
     {
-        if (chapter == "1")
+        if (chapter == 1 && chapter <= maxList)
         {
             chapter1();
         }
-        else if (chapter == "2")
+        else if (chapter == 2 && chapter <= maxList)
         {
             chapter2();
         }
         else
         {
-            Console.WriteLine("Chapter not found");
+            TextTool.TextGen("Chapter fail to load", 1, true, false, 1000);
         }
     }
     public static void delete(string chapter)
