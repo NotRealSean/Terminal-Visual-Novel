@@ -19,22 +19,12 @@ public class coreGame
     public static void chapter1()
     {
         //textTool.textGen("enter smt",1 /*text speed*/, true /*clear console*/, true /*add press continue*/, 1 /*delay after text complete*/);
-        textTool.textGen("<Chapter I - Beginning Adventure>", 100, true, true, 3000);
-        textTool.textGen("Hi this is my first story test text genetator.", 1, true, true);
-        textTool.textGen("Test story text generator 2", 1, true, true);
-
-        textTool.textGen("This is very ", 1, true, false, 1000);
-        textTool.textGen("very ", 1, false, false, 1000);
-        textTool.textGen("cool text generation", 1, false, true);
-
-
-        textTool.textGen("The End", 1, true, false, 1000);
-        textTool.textGen("\n<Chapter I - Normal Ending>", 100, false, true, 3000);
+        textTool.textGen("This is chapter 1 test text", 1, true, true);
         Saveload.save("1","1");
     }
     public static void chapter2()
     {
-        textTool.textGen("This is chapter 2 test text",1 ,true ,true);
+        textTool.textGen("This is chapter 2 test text", 1, true, true);
         Saveload.save("2","1");
     }
 }
@@ -55,6 +45,7 @@ class Menu
             {
                 while (true)
                 {
+                    //chapter select
                     Console.Clear();
                     Console.WriteLine("=======================================================");
                     Console.WriteLine("\t\tSelect Chapter\n\tChapter 1\n\tChapter 2\n\n\t9 Back to main menu teest");
@@ -82,9 +73,14 @@ class Menu
             }
             else if (inPut ==  "2")
             {
+                //Quick load
                 JsonNode _jsonData = Saveload.read()!;
                 string _loadData = _jsonData[0]["save"].ToString();
-                Saveload.load(_loadData);
+                Console.WriteLine("Warning:\nYour last auto save is Chapter " + _loadData + "\nAre you sure to load this chapter?[Press Y to continue]");
+                if (Console.ReadKey(true).Key == ConsoleKey.Y)
+                {
+                    Saveload.load(_loadData);
+                }
             }
             else if (inPut == "3")
             {
@@ -100,6 +96,7 @@ class Menu
             }
             else if (inPut == "4")
             {
+                //Credits
                 Console.Clear();
                 Console.WriteLine("\t\tHead project\nNotRealSean\n\n\t\tStory writer\nClearX2\n");
                 textTool.textGen("Press anykey to go back to main menu...");

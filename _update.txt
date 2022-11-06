@@ -1,10 +1,6 @@
                 Update
-Code quality
-- Fix quick load
-
-Framework
-- Fix Saveload function
-- Add Json Serialization and Node
+UI
+- Make warning for user to know which chapter is going to be load in quick load
 
                 Future Update
 Code quality
@@ -14,6 +10,3 @@ Code quality
 Framework
 - Make select Saveload option in menu(May take long time to do)
 - No save file json handler
-
-Others plan
-- Make backup
