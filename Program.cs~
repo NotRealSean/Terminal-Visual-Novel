@@ -32,14 +32,12 @@ class Menu
 {
     static void Main(string[] args)
     {
-        TextTool.TextGen("", 1, true, false, 1000);
-        TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1", 1, true, false, 3000);
         while (true)
         {
             Console.Clear();
             //Main menu
             Console.WriteLine("=======================================================");
-            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t1 Play\n\t2 Quick Load\n\t3 Guide\n\t4 Credits\n\t5 Update\n\n\t9 Exit");
+            Console.WriteLine("\t\tA Text-base game name(Demo)\n\t1 Play\n\t2 Quick Load\n\t3 Guide\n\t4 Credits\n\t5 Update\n\n\t9 Exit");
             Console.WriteLine("=======================================================");
             TextTool.TextGen("Key command -=>");
             string inPut = Console.ReadLine();
@@ -88,7 +86,7 @@ class Menu
             {
                 //Guide
                 Console.Clear();
-                TextTool.TextGen("\t\tGuide is coming soon\n");
+                TextTool.TextGen("\t\tNew better guide is coming soon\n");
 
                 TextTool.TextGen("Press anykey to go back to main menu...");
                 Console.ReadKey();
@@ -97,7 +95,7 @@ class Menu
             {
                 //Credits
                 Console.Clear();
-                TextTool.TextGen("\t\tCredits is coming soon\n");
+                TextTool.TextGen("New better credits is coming soon\n");
                 TextTool.TextGen("Press anykey to go back to main menu...");
                 Console.ReadKey();
             }
@@ -159,7 +157,7 @@ class TextTool
                 if (i >= text.Length)
                 {
                     Thread.Sleep(delay);
-                    Console.WriteLine("\n\n-\tContinue\t-->>");
+                    Console.WriteLine("\n\n-\tPress space bar or enter to continue\t-");
                     break;
                 }
                 Console.Write(text[i]);
