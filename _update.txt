@@ -1,13 +1,13 @@
                 Update
 UI
-- Credit on game start
-- Fix minor bug
+- Reduce text generation speed(It does effect on linux OS(I test on Zorin OS))
 
                 Future Update
 Code quality
 - Make code better to write and read
 - Make better Saveload function
+- Make delete option in load screen
 
 Framework
-- Make select Saveload option in menu(May take long time to do)
-- No save file json handler(maybe no)
+- Make select Saveload option in menu(Doing)
+- No save file json handler(Doing)

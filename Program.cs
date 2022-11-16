@@ -19,12 +19,12 @@ public class coreGame
     public static void chapter1()
     {
         //TextTool.textGen("enter smt",1 /*text speed*/, true /*clear console*/, true /*add press continue*/, 1 /*delay after text complete*/);
-        TextTool.TextGen("This is chapter 1 test text", 1, true, true);
+        TextTool.TextGen("This is chapter 1 test text", 20, true, true);
         Saveload.save("1","1");
     }
     public static void chapter2()
     {
-        TextTool.TextGen("This is chapter 2 test text", 1, true, true);
+        TextTool.TextGen("This is chapter 2 test text", 20, true, true);
         Saveload.save("2","1");
     }
 }
@@ -33,13 +33,13 @@ class Menu
     static void Main(string[] args)
     {
         TextTool.TextGen("", 1, true, false, 1000);
-        TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1", 1, true, false, 3000);
+        TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1", 30, true, false, 2500);
         while (true)
         {
             Console.Clear();
             //Main menu
             Console.WriteLine("=======================================================");
-            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t1 Play\n\t2 Quick Load\n\t3 Guide\n\t4 Credits\n\t5 Update\n\n\t9 Exit");
+            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t1 Play\n\t2 Load\n\t3 Quick Load\n\t4 Guide\n\t5 Credits\n\t6 Update\n\n\t9 Exit");
             Console.WriteLine("=======================================================");
             TextTool.TextGen("Key command -=>");
             string inPut = Console.ReadLine();
@@ -73,40 +73,43 @@ class Menu
                     }
                 }
             }
-            else if (inPut ==  "2")
+            else if (inPut == "2")
+            {
+                TextTool.TextGen("\t\tLoad is coming soon\n", 20, true);
+                TextTool.TextGen("Press anykey to go back to main menu...", 10);
+                Console.ReadKey();
+            }
+            else if (inPut ==  "3")
             {
                 //Quick load
                 JsonNode _jsonData = Saveload.read()!;
                 string _loadData = _jsonData[0]["save"].ToString();
-                Console.WriteLine("Warning:\nYour last auto save is Chapter " + _loadData + "\nAre you sure to load this chapter?[Press Y to continue]");
+                Console.WriteLine("Warning:\nYour last auto save is Chapter " + _loadData + "\nAre you sure to load this chapter?\n[Press Y to continue/Press others key to return]");
                 if (Console.ReadKey(true).Key == ConsoleKey.Y)
                 {
                     Saveload.load(_loadData);
                 }
             }
-            else if (inPut == "3")
-            {
-                //Guide
-                Console.Clear();
-                TextTool.TextGen("\t\tGuide is coming soon\n");
-
-                TextTool.TextGen("Press anykey to go back to main menu...");
-                Console.ReadKey();
-            }
             else if (inPut == "4")
             {
-                //Credits
-                Console.Clear();
-                TextTool.TextGen("\t\tCredits is coming soon\n");
-                TextTool.TextGen("Press anykey to go back to main menu...");
+                //Guide
+                TextTool.TextGen("\t\tGuide is coming soon\n", 20, true);
+                TextTool.TextGen("Press anykey to go back to main menu...", 10);
                 Console.ReadKey();
             }
             else if (inPut == "5")
             {
+                //Credits
+                TextTool.TextGen("\t\tCredits is coming soon\n", 20, true);
+                TextTool.TextGen("Press anykey to go back to main menu...", 10);
+                Console.ReadKey();
+            }
+            else if (inPut == "6")
+            {
                 Console.Clear();
                 string update = File.ReadAllText("_update.txt");
                 Console.WriteLine(update);
-                TextTool.TextGen("Press anykey to go back to main menu...");
+                TextTool.TextGen("Press anykey to go back to main menu...", 10);
                 Console.ReadKey();
             }
             else if (inPut == "9")
