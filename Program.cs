@@ -16,8 +16,6 @@ using System.Text.Json.Nodes;
 
 public class coreGame
 {
-
-
     public static void chapter1()
     {
       JsonNode _jsonData = Settings.Read()!;
@@ -158,7 +156,6 @@ class Menu
                             Console.WriteLine(e);
                             Console.ReadKey();
                         }
-
                     }
                     else
                     {
