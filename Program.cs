@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.NetworkInformation;
 using System.Dynamic;
 using System.Globalization;
@@ -13,23 +14,7 @@ using System.Threading;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Nodes;
-/*
-string _filename = "save.json";
-object[] arr = new object[1];
-var _save = new dataSave
-{
-    save = chapter,
-    route = route
-};
 
-arr[0] = _save;
-
-string _savedata = JsonSerializer.Serialize(arr);
-File.WriteAllText(_filename, _savedata);
-
-
-var response = new WebClient().DownloadString("http://test.com?id=1");
-*/
 public class version
 {
     public string version = "0.0.21";
@@ -41,11 +26,11 @@ public class checkfile
         string data1 = new WebClient().DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_update.txt");
         string data2 = new WebClient().DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/version.txt");
 
-        private string[] arrdata = {"[{"save":"1","route":"1"}]", "[{"TextSpeed":"30","Test":"1"}]", data1};
+        private string[] arrdata = {"[{\"save\":\"1\",\"route\":\"1\"}]", "[{\"TextSpeed\":\"30\",\"Test\":\"1\"}]", data1};
         private string[] arrfile = {@"save.json", @"setting.json", @"_update.txt"};
         if (version != data2)
         {
-            Console.WriteLine("You are outdate!")
+            Console.WriteLine("You are outdate!");
             Console.ReadKey();
         }
         for (int i = 0; i < arrfile.Length; i++)
