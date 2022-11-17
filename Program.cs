@@ -33,15 +33,15 @@ class Menu
     static void Main(string[] args)
     {
         TextTool.TextGen("", 1, true, false, 1000);
-        TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1", 30, true, false, 2500);
+        TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n", 30, true, false, 2500);
         while (true)
         {
             Console.Clear();
             //Main menu
             Console.WriteLine("=======================================================");
-            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t1 Play\n\t2 Load\n\t3 Quick Load\n\t4 Guide\n\t5 Credits\n\t6 Update\n\n\t9 Exit");
+            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t1 Play\n\t2 Load\n\t3 Quick Load\n\t4 Settings\n\t5 Guide\n\t6 Credits\n\t7 Update\n\n\t9 Exit");
             Console.WriteLine("=======================================================");
-            TextTool.TextGen("Key command -=>");
+            TextTool.TextGen("Key command -=>", 20);
             string inPut = Console.ReadLine();
             if (inPut == "1")
             {
@@ -50,9 +50,9 @@ class Menu
                     //chapter select
                     Console.Clear();
                     Console.WriteLine("=======================================================");
-                    Console.WriteLine("\t\tSelect Chapter\n\tChapter 1\n\tChapter 2\n\n\t9 Back to main menu teest");
+                    Console.WriteLine("\t\tSelect Chapter\n\tChapter 1\n\tChapter 2\n\n\t9 Back to main menu");
                     Console.WriteLine("=======================================================");
-                    TextTool.TextGen("Key command -=>");
+                    TextTool.TextGen("Key command -=>", 20);
                     string chapterSelect = Console.ReadLine();
                     if (chapterSelect == "1")
                     {
@@ -65,6 +65,20 @@ class Menu
                     else if (chapterSelect == "9")
                     {
                         break;
+                    }
+
+                    //Joke zone
+                    else if (chapterSelect == "0")
+                    {
+                        Console.WriteLine("Why are you trying to return 0?");
+                        Console.ReadKey();
+                    }
+
+                    //Worng key handler
+                    else if (chapterSelect == "" || chapterSelect == " ")
+                    {
+                        Console.Write("You enter nothing...");
+                        Console.ReadKey();
                     }
                     else
                     {
@@ -92,20 +106,25 @@ class Menu
             }
             else if (inPut == "4")
             {
+                //Settings
+            }
+            else if (inPut == "5")
+            {
                 //Guide
                 TextTool.TextGen("\t\tGuide is coming soon\n", 20, true);
                 TextTool.TextGen("Press anykey to go back to main menu...", 10);
                 Console.ReadKey();
             }
-            else if (inPut == "5")
+            else if (inPut == "6")
             {
                 //Credits
                 TextTool.TextGen("\t\tCredits is coming soon\n", 20, true);
                 TextTool.TextGen("Press anykey to go back to main menu...", 10);
                 Console.ReadKey();
             }
-            else if (inPut == "6")
+            else if (inPut == "7")
             {
+                //Update
                 Console.Clear();
                 string update = File.ReadAllText("_update.txt");
                 Console.WriteLine(update);
@@ -114,8 +133,28 @@ class Menu
             }
             else if (inPut == "9")
             {
+                //Exit game
                 break;
             }
+
+            //Joke zone
+            else if (inPut == "0")
+            {
+                Console.WriteLine("Why are you trying to return 0?");
+                Console.ReadKey();
+            }
+            else if (inPut == "SECRET_UNLOCK")
+            {
+                Console.WriteLine("Secret unlocked!(Joke)");
+                Console.ReadKey();
+            }
+            else if (inPut == "SECRET_LOCK")
+            {
+                Console.WriteLine("Secret locked!");
+                Console.ReadKey();
+            }
+
+            //Worng key handler
             else if (inPut == "" || inPut == " ")
             {
                 Console.Write("You enter nothing...");

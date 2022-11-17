@@ -9,5 +9,9 @@ Code quality
 - Make delete option in load screen
 
 Framework
+- No save file handler(Doing)
+- Make settings function
+
+UI
 - Make select Saveload option in menu(Doing)
-- No save file json handler(Doing)
+- Make settings UI
