@@ -8,26 +8,24 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Sean\\.nuget\\packages\\": {}
+    "/home/notrealsean/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sean\\desktop\\code\\cs\\consoleapp\\vngame\\cs.csproj",
+      "projectUniqueName": "/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/cs.csproj",
       "projectName": "cs",
-      "projectPath": "C:\\Users\\Sean\\desktop\\code\\cs\\consoleapp\\vngame\\cs.csproj",
-      "packagesPath": "C:\\Users\\Sean\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sean\\desktop\\code\\cs\\consoleapp\\vngame\\obj\\",
+      "projectPath": "/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/cs.csproj",
+      "packagesPath": "/home/notrealsean/.nuget/packages/",
+      "outputPath": "/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Sean\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/notrealsean/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -61,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.403/RuntimeIdentifierGraph.json"
       }
     }
   }

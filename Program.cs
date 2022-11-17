@@ -140,8 +140,16 @@ class Menu
                             int intvalue = Convert.ToInt32(value);
                             if (intvalue.GetType().Equals(typeof(int)));
                             {
-                                string stringvalue = intvalue.ToString();
-                                Settings.Modify(setting, stringvalue);
+                                if (intvalue > 0)
+                                {
+                                    string stringvalue = intvalue.ToString();
+                                    Settings.Modify(setting, stringvalue);
+                                }
+                                else if (intvalue <= 0)
+                                {
+                                    Console.WriteLine("Are you trying to set value to 0?\nToo bad you can't");
+                                    Console.ReadKey();
+                                }
                             }
                         }
                         catch (Exception e)
