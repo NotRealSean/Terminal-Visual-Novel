@@ -15,12 +15,9 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Nodes;
 
-public class version
-{
-    public string version = "0.0.21";
-}
 public class checkfile
 {
+    /*
     public static void firstcheck()
     {
         string data1 = new WebClient().DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_update.txt");
@@ -41,6 +38,7 @@ public class checkfile
             }
         }
     }
+    */
 }
 
 public class coreGame
