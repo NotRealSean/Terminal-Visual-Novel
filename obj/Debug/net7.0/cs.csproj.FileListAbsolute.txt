@@ -1,0 +1,15 @@
+/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/bin/Debug/net7.0/cs
+/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/bin/Debug/net7.0/cs.deps.json
+/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/bin/Debug/net7.0/cs.runtimeconfig.json
+/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/bin/Debug/net7.0/cs.dll
+/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/bin/Debug/net7.0/cs.pdb
+/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/Debug/net7.0/cs.csproj.AssemblyReference.cache
+/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/Debug/net7.0/cs.GeneratedMSBuildEditorConfig.editorconfig
+/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/Debug/net7.0/cs.AssemblyInfoInputs.cache
+/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/Debug/net7.0/cs.AssemblyInfo.cs
+/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/Debug/net7.0/cs.csproj.CoreCompileInputs.cache
+/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/Debug/net7.0/cs.dll
+/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/Debug/net7.0/refint/cs.dll
+/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/Debug/net7.0/cs.pdb
+/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/Debug/net7.0/cs.genruntimeconfig.cache
+/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/Debug/net7.0/ref/cs.dll
