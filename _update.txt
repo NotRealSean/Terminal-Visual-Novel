@@ -1,6 +1,13 @@
                 Update
-UI
-- Reduce text generation speed(It does effect on linux OS(I test on Zorin OS))
+Gameplay
+- Add settings
+
+Settings
+- Add text speed
+
+Framework
+- Add setting Framework
+- Add setting.json file
 
                 Future Update
 Code quality
@@ -8,10 +15,5 @@ Code quality
 - Make better Saveload function
 - Make delete option in load screen
 
-Framework
-- No save file handler(Doing)
-- Make settings function
-
 UI
-- Make select Saveload option in menu(Doing)
-- Make settings UI
+- Make select Saveload option in menu

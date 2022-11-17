@@ -16,15 +16,23 @@ using System.Text.Json.Nodes;
 
 public class coreGame
 {
+
+
     public static void chapter1()
     {
+      JsonNode _jsonData = Settings.Read()!;
+      string speed = _jsonData[0]["TextSpeed"].ToString();
+      int textspeed = Convert.ToInt32(speed);
         //TextTool.textGen("enter smt",1 /*text speed*/, true /*clear console*/, true /*add press continue*/, 1 /*delay after text complete*/);
-        TextTool.TextGen("This is chapter 1 test text", 20, true, true);
+        TextTool.TextGen("This is chapter 1 test text", textspeed, true, true);
         Saveload.save("1","1");
     }
     public static void chapter2()
     {
-        TextTool.TextGen("This is chapter 2 test text", 20, true, true);
+      JsonNode _jsonData = Settings.Read()!;
+      string speed = _jsonData[0]["TextSpeed"].ToString();
+      int textspeed = Convert.ToInt32(speed);
+        TextTool.TextGen("This is chapter 2 test text", textspeed, true, true);
         Saveload.save("2","1");
     }
 }
@@ -39,7 +47,7 @@ class Menu
             Console.Clear();
             //Main menu
             Console.WriteLine("=======================================================");
-            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t1 Play\n\t2 Load\n\t3 Quick Load\n\t4 Settings\n\t5 Guide\n\t6 Credits\n\t7 Update\n\n\t9 Exit");
+            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t1 Play\n\t2 Load\n\t3 Quick Load\n\t4 Settings\n\t5 Guide\n\t6 Credits\n\t7 Update\n\n\t9 Exit\t\t\t\tBeta 0.0.2");
             Console.WriteLine("=======================================================");
             TextTool.TextGen("Key command -=>", 20);
             string inPut = Console.ReadLine();
@@ -107,6 +115,49 @@ class Menu
             else if (inPut == "4")
             {
                 //Settings
+                while (true)
+                {
+                    Console.Clear();
+                    Console.WriteLine("=======================================================");
+                    Console.WriteLine("\t\tSettings\n\t1 Text Speed(Delay in ms)\n\t2 Test\n\n\t9 Return to menu");
+                    Console.WriteLine("=======================================================");
+                    TextTool.TextGen("Key command -=>", 20);
+                    string setting = Console.ReadLine();
+                    if (setting == "9")
+                    {
+                       break;
+                    }
+                    else if (setting == "1" || setting == "2")
+                    {
+                        TextTool.TextGen("Key value -=>", 20);
+                        string value = Console.ReadLine();
+                        if (value == "exit")
+                        {
+                            break;
+                        }
+                        try
+                        {
+                            int intvalue = Convert.ToInt32(value);
+                            if (intvalue.GetType().Equals(typeof(int)));
+                            {
+                                string stringvalue = intvalue.ToString();
+                                Settings.Modify(setting, stringvalue);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("Something went worng...\nMore detail:\n");
+                            Console.WriteLine(e);
+                            Console.ReadKey();
+                        }
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("You enter worng key!");
+                        Console.ReadKey();
+                    }
+                }
             }
             else if (inPut == "5")
             {
@@ -267,7 +318,7 @@ class TextTool
         {
             Console.Write(text[i]);
             Thread.Sleep(textSpeed);
-        }
+        }string[] listint = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
     }
     public static void TextGen(string text)
     {
@@ -278,6 +329,8 @@ class TextTool
         }
     }
 }
+
+
 public class Saveload : coreGame
 {
     public static void save(string chapter, string route)
@@ -328,4 +381,55 @@ public class dataSave
 {
     public string save {get; set;}
     public string route {get; set;}
+}
+
+
+class Settings
+{
+    public static JsonNode Read()
+    {
+        string _filename = "setting.json";
+        string jsondata = File.ReadAllText(_filename);
+        var _loadJson = JsonNode.Parse(jsondata);
+        return _loadJson;
+    }
+    public static void Modify(string type, string value)
+    {
+      string _filename = "setting.json";
+      try
+      {
+          if (type == "1")
+          {
+              string jsondata = File.ReadAllText(_filename);
+              var _loadJson = JsonNode.Parse(jsondata);
+              _loadJson[0]["TextSpeed"] = value;
+
+              string _save = JsonSerializer.Serialize(_loadJson);
+              File.WriteAllText(_filename, _save);
+          }
+          else if (type == "2")
+          {
+              string jsondata = File.ReadAllText(_filename);
+              var _loadJson = JsonNode.Parse(jsondata);
+              _loadJson[0]["Test"] = value;
+
+              string _save = JsonSerializer.Serialize(_loadJson);
+              File.WriteAllText(_filename, _save);
+          }
+          else
+          {
+              Console.WriteLine("Setting not found!");
+          }
+      }
+      catch (Exception e)
+      {
+          Console.WriteLine("Something went worng...\nMore detail:\n");
+          Console.WriteLine(e);
+      }
+    }
+}
+public class settingsave
+{
+    public string TextSpeed {get; set;}
+    public string Test {get; set;}
 }
