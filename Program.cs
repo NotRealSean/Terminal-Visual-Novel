@@ -308,7 +308,7 @@ class TextTool
                 if (i >= text.Length)
                 {
                     Thread.Sleep(500);
-                    Console.WriteLine("\n\n-\tPress space bar or enter to continue\t-");
+                    Console.WriteLine("\n\n-\tContinue\t-->>");
                     break;
                 }
                 Console.Write(text[i]);
