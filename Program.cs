@@ -15,32 +15,6 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Nodes;
 
-public class checkfile
-{
-    /*
-    public static void firstcheck()
-    {
-        string data1 = new WebClient().DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_update.txt");
-        string data2 = new WebClient().DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/version.txt");
-
-        private string[] arrdata = {"[{\"save\":\"1\",\"route\":\"1\"}]", "[{\"TextSpeed\":\"30\",\"Test\":\"1\"}]", data1};
-        private string[] arrfile = {@"save.json", @"setting.json", @"_update.txt"};
-        if (version != data2)
-        {
-            Console.WriteLine("You are outdate!");
-            Console.ReadKey();
-        }
-        for (int i = 0; i < arrfile.Length; i++)
-        {
-            if (!File.Exists(arrfile[i]))
-            {
-                File.WriteAllText(arrfile[i], arrdata[i]);
-            }
-        }
-    }
-    */
-}
-
 public class coreGame
 {
     public static void chapter1()
@@ -129,6 +103,11 @@ class Menu
             else if (inPut ==  "3")
             {
                 //Quick load
+                string _filename = @"./save.json";
+                if (!File.Exists(_filename))
+                {
+                    Saveload.save("1","1");
+                }
                 JsonNode _jsonData = Saveload.read()!;
                 string _loadData = _jsonData[0]["save"].ToString();
                 Console.WriteLine("Warning:\nYour last auto save is Chapter " + _loadData + "\nAre you sure to load this chapter?\n[Press Y to continue/Press others key to return]");
@@ -140,8 +119,26 @@ class Menu
             else if (inPut == "4")
             {
                 //Settings
-                while (true)
+                string _filename = @"./setting.json";
+                if (!File.Exists(_filename))
                 {
+                    string filename = "setting.json";
+                    object[] arr = new object[1];
+                    var _save = new settingsave
+                    {
+                        TextSpeed = "30",
+                        Test = "1"
+                    };
+
+                    arr[0] = _save;
+
+                    string _savedata = JsonSerializer.Serialize(arr);
+                    File.WriteAllText(filename, _savedata);
+                  }
+                  while (true)
+                  {
+
+
                     Console.Clear();
                     Console.WriteLine("=======================================================");
                     Console.WriteLine("\t\tSettings\n\t1 Text Speed(Delay in ms)\n\t2 Test\n\n\t9 Return to menu");
@@ -208,6 +205,14 @@ class Menu
             else if (inPut == "7")
             {
                 //Update
+                string _filename = @"./_update.txt";
+                if (!File.Exists(_filename))
+                {
+                    string filename = "_update.txt";
+                    System.Net.WebClient wc = new System.Net.WebClient();
+                    string webData = wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_update.txt");
+                    File.WriteAllText(filename, webData);
+                }
                 Console.Clear();
                 string update = File.ReadAllText("_update.txt");
                 Console.WriteLine(update);

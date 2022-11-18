@@ -1,5 +1,6 @@
-                Update Beta 0.0.21
-- Fix minor bug on text speed setting(Now you can't set value to 0 or lower)
+                Update Beta 0.0.3
+Framework
+- Make no file found handler(save.json, setting.json, _update.txt)
 
                 Future Update
 Code quality
