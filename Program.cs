@@ -19,6 +19,7 @@ public class coreGame
 {
     public static void chapter1()
     {
+      Settings.check();
       JsonNode _jsonData = Settings.Read()!;
       string speed = _jsonData[0]["TextSpeed"].ToString();
       int textspeed = Convert.ToInt32(speed);
@@ -28,6 +29,7 @@ public class coreGame
     }
     public static void chapter2()
     {
+      Settings.check();
       JsonNode _jsonData = Settings.Read()!;
       string speed = _jsonData[0]["TextSpeed"].ToString();
       int textspeed = Convert.ToInt32(speed);
@@ -45,7 +47,15 @@ class Menu
         {
             Console.Clear();
             //Main menu
-            string version = "Beta 0.0.31";
+            System.Net.WebClient wc = new System.Net.WebClient();
+            string webVersion = wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/version.txt");
+            string version = "Beta 0.0.32";
+            if (version != webVersion)
+            {
+                Console.WriteLine("\n\n\t\t\tPlease update your game version!")
+                Console.ReadKey();
+                break;
+            }
             Console.WriteLine("=======================================================");
             Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t1 Play\n\t2 Load\n\t3 Quick Load\n\t4 Settings\n\t5 Guide\n\t6 Credits\n\t7 Update\n\n\t9 Exit\t\t\t\t"+version);
             Console.WriteLine("=======================================================");
@@ -56,6 +66,7 @@ class Menu
                 while (true)
                 {
                     //chapter select
+
                     Console.Clear();
                     Console.WriteLine("=======================================================");
                     Console.WriteLine("\t\tSelect Chapter\n\tChapter 1\n\tChapter 2\n\n\t9 Back to main menu");
@@ -120,22 +131,7 @@ class Menu
             else if (inPut == "4")
             {
                 //Settings
-                string _filename = @"./setting.json";
-                if (!File.Exists(_filename))
-                {
-                    string filename = "setting.json";
-                    object[] arr = new object[1];
-                    var _save = new settingsave
-                    {
-                        TextSpeed = "30",
-                        Test = "1"
-                    };
-
-                    arr[0] = _save;
-
-                    string _savedata = JsonSerializer.Serialize(arr);
-                    File.WriteAllText(filename, _savedata);
-                  }
+                Settings.check();
                   while (true)
                   {
 
@@ -207,7 +203,7 @@ class Menu
             {
                 //Update
                 string _filename = @"./_update.txt";
-                if (!File.Exists(_filename))
+                if (!File.Exists(_filename) || File.Exists(_filename))
                 {
                     string filename = "_update.txt";
                     System.Net.WebClient wc = new System.Net.WebClient();
@@ -464,6 +460,25 @@ class Settings
           Console.WriteLine("Something went worng...\nMore detail:\n");
           Console.WriteLine(e);
       }
+    }
+    public static void check()
+    {
+      string _filename = @"./setting.json";
+      if (!File.Exists(_filename))
+      {
+          string filename = "setting.json";
+          object[] arr = new object[1];
+          var _save = new settingsave
+          {
+              TextSpeed = "30",
+              Test = "1"
+          };
+
+          arr[0] = _save;
+
+          string _savedata = JsonSerializer.Serialize(arr);
+          File.WriteAllText(filename, _savedata);
+        }
     }
 }
 public class settingsave
