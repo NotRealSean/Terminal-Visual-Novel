@@ -1,3 +1,4 @@
+Don't forget to check if game version match this update note
                 Update Beta 0.0.3
 Framework
 - Make no file found handler(save.json, setting.json, _update.txt)
