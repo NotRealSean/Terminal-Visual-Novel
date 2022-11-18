@@ -47,12 +47,12 @@ class Menu
         {
             Console.Clear();
             //Main menu
-            System.Net.WebClient wc = new System.Net.WebClient();
-            string webVersion = wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/version.txt");
+            System.Net.WebClient WC = new System.Net.WebClient();
+            string webVersion = WC.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/version.txt");
             string version = "Beta 0.0.32";
             if (version != webVersion)
             {
-                Console.WriteLine("\n\n\t\t\tPlease update your game version!")
+                Console.WriteLine("\n\n\t\t\tPlease update your game version!");
                 Console.ReadKey();
                 break;
             }
