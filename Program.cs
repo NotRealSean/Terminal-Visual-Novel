@@ -49,7 +49,7 @@ class Menu
             //Main menu
             System.Net.WebClient WC = new System.Net.WebClient();
             string webVersion = WC.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/version.txt");
-            string version = "Beta 0.0.32";
+            string version = "0.0.32";
             if (version != webVersion)
             {
                 Console.WriteLine("\n\n\t\t\tPlease update your game version!");
