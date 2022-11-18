@@ -47,15 +47,6 @@ class Menu
         {
             Console.Clear();
             //Main menu
-            System.Net.WebClient WC = new System.Net.WebClient();
-            string webVersion = WC.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/version.txt");
-            string version = "0.0.32";
-            if (version != webVersion)
-            {
-                Console.WriteLine("\n\n\t\t\tPlease update your game version!");
-                Console.ReadKey();
-                break;
-            }
             Console.WriteLine("=======================================================");
             Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t1 Play\n\t2 Load\n\t3 Quick Load\n\t4 Settings\n\t5 Guide\n\t6 Credits\n\t7 Update\n\n\t9 Exit\t\t\t\t"+version);
             Console.WriteLine("=======================================================");
