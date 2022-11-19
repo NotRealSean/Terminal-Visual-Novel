@@ -1,3 +1,44 @@
 Protagonist
+1.
+Name : Star(Female)
+Age : 15
+Ability : Sword mastery, Some basic magic(like healing)
+Hobby : Singing
+Like : Sweet, desert, cute stuff
+Hate : Scary things, Spicy
+Description : A girl who like adventure. She's short and has short blond hair. Her main weapon is sword(got from her father while she was young)
 
-Name : Idea(Selvie, )
+2.
+Name : Lunar(Female)
+Age : 16
+Ability : Advance magic, Long range attack
+Hobby : Sleep(mostly) / Draw
+Like : Dark/Silent place(To sleep), Star(Secretly)
+Hate : Anything that wake her, God
+Description : A girl who stick with Star since she got helped from monster(And secretly love her ever since). She's taller that Star a bit, Has long blue hair and she has
+heterochromia(different eyes color with left eye color is bright blue and right one is pink red). Her main weapon is magic stuff.
+
+Others
+1.
+Name : Bett(Female)
+Age : 37
+Hobby : Drink tea
+Like : Money, Tea, Vanilla cake
+Hate : Anyone who say bad things about her, Empty guild
+Description : She works at guild as Maid, Commission service and many things,She has (Can't think of her look just yet), Many people said she's kind but hard to get close.
+
+2.
+Name : Loyah(Male)
+Age : 53
+Hobby : Make weapon/armor, Play with his cat
+Like : Spicy, Animal, Nelep(his wife)
+Hate : Insect
+Description : He's weapon/armor shop owner. He's really tall, Has short black hair, He looks scary but like cute stuff especially his cat
+
+3.
+Name : Nelep(Female)
+Age : 49
+Hobby : Cooking, Reading
+Like : Loyah(her husband), Cooking
+Hate : Fight
+Description : She is Loyah's wife who love and take care every customer while Loyah is busy. She's quite short compare to Loyah, Has red short hair. Love Loyah the most <3.

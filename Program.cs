@@ -42,7 +42,10 @@ class Menu
     static void Main(string[] args)
     {
         TextTool.TextGen("", 1, true, false, 1000);
-        TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n", 30, true, false, 2500);
+        TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n", 30, true, false);
+        Console.WriteLine("Loading settings...");
+        Thread.Sleep(100);
+        Settings.check();
         while (true)
         {
             Console.Clear();
@@ -57,7 +60,6 @@ class Menu
                 while (true)
                 {
                     //chapter select
-
                     Console.Clear();
                     Console.WriteLine("=======================================================");
                     Console.WriteLine("\t\tSelect Chapter\n\tChapter 1\n\tChapter 2\n\n\t9 Back to main menu");
@@ -193,6 +195,7 @@ class Menu
             else if (inPut == "7")
             {
                 //Update
+                Console.WriteLine("Checking for update...");
                 string _filename = @"./_update.txt";
                 if (!File.Exists(_filename) || File.Exists(_filename))
                 {
