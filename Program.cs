@@ -25,7 +25,7 @@ public class coreGame
       int textspeed = Convert.ToInt32(speed);
         //TextTool.textGen("enter smt",1 /*text speed*/, true /*clear console*/, true /*add press continue*/, 1 /*delay after text complete*/);
         TextTool.TextGen("This is chapter 1 test text", textspeed, true, true);
-        Saveload.save("1","1");
+        Saveload.save("1","1",1);
     }
     public static void chapter2()
     {
@@ -34,7 +34,7 @@ public class coreGame
       string speed = _jsonData[0]["TextSpeed"].ToString();
       int textspeed = Convert.ToInt32(speed);
         TextTool.TextGen("This is chapter 2 test text", textspeed, true, true);
-        Saveload.save("2","1");
+        Saveload.save("2","1",2);
     }
 }
 class Menu
@@ -42,7 +42,7 @@ class Menu
     static void Main(string[] args)
     {
         TextTool.TextGen("", 1, true, false, 1000);
-        TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n", 30, true, false);
+        TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n", 1, true, false);
         Console.WriteLine("\nLoading settings...");
         Settings.check();
         Console.WriteLine("Settings loaded press any key to continue");
@@ -112,7 +112,7 @@ class Menu
                 string _filename = @"./save.json";
                 if (!File.Exists(_filename))
                 {
-                    Saveload.save("1","1");
+                    Saveload.save("1","1",1);
                 }
                 JsonNode _jsonData = Saveload.read()!;
                 string _loadData = _jsonData[0]["save"].ToString();
@@ -382,20 +382,22 @@ class TextTool
 
 public class Saveload : coreGame
 {
-    public static void save(string chapter, string route)
+    public static void save(string chapter, string route, int slot)
     {
-        string _filename = "save.json";
-        object[] arr = new object[1];
-        var _save = new dataSave
+        string _filename = @"./save.json";
+        if (!File.Exists(_filename) || File.Exists(_filename))
         {
-            save = chapter,
-            route = route
-        };
-
-        arr[0] = _save;
-
-        string _savedata = JsonSerializer.Serialize(arr);
-        File.WriteAllText(_filename, _savedata);
+          string filename = "save.json";
+          //some handler idk
+          /*
+          string jsondata = File.ReadAllText(filename);
+          var _loadJson = JsonNode.Parse(jsondata);
+          _loadJson[slot-1]["save"] = chapter;
+          _loadJson[slot-1]["route"] = route;
+          string _savedata = JsonSerializer.Serialize(_loadJson);
+          File.WriteAllText(filename, _savedata);
+          */
+        }
     }
     public static void load(string chapter)
     {
