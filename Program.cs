@@ -179,14 +179,36 @@ class Menu
             else if (inPut == "5")
             {
                 //Guide
-                TextTool.TextGen("\t\tGuide is coming soon\n", 20, true);
+                Console.WriteLine("Checking for update...");
+                string _filename = @"./guide.txt";
+                if (!File.Exists(_filename) || File.Exists(_filename))
+                {
+                    string filename = "_guide.txt";
+                    System.Net.WebClient wc = new System.Net.WebClient();
+                    string webData = wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_guide.txt");
+                    File.WriteAllText(filename, webData);
+                }
+                Console.Clear();
+                string update = File.ReadAllText("_guide.txt");
+                Console.WriteLine(update);
                 TextTool.TextGen("Press anykey to go back to main menu...", 10);
                 Console.ReadKey();
             }
             else if (inPut == "6")
             {
                 //Credits
-                TextTool.TextGen("\t\tCredits is coming soon\n", 20, true);
+                Console.WriteLine("Checking for update...");
+                string _filename = @"./credits.txt";
+                if (!File.Exists(_filename) || File.Exists(_filename))
+                {
+                    string filename = "credits.txt";
+                    System.Net.WebClient wc = new System.Net.WebClient();
+                    string webData = wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/credits.txt");
+                    File.WriteAllText(filename, webData);
+                }
+                Console.Clear();
+                string update = File.ReadAllText("credits.txt");
+                Console.WriteLine(update);
                 TextTool.TextGen("Press anykey to go back to main menu...", 10);
                 Console.ReadKey();
             }
