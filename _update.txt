@@ -1,6 +1,6 @@
 Don't forget to check if game version match this update note
-                Update Beta 0.0.32
-- Fix minor bug
+                Update Beta 0.0.33
+- Update guide and credits
 
                 Future Update
 Code quality

@@ -51,7 +51,7 @@ class Menu
             Console.Clear();
             //Main menu
             Console.WriteLine("=======================================================");
-            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t1 New Game\n\t2 Load\n\t3 Quick Load\n\t4 Settings\n\t5 Guide\n\t6 Credits\n\t7 Update\n\n\t9 Exit\t\t\t\t0.0.32");
+            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t1 New Game\n\t2 Load\n\t3 Quick Load\n\t4 Settings\n\t5 Guide\n\t6 Credits\n\t7 Update\n\n\t9 Exit\t\t\t\t0.0.33");
             Console.WriteLine("=======================================================");
             TextTool.TextGen("Key command -=>", 20);
             string inPut = Console.ReadLine();
