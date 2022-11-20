@@ -10,3 +10,7 @@ Code quality
 
 UI
 - Make select Saveload option in menu
+
+Function
+- Make route choose
+- Make better data-base

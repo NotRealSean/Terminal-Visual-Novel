@@ -43,9 +43,10 @@ class Menu
     {
         TextTool.TextGen("", 1, true, false, 1000);
         TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n", 30, true, false);
-        Console.WriteLine("Loading settings...");
-        Thread.Sleep(100);
+        Console.WriteLine("\nLoading settings...");
         Settings.check();
+        Console.WriteLine("Settings loaded press any key to continue");
+        Console.ReadKey();
         while (true)
         {
             Console.Clear();
@@ -300,7 +301,7 @@ class TextTool
                 if (i >= text.Length)
                 {
                     Thread.Sleep(delay);
-                    Console.WriteLine("\n\n-\tContinue\t-->>");
+                    Console.WriteLine("\n\n--\tContinue\t-->>");
                     break;
                 }
                 Console.Write(text[i]);
@@ -331,7 +332,7 @@ class TextTool
                 if (i >= text.Length)
                 {
                     Thread.Sleep(500);
-                    Console.WriteLine("\n\n-\tContinue\t-->>");
+                    Console.WriteLine("\n\n--\tContinue\t-->>");
                     break;
                 }
                 Console.Write(text[i]);
