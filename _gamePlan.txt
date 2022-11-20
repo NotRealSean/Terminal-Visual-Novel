@@ -1,11 +1,8 @@
 To do list
-- Make better framework(Tool, Function)
--- Make json save load function
---- Learn more about how to save-load json file
--- Make function/tool easier to navigate when debug
+Code quality
+- Make code better to write and read
+- Make better Saveload function
+- Make delete option in load screen
 
-- Make story line
--- Make character
--- Make start and end point of story
-
-- Make UI easier to navigate
+UI
+- Make select Saveload option in menu

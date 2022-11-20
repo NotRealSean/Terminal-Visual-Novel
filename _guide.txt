@@ -1,0 +1,8 @@
+        How to play this Game
+
+Basic control:
+- Type 1-9 on your keyboard and press Enter to confirm command
+
+In game:
+- Press Enter or Spacebar to continue reading
+- Type 1-3 to choose answer(Soon)
