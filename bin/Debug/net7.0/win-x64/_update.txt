@@ -1,0 +1,16 @@
+Don't forget to check if game version match this update note
+                Update Beta 0.0.33
+- Update guide and credits
+
+                Future Update
+Code quality
+- Make code better to write and read
+- Make better Saveload function
+- Make delete option in load screen
+
+UI
+- Make select Saveload option in menu
+
+Function
+- Make route choose
+- Make better data-base

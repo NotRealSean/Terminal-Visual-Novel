@@ -428,11 +428,7 @@ public class Saveload : coreGame
         return _loadJson;
     }
 }
-public class dataSave
-{
-    public string save {get; set;}
-    public string route {get; set;}
-}
+
 
 
 class Settings
@@ -498,8 +494,24 @@ class Settings
         }
     }
 }
+
+public class FileTool : coreGame
+{
+    public static void CreateFolder(string filename)
+    {
+        if (!System.IO.Directory.Exists(filename))
+        {
+            System.IO.Directory.CreateDirectory(filename);
+        }
+    }
+}
 public class settingsave
 {
     public string TextSpeed {get; set;}
     public string Test {get; set;}
+}
+public class dataSave
+{
+    public string save {get; set;}
+    public string route {get; set;}
 }
