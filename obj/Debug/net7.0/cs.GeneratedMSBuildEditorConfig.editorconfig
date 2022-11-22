@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = cs
-build_property.ProjectDir = c:\Users\Sean\Desktop\code\cs\ConsoleApp\VNgame\
+build_property.ProjectDir = /home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/

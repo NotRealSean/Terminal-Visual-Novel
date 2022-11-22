@@ -1,6 +1,11 @@
 Don't forget to check if game version match this update note
-                Update Beta 0.0.33
-- Update guide and credits
+                Update Beta 0.0.4
+Framework
+- Remove Saveload class
++ Rework FileTool from Saveload
+
+UI
++ Load is now work
 
                 Future Update
 Code quality
