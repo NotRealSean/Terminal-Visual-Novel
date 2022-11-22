@@ -5,7 +5,7 @@ Basic control:
 
 Load:
 - Type file name to load saved chapter
-- Press 9 to exit
+- Type 9 to exit
 
 In game:
 - Press Enter or Spacebar to continue reading
