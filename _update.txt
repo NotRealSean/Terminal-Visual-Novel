@@ -10,11 +10,7 @@ UI
                 Future Update
 Code quality
 - Make code better to write and read
-- Make better Saveload function
 - Make delete option in load screen
-
-UI
-- Make select Saveload option in menu
 
 Function
 - Make route choose
