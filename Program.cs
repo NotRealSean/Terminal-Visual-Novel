@@ -535,7 +535,7 @@ public class FileTool : coreGame
         string jsondata = File.ReadAllText(_filename);
         var loadJson = JsonNode.Parse(jsondata);
         string Lchapter = loadJson[0]["chapter"].ToString();
-        Console.WriteLine("Warning you last saved is Chapter " + Lchapter + "\nDo you want to load this chapter?\n[Type Y to continue/Type anything else to return]");
+        Console.WriteLine("Warning:\nYour last saved checkpoint is Chapter " + Lchapter + "\nDo you want to load this chapter?\n[Type Y to continue/Type anything else to return]");
         string Cload = Console.ReadLine();
         if (Cload.ToLower() == "y")
         {
