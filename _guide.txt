@@ -6,6 +6,8 @@ Basic control:
 Load:
 - Type file name to load saved chapter
 - Type 9 to exit
+- Type del to enter delete save mode and type file name to select file
+you want to delete
 
 In game:
 - Press Enter or Spacebar to continue reading

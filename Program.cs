@@ -49,12 +49,15 @@ class Menu
         Console.ReadKey();
         while (true)
         {
+          JsonNode _jsonData = Settings.Read()!;
+          string speed = _jsonData[0]["TextSpeed"].ToString();
+          int textspeed = Convert.ToInt32(speed);
             Console.Clear();
             //Main menu
             Console.WriteLine("=======================================================");
             Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t1 New Game\n\t2 Load\n\t3 Quick Load\n\t4 Settings\n\t5 Guide\n\t6 Credits\n\t7 Update\n\n\t9 Exit\t\t\t\t0.0.4");
             Console.WriteLine("=======================================================");
-            TextTool.TextGen("Key command -=>", 20);
+            TextTool.TextGen("Key command -=>", textspeed);
             string inPut = Console.ReadLine();
             if (inPut == "1")
             {
@@ -65,7 +68,7 @@ class Menu
                     Console.WriteLine("=======================================================");
                     Console.WriteLine("\t\tSelect Chapter\n\tChapter 1\n\tChapter 2\n\n\t9 Back to main menu");
                     Console.WriteLine("=======================================================");
-                    TextTool.TextGen("Key command -=>", 20);
+                    TextTool.TextGen("Key command -=>", textspeed);
                     string chapterSelect = Console.ReadLine();
                     if (chapterSelect == "1")
                     {
@@ -107,6 +110,12 @@ class Menu
                 {
                   string dir = @"save";
                   int dircount = Directory.GetFiles(dir).Length;
+                  if (dircount <= 0)
+                  {
+                    Console.WriteLine("You don't have save file");
+                    Console.ReadKey();
+                    break;
+                  }
                   DirectoryInfo d = new DirectoryInfo(@"save"); //Assuming Test is your Folder
 
                   FileInfo[] Files = d.GetFiles(""); //Getting Text files
@@ -114,17 +123,23 @@ class Menu
 
                   foreach(FileInfo file in Files)
                   {
-                    str = str + ", " + file.Name;
+                    str = str + "\n" + file.Name;
                     Console.Clear();
                     Console.WriteLine("=======================================================");
                     Console.WriteLine("\t\tYour save file\n"+ str +"\n\n\t9 Exit");
                     Console.WriteLine("=======================================================");
                   }
-                  TextTool.TextGen("Load file -=>", 20);
+                  TextTool.TextGen("Load file -=>", textspeed);
                   string LoadSelect = Console.ReadLine();
                   if (LoadSelect == "9")
                   {
                       break;
+                  }
+                  if (LoadSelect.ToLower() == "del")
+                  {
+                      TextTool.TextGen("Delete file -=>", textspeed);
+                      string DelSelect = Console.ReadLine();
+                      FileTool.DeleteSave(DelSelect, "save");
                   }
                   else
                   {
@@ -147,7 +162,7 @@ class Menu
                     Console.WriteLine("=======================================================");
                     Console.WriteLine("\t\tSettings\n\t1 Text Speed(Delay in ms)\n\t2 Test\n\n\t9 Return to menu");
                     Console.WriteLine("=======================================================");
-                    TextTool.TextGen("Key command -=>", 20);
+                    TextTool.TextGen("Key command -=>", textspeed);
                     string setting = Console.ReadLine();
                     if (setting == "9")
                     {
@@ -155,7 +170,7 @@ class Menu
                     }
                     else if (setting == "1" || setting == "2")
                     {
-                        TextTool.TextGen("Key value -=>", 20);
+                        TextTool.TextGen("Key value -=>", textspeed);
                         string value = Console.ReadLine();
                         if (value == "exit")
                         {
@@ -166,14 +181,19 @@ class Menu
                             int intvalue = Convert.ToInt32(value);
                             if (intvalue.GetType().Equals(typeof(int)));
                             {
-                                if (intvalue > 0)
+                                if (intvalue > 500)
+                                {
+                                    Console.WriteLine("You can't do more that 500!");
+                                    Console.ReadKey();
+                                }
+                                else if (intvalue > 0)
                                 {
                                     string stringvalue = intvalue.ToString();
                                     Settings.Modify(setting, stringvalue);
                                 }
                                 else if (intvalue <= 0)
                                 {
-                                    Console.WriteLine("Are you trying to set value to 0?\nToo bad you can't");
+                                    Console.WriteLine("Are you trying to set value to 0 or lower?\nToo bad you can't");
                                     Console.ReadKey();
                                 }
                             }
@@ -481,7 +501,7 @@ public class FileTool : coreGame
       File.WriteAllText(Path.Combine(dir, filename), savedata);
       if (quicksave = true)
       {
-          File.WriteAllText("QSave.json", savedata);
+          File.WriteAllText(Path.Combine(dir, "QuickSave"), savedata);
       }
     }
     public static void CheckCreatedFolder(string foldername)
@@ -523,15 +543,16 @@ public class FileTool : coreGame
     }
     public static void QLoadChapter()
     {
-      string filename = "QSave.json";
-      if (!File.Exists(filename))
+      string filename = "QuickSave";
+      string fullqpath = @"save/QuickSave";
+      if (!File.Exists(fullqpath))
       {
           Console.WriteLine("You don't have quick save file");
           Console.ReadKey();
       }
-      if (File.Exists(filename))
+      if (File.Exists(fullqpath))
       {
-        string _filename = filename;
+        string _filename = fullqpath;
         string jsondata = File.ReadAllText(_filename);
         var loadJson = JsonNode.Parse(jsondata);
         string Lchapter = loadJson[0]["chapter"].ToString();
@@ -555,11 +576,34 @@ public class FileTool : coreGame
         }
       }
     }
-    public static void DeleteSave(string filename)
+    public static void DeleteSave(string filename, string path)
     {
       //Doing
-      string[] path = {"save", filename};
-      string fullpath = Path.Combine(path);
+      if (filename == "")
+      {
+        Console.WriteLine("You didn't enter save file name");
+        Console.ReadKey();
+      }
+      else
+      {
+        Console.WriteLine("Are you sure to delete " + filename +"?[Type Y to confirm]");
+        string DelComfirm = Console.ReadLine();
+        if (DelComfirm.ToLower() == "y")
+        {
+          try
+          {
+            string[] fpath = {path, filename};
+            string fullpath = Path.Combine(fpath);
+            File.Delete(fullpath);
+          }
+          catch (Exception e)
+          {
+            Console.WriteLine("Something went worng\nMore info:");
+            Console.WriteLine(e);
+            Console.ReadLine();
+          }
+        }
+      }
     }
 }
 

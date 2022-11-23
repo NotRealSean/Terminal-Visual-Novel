@@ -1,20 +1,18 @@
 Don't forget to check if game version match this update note
-                Update Beta 0.0.4
+                Update Beta 0.0.42
 Framework
-- Remove Saveload class
-+ Rework FileTool from Saveload
++- Move QuickSave file to save folder
 
 UI
-+ Load is now work
++ Make quick load work again
+
+Settings
++- You can't enter value more than 500 now
 
                 Future Update
 Code quality
 - Make code better to write and read
-- Make better Saveload function
 - Make delete option in load screen
-
-UI
-- Make select Saveload option in menu
 
 Function
 - Make route choose

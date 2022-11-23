@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "VQlEl2RJ4ZXCZgONgUgoze2uE+5JmhbkSq8XTkt/c60W8lYBTP6ggQPc+1kS8NYi6r3/3DAvRX+N14kkpgV0gA==",
+  "dgSpecHash": "8VZWUBXMmtIjk+JEnM1W911LzbzASMib9KSS+//5KMxfFZgcOCoZRf6T2P5BDmILOZrl37SXX4/uPJOyr+Llsg==",
   "success": true,
   "projectFilePath": "/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/cs.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/notrealsean/.nuget/packages/microsoft.netcore.app.runtime.linux-x64/7.0.0/microsoft.netcore.app.runtime.linux-x64.7.0.0.nupkg.sha512",
+    "/home/notrealsean/.nuget/packages/microsoft.aspnetcore.app.runtime.linux-x64/7.0.0/microsoft.aspnetcore.app.runtime.linux-x64.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
