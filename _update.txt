@@ -1,7 +1,7 @@
 Don't forget to check if game version match this update note
                 Update Beta 0.0.43
 Framework
-+ Minor update uon ChoiceRoute function
++ Minor update on ChoiceRoute function
 
                 Future Update
 Code quality
