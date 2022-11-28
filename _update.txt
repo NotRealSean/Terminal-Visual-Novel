@@ -1,13 +1,7 @@
 Don't forget to check if game version match this update note
-                Update Beta 0.0.42
+                Update Beta 0.0.43
 Framework
-+- Move QuickSave file to save folder
-
-UI
-+ Make quick load work again
-
-Settings
-+- You can't enter value more than 500 now
++ Minor update uon ChoiceRoute function
 
                 Future Update
 Code quality

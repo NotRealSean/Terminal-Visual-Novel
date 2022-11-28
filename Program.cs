@@ -24,8 +24,21 @@ public class coreGame
       string speed = _jsonData[0]["TextSpeed"].ToString();
       int textspeed = Convert.ToInt32(speed);
         //TextTool.textGen("enter smt",1 /*text speed*/, true /*clear console*/, true /*add press continue*/, 1 /*delay after text complete*/);
-        TextTool.TextGen("This is chapter 1 test text", textspeed, true, true);
-        FileTool.SaveChaper("save1-1", "save", 1, 1, true);
+        TextTool.TextGen("This is chapter 1 test text", textspeed, true);
+        string choose = FileTool.ChoiceRoute("Do you like this game?", "Yes", "Kinda", "No");
+        if (choose == "1")
+        {
+          FileTool.SaveChaper("save1-1", "save", 1, 1, true);
+        }
+        if (choose == "2")
+        {
+          FileTool.SaveChaper("save1-2", "save", 1, 2, true);
+        }
+        if (choose == "3")
+        {
+          TextTool.TextGen(":(", textspeed, true, true);
+          FileTool.SaveChaper("save1-3", "save", 1, 3, true);
+        }
     }
     public static void chapter2()
     {
@@ -33,8 +46,21 @@ public class coreGame
       JsonNode _jsonData = Settings.Read()!;
       string speed = _jsonData[0]["TextSpeed"].ToString();
       int textspeed = Convert.ToInt32(speed);
-        TextTool.TextGen("This is chapter 2 test text", textspeed, true, true);
-        FileTool.SaveChaper("save2-1", "save", 2, 1, true);
+        TextTool.TextGen("This is chapter 2 test text", textspeed, true);
+        string choose = FileTool.ChoiceRoute("Rate this game", "Like", "Normal", "Hate");
+        if (choose == "1")
+        {
+          FileTool.SaveChaper("save2-1", "save", 2, 1, true);
+        }
+        if (choose == "2")
+        {
+          FileTool.SaveChaper("save2-2", "save", 2, 2, true);
+        }
+        if (choose == "3")
+        {
+          TextTool.TextGen("Fine", textspeed, true, true);
+          FileTool.SaveChaper("save2-3", "save", 2, 3, true);
+        }
     }
 }
 class Menu
@@ -55,7 +81,7 @@ class Menu
             Console.Clear();
             //Main menu
             Console.WriteLine("=======================================================");
-            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t1 New Game\n\t2 Load\n\t3 Quick Load\n\t4 Settings\n\t5 Guide\n\t6 Credits\n\t7 Update\n\n\t9 Exit\t\t\t\t0.0.4");
+            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t1 New Game\n\t2 Load\n\t3 Quick Load\n\t4 Settings\n\t5 Guide\n\t6 Credits\n\t7 Update\n\n\t9 Exit\t\t\t\t0.0.43");
             Console.WriteLine("=======================================================");
             TextTool.TextGen("Key command -=>", textspeed);
             string inPut = Console.ReadLine();
@@ -501,7 +527,7 @@ public class FileTool : coreGame
       File.WriteAllText(Path.Combine(dir, filename), savedata);
       if (quicksave = true)
       {
-          File.WriteAllText(Path.Combine(dir, "QuickSave"), savedata);
+          File.WriteAllText(Path.Combine(dir, "_QuickSave"), savedata);
       }
     }
     public static void CheckCreatedFolder(string foldername)
@@ -543,8 +569,8 @@ public class FileTool : coreGame
     }
     public static void QLoadChapter()
     {
-      string filename = "QuickSave";
-      string fullqpath = @"save/QuickSave";
+      string filename = "_QuickSave";
+      string fullqpath = @"save/_QuickSave";
       if (!File.Exists(fullqpath))
       {
           Console.WriteLine("You don't have quick save file");
@@ -602,6 +628,31 @@ public class FileTool : coreGame
             Console.WriteLine(e);
             Console.ReadLine();
           }
+        }
+      }
+    }
+    public static void Choice(string Question, string Choice1, string Choice2, string Choice3)
+    {
+      //Choice that doesn't affect anything
+
+    }
+    public static string ChoiceRoute(string Question, string Choice1, string Choice2, string Choice3)
+    {
+      //Choice that affect gameplay/ending
+      while (true)
+      {
+        TextTool.TextGen("\n" + Question);
+        Console.WriteLine("\n1 " + Choice1 + "\n2 " + Choice2 + "\n3 " + Choice3 + "\n");
+        TextTool.TextGen("Your answer(1-3) >");
+        string Choose = Console.ReadLine();
+        if (Choose == "1" || Choose == "2" || Choose == "3")
+        {
+          return Choose;
+          break;
+        }
+        else
+        {
+          Console.Clear();
         }
       }
     }
