@@ -10,10 +10,14 @@ Type something and hit "Enter" on your keyboard
 Story
 just hit "Enter" or "Space bar" to continue reading
 
+Load
+Type file name to load saved chapter
+Type 9 to exit
+
 Common problem:
 If you can't open game/crash while open game
 Check if your computer has .net framework or not
-if not download it here(at least 6.0) : https://dotnet.microsoft.com/en-us/download
+if not download it here : https://dotnet.microsoft.com/en-us/download
 
 Have any problem?
 Contract me at...
