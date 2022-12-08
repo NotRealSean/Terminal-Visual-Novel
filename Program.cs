@@ -65,7 +65,7 @@ public class coreGame
 }
 class Menu
 {
-    static void Main(string[] args)
+    static void Main()
     {
         TextTool.TextGen("", 1, true, false, 1000);
         TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n", 1, true, false);
@@ -81,8 +81,9 @@ class Menu
             Console.Clear();
             //Main menu
             Console.WriteLine("=======================================================");
-            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t1 New Game\n\t2 Load\n\t3 Quick Load\n\t4 Settings\n\t5 Guide\n\t6 Credits\n\t7 Update\n\n\t9 Exit\t\t\t\t0.0.43");
+            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t[1] New Game\n\t[2] Load\n\t[3] Quick Load\n\t[4] Settings\n\t[5] Guide\n\t[6] Credits\n\t[7] Update\n\n\t[9] Exit\t\t\t\t0.0.44");
             Console.WriteLine("=======================================================");
+            Console.WriteLine("[Type number and hit Enter to comfirm]");
             TextTool.TextGen("Key command -=>", textspeed);
             string inPut = Console.ReadLine();
             if (inPut == "1")
@@ -92,8 +93,9 @@ class Menu
                     //chapter select
                     Console.Clear();
                     Console.WriteLine("=======================================================");
-                    Console.WriteLine("\t\tSelect Chapter\n\tChapter 1\n\tChapter 2\n\n\t9 Back to main menu");
+                    Console.WriteLine("\t\tSelect Chapter\n\t[1] Chapter 1\n\t[2] Chapter 2\n\n\t[9] Back to main menu");
                     Console.WriteLine("=======================================================");
+                    Console.WriteLine("[Type number and hit Enter to comfirm]");
                     TextTool.TextGen("Key command -=>", textspeed);
                     string chapterSelect = Console.ReadLine();
                     if (chapterSelect == "1")
@@ -152,8 +154,9 @@ class Menu
                     str = str + "\n" + file.Name;
                     Console.Clear();
                     Console.WriteLine("=======================================================");
-                    Console.WriteLine("\t\tYour save file\n"+ str +"\n\n\t9 Exit");
+                    Console.WriteLine("\t\tYour save file\n"+ str +"\n\n\t[9] Exit");
                     Console.WriteLine("=======================================================");
+                    Console.WriteLine("[Type filename and hit Enter to comfirm / Type del to select delete file]");
                   }
                   TextTool.TextGen("Load file -=>", textspeed);
                   string LoadSelect = Console.ReadLine();
@@ -186,8 +189,9 @@ class Menu
                   {
                     Console.Clear();
                     Console.WriteLine("=======================================================");
-                    Console.WriteLine("\t\tSettings\n\t1 Text Speed(Delay in ms)\n\t2 Test\n\n\t9 Return to menu");
+                    Console.WriteLine("\t\tSettings\n\t[1] Text Speed(Delay in ms)\n\t[2] Test\n\n\t[9] Return to menu");
                     Console.WriteLine("=======================================================");
+                    Console.WriteLine("[Type number and hit Enter to comfirm]");
                     TextTool.TextGen("Key command -=>", textspeed);
                     string setting = Console.ReadLine();
                     if (setting == "9")
