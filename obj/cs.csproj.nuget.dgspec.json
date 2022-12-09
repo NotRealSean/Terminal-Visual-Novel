@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/cs.csproj": {}
+    "c:\\Users\\Sean\\Desktop\\code\\cs\\ConsoleApp\\VNgame\\cs.csproj": {}
   },
   "projects": {
-    "/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/cs.csproj": {
+    "c:\\Users\\Sean\\Desktop\\code\\cs\\ConsoleApp\\VNgame\\cs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/cs.csproj",
+        "projectUniqueName": "c:\\Users\\Sean\\Desktop\\code\\cs\\ConsoleApp\\VNgame\\cs.csproj",
         "projectName": "cs",
-        "projectPath": "/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/cs.csproj",
-        "packagesPath": "/home/notrealsean/.nuget/packages/",
-        "outputPath": "/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/",
+        "projectPath": "c:\\Users\\Sean\\Desktop\\code\\cs\\ConsoleApp\\VNgame\\cs.csproj",
+        "packagesPath": "C:\\Users\\Sean\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\Sean\\Desktop\\code\\cs\\ConsoleApp\\VNgame\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Sean\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
