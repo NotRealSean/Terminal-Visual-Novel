@@ -19,6 +19,14 @@ If you can't open game/crash while open game
 Check if your computer has .net framework or not
 if not download it here : https://dotnet.microsoft.com/en-us/download
 
+How to open on linux
+-----
+#Go to your game folder
+cd ~/{Your path}/linux-x64
+#Run the game through terminal
+./Game
+-----
+
 Have any problem?
 Contract me at...
 Discord : NotRealSean#4001 / https://discord.gg/mcqkhyeYaG
