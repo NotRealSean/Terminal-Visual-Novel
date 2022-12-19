@@ -1,26 +1,27 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {},
+    "net7.0/win-x64": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Sean\\.nuget\\packages\\": {}
+    "/home/notrealsean/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Sean\\Desktop\\code\\cs\\ConsoleApp\\VNgame\\cs.csproj",
+      "projectUniqueName": "/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/cs.csproj",
       "projectName": "cs",
-      "projectPath": "c:\\Users\\Sean\\Desktop\\code\\cs\\ConsoleApp\\VNgame\\cs.csproj",
-      "packagesPath": "C:\\Users\\Sean\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Sean\\Desktop\\code\\cs\\ConsoleApp\\VNgame\\obj\\",
+      "projectPath": "/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/cs.csproj",
+      "packagesPath": "/home/notrealsean/.nuget/packages/",
+      "outputPath": "/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Sean\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/notrealsean/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -54,12 +55,31 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+            "version": "[7.0.1, 7.0.1]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[7.0.1, 7.0.1]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Runtime.win-x64",
+            "version": "[7.0.1, 7.0.1]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.101/RuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "win-x64": {
+        "#import": []
       }
     }
   }

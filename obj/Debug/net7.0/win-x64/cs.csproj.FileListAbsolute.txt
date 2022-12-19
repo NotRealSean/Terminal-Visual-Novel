@@ -181,7 +181,6 @@
 /home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/bin/Debug/net7.0/win-x64/hostfxr.dll
 /home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/bin/Debug/net7.0/win-x64/hostpolicy.dll
 /home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/bin/Debug/net7.0/win-x64/mscordaccore.dll
-/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/bin/Debug/net7.0/win-x64/mscordaccore_amd64_amd64_7.0.22.51805.dll
 /home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/bin/Debug/net7.0/win-x64/mscordbi.dll
 /home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/bin/Debug/net7.0/win-x64/mscorrc.dll
 /home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/bin/Debug/net7.0/win-x64/msquic.dll
@@ -196,3 +195,4 @@
 /home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/Debug/net7.0/win-x64/cs.pdb
 /home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/Debug/net7.0/win-x64/cs.genruntimeconfig.cache
 /home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/Debug/net7.0/win-x64/ref/cs.dll
+/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/bin/Debug/net7.0/win-x64/mscordaccore_amd64_amd64_7.0.122.56804.dll
