@@ -1,5 +1,5 @@
 Don't forget to check if game version match this update note
-                Update Beta 0.0.43
+                Update
 Story
 + Added demo prologue for test function
 

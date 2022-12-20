@@ -88,7 +88,7 @@ class Menu
     {
         TextTool.TextGen("", 1, true, false, 1000);
         TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n", 1, true, false);
-        Console.WriteLine("\nLoading settings...");
+        Console.WriteLine("\nLoading settings...[Require internet]");
         Settings.check();
         Console.WriteLine("Settings loaded press any key to continue");
         Console.ReadKey();
@@ -100,7 +100,7 @@ class Menu
             Console.Clear();
             //Main menu
             Console.WriteLine("=======================================================");
-            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t[1] New Game\n\t[2] Load\n\t[3] Quick Load\n\t[4] Settings\n\t[5] Guide\n\t[6] Credits\n\t[7] Update\n\n\t[9] Exit\t\t\t\t0.0.5");
+            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t[1] New Game\n\t[2] Load\n\t[3] Quick Load\n\t[4] Settings\n\t[5] Guide[Require internet]\n\t[6] Credits[Require internet]\n\t[7] News[Require internet]\n\n\t[9] Exit\t\t\t\t0.0.5");
             Console.WriteLine("=======================================================");
             Console.WriteLine("[Type number and hit Enter to comfirm]");
             TextTool.TextGen("Key command -=>", textspeed);
@@ -264,7 +264,7 @@ class Menu
             else if (inPut == "5")
             {
                 //Guide
-                Console.WriteLine("Checking for update...");
+                Console.WriteLine("Checking for update...[Require internet]");
                 string _filename = @"./guide.txt";
                 if (!File.Exists(_filename) || File.Exists(_filename))
                 {
@@ -282,7 +282,7 @@ class Menu
             else if (inPut == "6")
             {
                 //Credits
-                Console.WriteLine("Checking for update...");
+                Console.WriteLine("Checking for update...[Require internet]");
                 string _filename = @"./credits.txt";
                 if (!File.Exists(_filename) || File.Exists(_filename))
                 {
@@ -299,8 +299,8 @@ class Menu
             }
             else if (inPut == "7")
             {
-                //Update
-                Console.WriteLine("Checking for update...");
+                //News
+                Console.WriteLine("Checking for update...[Require internet]");
                 string _filename = @"./_update.txt";
                 if (!File.Exists(_filename) || File.Exists(_filename))
                 {
@@ -637,7 +637,7 @@ public class FileTool : coreGame
       {
         Console.WriteLine("Are you sure to delete " + filename +"?[Type Y to confirm]");
         string DelComfirm = Console.ReadLine();
-        if (DelComfirm.ToLower() == "y")
+        if (DelComfirm.ToLower() == "y" || DelComfirm == "")
         {
           try
           {
