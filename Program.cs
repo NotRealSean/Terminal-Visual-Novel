@@ -17,45 +17,50 @@ using System.Text.Json.Nodes;
 
 public class coreGame
 {
-
+    public static void prologue()
+    {
+      Settings.check();
+      JsonNode _jsonData = Settings.Read()!;
+      string speed = _jsonData[0]["TextSpeed"].ToString();
+      int textspeed = Convert.ToInt32(speed);
+      //Prologue
+      TextTool.TextGen("England 2079\n", textspeed, true, false, 2000);
+      TextTool.StoryGen("Girl", "I-Is this ok...?", textspeed, true, true);
+      TextTool.StoryGen("[Boss]:", "Is this all you can do in one week? USELESS. Don't come back if there's no progress at all!", textspeed, true, true);
+      TextTool.StoryGen("[Girl]:", "!\n", textspeed, true, false, 1000);
+      TextTool.StoryGen("[Girl]:", "...\n", textspeed, false, false, 1200);
+      TextTool.StoryGen("[Girl]:", "yes...", textspeed, false, true);
+      TextTool.TextGen("An office worker girl had been working hard for a month straight, but her boss complains again. She tries her best on her work, but other co-workers like to put their work on her, and only her, for some reason, which makes her work not progress at all. All the co-workers already know this, but they don't care.", textspeed, true, true, 500);
+      TextTool.StoryGen("[Girl]:", "...", textspeed, true, true);
+      TextTool.StoryGen("[Co-worker 1]:", "Can you help me with this work?", textspeed, true, true);
+      TextTool.StoryGen("[Girl]:", "I-I still hav- \n", textspeed, true, false, 200);
+      TextTool.StoryGen("[Co-worker 1]:", "Thank you.", textspeed, true, false, 2000);
+      TextTool.StoryGen("[Girl]:", "... ", textspeed, true, false, 1000);
+      TextTool.TextGen("Again...", textspeed, false, true);
+      TextTool.TextGen("She sometimes thinks about quitting her job and finding a better one, but no one wants to hire her to work because they already have a lot of employees at their office.", textspeed, true, true);
+      TextTool.StoryGen("[Girl]:", "... ", textspeed, true, false, 1200);
+      TextTool.TextGen("Maybe... ", textspeed, false, false, 1200);
+      TextTool.TextGen("Just maybe... ", textspeed, false, false, 1200);
+      TextTool.TextGen("What if I die and was reborn in another world like in isekai novel.", textspeed, false, true);
+      TextTool.StoryGen("[Girl]:", "Just saying ", textspeed, true, false, 1000);
+      TextTool.TextGen("Haha...", textspeed, false, true);
+      TextTool.TextGen("She likes to read isekai novels during her free time. She often thinks about killing herself and living a happier life in the afterlife.", textspeed, true, true);
+      TextTool.StoryGen("[Girl]:", "It's 8 PM already? ", textspeed, true , false, 1000);
+      TextTool.TextGen("Maybe I should go home and make something to eat for dinne-", textspeed, false, false, 1200);
+      TextTool.TextGen("...", textspeed, true, false, 3000);
+      TextTool.StoryGen("[Girl]:", "... ", textspeed, true, false, 1200);
+      TextTool.TextGen("Why is everything black... ", textspeed, false, false, 1200);
+      TextTool.TextGen("I can't see anything.... ", textspeed, false, false, 1200);
+      TextTool.TextGen("What happened to me?", textspeed, false, true);
+      TextTool.TextGen("To be continue...", textspeed, true, true);
+      FileTool.SaveChaper("save1-1", "save", 1, 1, true);
+    }
     public static void chapter1()
     {
       Settings.check();
       JsonNode _jsonData = Settings.Read()!;
       string speed = _jsonData[0]["TextSpeed"].ToString();
       int textspeed = Convert.ToInt32(speed);
-        //Prologue
-        TextTool.TextGen("England 2079\n", textspeed, true, false, 2000);
-        TextTool.TextGen("[Girl]: I-Is this ok...?", textspeed, true, true);
-        TextTool.TextGen("[Boss]: Is this all you can do in one week? USELESS. Don't come back if there's no progress at all!", textspeed, true, true);
-        TextTool.TextGen("[Girl]: !\n", textspeed, true, false, 1000);
-        TextTool.TextGen("[Girl]: ...\n", textspeed, false, false, 1200);
-        TextTool.TextGen("[Girl]: yes...", textspeed, false, true);
-        TextTool.TextGen("An office worker girl had been working hard for a month straight, but her boss complains again. She tries her best on her work, but other co-workers like to put their work on her, and only her, for some reason, which makes her work not progress at all. All the co-workers already know this, but they don't care.", textspeed, true, true, 500);
-        TextTool.TextGen("[Girl]: ...", textspeed, true, true);
-        TextTool.TextGen("[Co-worker 1]: Can you help me with this work?", textspeed, true, true);
-        TextTool.TextGen("[Girl]: I-I still hav- \n", textspeed, true, false, 200);
-        TextTool.TextGen("[Co-worker 1]: Thank you.", textspeed, true, false, 2000);
-        TextTool.TextGen("[Girl]: ... ", textspeed, true, false, 1000);
-        TextTool.TextGen("Again...", textspeed, false, true);
-        TextTool.TextGen("She sometimes thinks about quitting her job and finding a better one, but no one wants to hire her to work because they already have a lot of employees at their office.", textspeed, true, true);
-        TextTool.TextGen("[Girl]: ... ", textspeed, true, false, 1200);
-        TextTool.TextGen("Maybe... ", textspeed, false, false, 1200);
-        TextTool.TextGen("Just maybe... ", textspeed, false, false, 1200);
-        TextTool.TextGen("What if I die and was reborn in another world like in isekai novel.", textspeed, false, true);
-        TextTool.TextGen("[Girl]: Just saying ", textspeed, true, false, 1000);
-        TextTool.TextGen("Haha...", textspeed, false, true);
-        TextTool.TextGen("She likes to read isekai novels during her free time. She often thinks about killing herself and living a happier life in the afterlife.", textspeed, true, true);
-        TextTool.TextGen("[Girl]: It's 8 PM already? ", textspeed, true , false, 1000);
-        TextTool.TextGen("Maybe I should go home and make something to eat for dinne-", textspeed, false, false, 1200);
-        TextTool.TextGen("...", textspeed, true, false, 3000);
-        TextTool.TextGen("[Girl]: ... ", textspeed, true, false, 1200);
-        TextTool.TextGen("Why is everything black... ", textspeed, false, false, 1200);
-        TextTool.TextGen("I can't see anything.... ", textspeed, false, false, 1200);
-        TextTool.TextGen("What happened to me?", textspeed, false, true);
-        TextTool.TextGen("To be continue...", textspeed, true, true);
-        FileTool.SaveChaper("save1-1", "save", 1, 1, true);
-
         //Chapter 1
     }
     public static void chapter2()
@@ -100,7 +105,7 @@ class Menu
             Console.Clear();
             //Main menu
             Console.WriteLine("=======================================================");
-            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t[1] New Game\n\t[2] Load\n\t[3] Quick Load\n\t[4] Settings\n\t[5] Guide[Require internet]\n\t[6] Credits[Require internet]\n\t[7] News[Require internet]\n\n\t[9] Exit\t\t\t\t0.0.5");
+            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t[1] New Game\n\t[2] Load\n\t[3] Quick Load\n\t[4] Settings\n\t[5] Guide[Require internet]\n\t[6] Credits[Require internet]\n\t[7] News[Require internet]\n\n\t[9] Exit\t\t\t\t0.0.51");
             Console.WriteLine("=======================================================");
             Console.WriteLine("[Type number and hit Enter to comfirm]");
             TextTool.TextGen("Key command -=>", textspeed);
@@ -112,16 +117,20 @@ class Menu
                     //chapter select
                     Console.Clear();
                     Console.WriteLine("=======================================================");
-                    Console.WriteLine("\t\tSelect Chapter\n\t[1] Chapter 1\n\t[2] Chapter 2\n\n\t[9] Back to main menu");
+                    Console.WriteLine("\t\tSelect Chapter\n\t[1] Prologue\n\t[2] Chapter 1\n\t[3] Chapter 2\n\n\t[9] Back to main menu");
                     Console.WriteLine("=======================================================");
                     Console.WriteLine("[Type number and hit Enter to comfirm]");
                     TextTool.TextGen("Key command -=>", textspeed);
                     string chapterSelect = Console.ReadLine();
                     if (chapterSelect == "1")
                     {
-                        coreGame.chapter1();
+                        coreGame.prologue();
                     }
                     else if (chapterSelect == "2")
+                    {
+                        coreGame.chapter1();
+                    }
+                    else if (chapterSelect == "3")
                     {
                         coreGame.chapter2();
                     }
@@ -372,6 +381,7 @@ class Menu
 */
 class TextTool
 {
+    //Normal text generation
     public static void TextGen(string text, int textSpeed, bool clearConsole, bool pressOnKey, int delay)
     {
         if (clearConsole == true)
@@ -455,6 +465,104 @@ class TextTool
     }
     public static void TextGen(string text)
     {
+        for (int i = 0; i < text.Length; i++)
+        {
+            Console.Write(text[i]);
+            Thread.Sleep(1);
+        }
+    }
+
+    //Story text generation[WIP]
+    public static void StoryGen(string name, string text, int textSpeed, bool clearConsole, bool pressOnKey, int delay)
+    {
+        if (clearConsole == true)
+        {
+            Console.Clear();
+        }
+        if (pressOnKey == true)
+        {
+            Console.Write("[" + name + "]: ");
+            for (int i = 0; i < text.Length + 1; i++)
+            {
+                if (i >= text.Length)
+                {
+                    Thread.Sleep(delay);
+                    Console.WriteLine("\n\n--\tContinue\t-->>");
+                    break;
+                }
+                Console.Write(text[i]);
+                Thread.Sleep(textSpeed);
+            }
+            while (Console.ReadKey(true).Key != ConsoleKey.Enter && Console.ReadKey(true).Key != ConsoleKey.Spacebar){}
+        }
+        if (pressOnKey == false)
+        {
+            Console.Write("[" + name + "]: ");
+            for (int i = 0; i < text.Length; i++)
+            {
+                Console.Write(text[i]);
+                Thread.Sleep(textSpeed);
+            }
+            Thread.Sleep(delay);
+        }
+    }
+    public static void StoryGen(string name, string text, int textSpeed, bool clearConsole, bool pressOnKey)
+    {
+        if (clearConsole == true)
+        {
+            Console.Clear();
+        }
+        if (pressOnKey == true)
+        {
+            Console.Write("[" + name + "]: ");
+            for (int i = 0; i < text.Length + 1; i++)
+            {
+                if (i >= text.Length)
+                {
+                    Thread.Sleep(500);
+                    Console.WriteLine("\n\n--\tContinue\t-->>");
+                    break;
+                }
+                Console.Write(text[i]);
+                Thread.Sleep(textSpeed);
+            }
+            while (Console.ReadKey(true).Key != ConsoleKey.Enter && Console.ReadKey(true).Key != ConsoleKey.Spacebar){}
+        }
+        if (pressOnKey == false)
+        {
+            Console.Write("[" + name + "]: ");
+            for (int i = 0; i < text.Length; i++)
+            {
+                Console.Write(text[i]);
+                Thread.Sleep(textSpeed);
+            }
+        }
+    }
+    public static void StoryGen(string name, string text, int textSpeed, bool clearConsole)
+    {
+        if (clearConsole == true)
+        {
+            Console.Clear();
+        }
+        Console.Write("[" + name + "]: ");
+        for (int i = 0; i < text.Length; i++)
+        {
+            Console.Write(text[i]);
+            Thread.Sleep(textSpeed);
+        }
+    }
+    public static void StoryGen(string name, string text, int textSpeed)
+    {
+        Console.Write("[" + name + "]: ");
+        for (int i = 0; i < text.Length; i++)
+        {
+            Console.Write(text[i]);
+            Thread.Sleep(textSpeed);
+        }
+    }
+    public static void StoryGen(string name, string text)
+    {
+        Console.Write("[" + name + "]: ");
         for (int i = 0; i < text.Length; i++)
         {
             Console.Write(text[i]);

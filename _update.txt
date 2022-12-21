@@ -1,13 +1,4 @@
 Don't forget to check if game version match this update note
-                Update
-Story
-+ Added demo prologue for test function
-
-                Future Update
-Code quality
-- Make code better to write and read
-- Make delete option in load screen
-
-Function
-- Make route choose
-- Make better data-base
+                0.0.51
+Framework
++ Added StoryGen function
