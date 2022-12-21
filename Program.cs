@@ -26,29 +26,29 @@ public class coreGame
       //Prologue
       TextTool.TextGen("England 2079\n", textspeed, true, false, 2000);
       TextTool.StoryGen("Girl", "I-Is this ok...?", textspeed, true, true);
-      TextTool.StoryGen("[Boss]:", "Is this all you can do in one week? USELESS. Don't come back if there's no progress at all!", textspeed, true, true);
-      TextTool.StoryGen("[Girl]:", "!\n", textspeed, true, false, 1000);
-      TextTool.StoryGen("[Girl]:", "...\n", textspeed, false, false, 1200);
-      TextTool.StoryGen("[Girl]:", "yes...", textspeed, false, true);
+      TextTool.StoryGen("Boss", "Is this all you can do in one week? USELESS. Don't come back if there's no progress at all!", textspeed, true, true);
+      TextTool.StoryGen("Girl", "!\n", textspeed, true, false, 1000);
+      TextTool.StoryGen("Girl", "...\n", textspeed, false, false, 1200);
+      TextTool.StoryGen("Girl", "yes...", textspeed, false, true);
       TextTool.TextGen("An office worker girl had been working hard for a month straight, but her boss complains again. She tries her best on her work, but other co-workers like to put their work on her, and only her, for some reason, which makes her work not progress at all. All the co-workers already know this, but they don't care.", textspeed, true, true, 500);
-      TextTool.StoryGen("[Girl]:", "...", textspeed, true, true);
-      TextTool.StoryGen("[Co-worker 1]:", "Can you help me with this work?", textspeed, true, true);
-      TextTool.StoryGen("[Girl]:", "I-I still hav- \n", textspeed, true, false, 200);
-      TextTool.StoryGen("[Co-worker 1]:", "Thank you.", textspeed, true, false, 2000);
-      TextTool.StoryGen("[Girl]:", "... ", textspeed, true, false, 1000);
+      TextTool.StoryGen("Girl", "...", textspeed, true, true);
+      TextTool.StoryGen("Co-worker 1", "Can you help me with this work?", textspeed, true, true);
+      TextTool.StoryGen("Girl", "I-I still hav- \n", textspeed, true, false, 200);
+      TextTool.StoryGen("Co-worker 1", "Thank you.", textspeed, true, false, 2000);
+      TextTool.StoryGen("Girl", "... ", textspeed, true, false, 1000);
       TextTool.TextGen("Again...", textspeed, false, true);
       TextTool.TextGen("She sometimes thinks about quitting her job and finding a better one, but no one wants to hire her to work because they already have a lot of employees at their office.", textspeed, true, true);
-      TextTool.StoryGen("[Girl]:", "... ", textspeed, true, false, 1200);
+      TextTool.StoryGen("Girl", "... ", textspeed, true, false, 1200);
       TextTool.TextGen("Maybe... ", textspeed, false, false, 1200);
       TextTool.TextGen("Just maybe... ", textspeed, false, false, 1200);
       TextTool.TextGen("What if I die and was reborn in another world like in isekai novel.", textspeed, false, true);
-      TextTool.StoryGen("[Girl]:", "Just saying ", textspeed, true, false, 1000);
+      TextTool.StoryGen("Girl", "Just saying ", textspeed, true, false, 1000);
       TextTool.TextGen("Haha...", textspeed, false, true);
       TextTool.TextGen("She likes to read isekai novels during her free time. She often thinks about killing herself and living a happier life in the afterlife.", textspeed, true, true);
-      TextTool.StoryGen("[Girl]:", "It's 8 PM already? ", textspeed, true , false, 1000);
+      TextTool.StoryGen("Girl", "It's 8 PM already? ", textspeed, true , false, 1000);
       TextTool.TextGen("Maybe I should go home and make something to eat for dinne-", textspeed, false, false, 1200);
       TextTool.TextGen("...", textspeed, true, false, 3000);
-      TextTool.StoryGen("[Girl]:", "... ", textspeed, true, false, 1200);
+      TextTool.StoryGen("Girl", "... ", textspeed, true, false, 1200);
       TextTool.TextGen("Why is everything black... ", textspeed, false, false, 1200);
       TextTool.TextGen("I can't see anything.... ", textspeed, false, false, 1200);
       TextTool.TextGen("What happened to me?", textspeed, false, true);
@@ -658,7 +658,7 @@ public class FileTool : coreGame
       File.WriteAllText(Path.Combine(dir, filename), savedata);
       if (quicksave = true)
       {
-          File.WriteAllText(Path.Combine(dir, "_QuickSave"), savedata);
+          File.WriteAllText(Path.Combine(dir, "QuickSave"), savedata);
       }
     }
     public static void CheckCreatedFolder(string foldername)
@@ -700,8 +700,8 @@ public class FileTool : coreGame
     }
     public static void QLoadChapter()
     {
-      string filename = "_QuickSave";
-      string fullqpath = @"save/_QuickSave";
+      string filename = "QuickSave";
+      string fullqpath = @"save/QuickSave";
       if (!File.Exists(fullqpath))
       {
           Console.WriteLine("You don't have quick save file");
