@@ -161,6 +161,7 @@ class Menu
             }
             else if (inPut == "2")
             {
+                FileTool.CheckCreatedFolder("save");
                 //Load
                 while (true)
                 {
