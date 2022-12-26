@@ -1,5 +1,4 @@
 Don't forget to check if game version match this update note
                 0.0.51
 Framework
-+ Added StoryGen function
-+ Fix Exception when enter load without "save" folder
++- Switch from if else to switch case
