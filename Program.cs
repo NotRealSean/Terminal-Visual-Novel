@@ -110,8 +110,9 @@ class Menu
             Console.WriteLine("[Type number and hit Enter to comfirm]");
             TextTool.TextGen("Key command -=>", textspeed);
             string inPut = Console.ReadLine();
-            if (inPut == "1")
+            switch (inPut)
             {
+                case "1":
                 while (true)
                 {
                     //chapter select
@@ -158,9 +159,10 @@ class Menu
                         Console.ReadKey();
                     }
                 }
-            }
-            else if (inPut == "2")
-            {
+                break;
+
+
+                case "2":
                 FileTool.CheckCreatedFolder("save");
                 //Load
                 while (true)
@@ -204,14 +206,16 @@ class Menu
                       FileTool.LoadChapter(LoadSelect);
                   }
                 }
-            }
-            else if (inPut ==  "3")
-            {
+                break;
+
+
+                case "3":
                 //Quick load
                 FileTool.QLoadChapter();
-            }
-            else if (inPut == "4")
-            {
+                break;
+
+
+                case "4":
                 //Settings
                 Settings.check();
                   while (true)
@@ -220,7 +224,7 @@ class Menu
                     Console.WriteLine("=======================================================");
                     Console.WriteLine("\t\tSettings\n\t[1] Text Speed(Delay in ms)\n\t[2] Test\n\n\t[9] Return to menu");
                     Console.WriteLine("=======================================================");
-                    Console.WriteLine("[Type number and hit Enter to comfirm]");
+                    Console.WriteLine("[Type number and hit Enter to comfirm]\n[You can't see change until you exit settings(But value is saved)]");
                     TextTool.TextGen("Key command -=>", textspeed);
                     string setting = Console.ReadLine();
                     if (setting == "9")
@@ -235,6 +239,32 @@ class Menu
                         {
                             break;
                         }
+                        try
+                        {
+                            int result = int.Parse(value);
+                            if (result > 500)
+                            {
+                                Console.WriteLine("You can't do more then 500!");
+                                Console.ReadLine();
+                            }
+                            else if (result > 0)
+                            {
+                                string stringvalue = result.ToString();
+                                Settings.Modify(setting, stringvalue);
+                            }
+                            else if (result <= 0)
+                            {
+                                Console.WriteLine("You can't do 0 or less!");
+                                Console.ReadKey();
+                            }
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("You didn't enter integer value!");
+                            Console.ReadKey();
+                        }
+
+                        /*
                         try
                         {
                             int intvalue = Convert.ToInt32(value);
@@ -263,6 +293,7 @@ class Menu
                             Console.WriteLine(e);
                             Console.ReadKey();
                         }
+                        */
                     }
                     else
                     {
@@ -270,9 +301,10 @@ class Menu
                         Console.ReadKey();
                     }
                 }
-            }
-            else if (inPut == "5")
-            {
+                break;
+
+
+                case "5":
                 //Guide
                 Console.WriteLine("Checking for update...[Require internet]");
                 string _filename = @"./guide.txt";
@@ -288,13 +320,14 @@ class Menu
                 Console.WriteLine(update);
                 TextTool.TextGen("Press anykey to go back to main menu...", 10);
                 Console.ReadKey();
-            }
-            else if (inPut == "6")
-            {
+                break;
+
+
+                case "6":
                 //Credits
                 Console.WriteLine("Checking for update...[Require internet]");
-                string _filename = @"./credits.txt";
-                if (!File.Exists(_filename) || File.Exists(_filename))
+                string __filename = @"./credits.txt";
+                if (!File.Exists(__filename) || File.Exists(__filename))
                 {
                     string filename = "credits.txt";
                     System.Net.WebClient wc = new System.Net.WebClient();
@@ -302,17 +335,17 @@ class Menu
                     File.WriteAllText(filename, webData);
                 }
                 Console.Clear();
-                string update = File.ReadAllText("credits.txt");
-                Console.WriteLine(update);
+                string _update = File.ReadAllText("credits.txt");
+                Console.WriteLine(_update);
                 TextTool.TextGen("Press anykey to go back to main menu...", 10);
                 Console.ReadKey();
-            }
-            else if (inPut == "7")
-            {
+                break;
+
+                case "7":
                 //News
                 Console.WriteLine("Checking for update...[Require internet]");
-                string _filename = @"./_update.txt";
-                if (!File.Exists(_filename) || File.Exists(_filename))
+                string ___filename = @"./_update.txt";
+                if (!File.Exists(___filename) || File.Exists(___filename))
                 {
                     string filename = "_update.txt";
                     System.Net.WebClient wc = new System.Net.WebClient();
@@ -320,44 +353,41 @@ class Menu
                     File.WriteAllText(filename, webData);
                 }
                 Console.Clear();
-                string update = File.ReadAllText("_update.txt");
-                Console.WriteLine(update);
+                string __update = File.ReadAllText("_update.txt");
+                Console.WriteLine(__update);
                 TextTool.TextGen("Press anykey to go back to main menu...", 10);
                 Console.ReadKey();
-            }
-            else if (inPut == "9")
-            {
-                //Exit game
                 break;
-            }
 
-            //Joke zone
-            else if (inPut == "0")
-            {
+
+                //Joke zone
+                case "0":
                 Console.WriteLine("Why are you trying to return 0?");
                 Console.ReadKey();
-            }
-            else if (inPut == "SECRET_UNLOCK")
-            {
-                Console.WriteLine("Secret unlocked!(Joke)");
-                Console.ReadKey();
-            }
-            else if (inPut == "SECRET_LOCK")
-            {
-                Console.WriteLine("Secret locked!");
-                Console.ReadKey();
-            }
+                break;
 
-            //Worng key handler
-            else if (inPut == "" || inPut == " ")
-            {
+
+                case "":
                 Console.Write("You enter nothing...");
                 Console.ReadKey();
-            }
-            else
-            {
-                Console.Write("You enter worng key");
+                break;
+
+
+                case " ":
+                Console.Write("You enter nothing...");
                 Console.ReadKey();
+                break;
+
+                case "9":
+                break;
+
+                default:
+                Console.WriteLine("You enter worng key!");
+                break;
+            }
+            if (inPut == "9")
+            {
+                break;
             }
         }
     }
