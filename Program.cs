@@ -263,37 +263,6 @@ class Menu
                             Console.WriteLine("You didn't enter integer value!");
                             Console.ReadKey();
                         }
-
-                        /*
-                        try
-                        {
-                            int intvalue = Convert.ToInt32(value);
-                            if (intvalue.GetType().Equals(typeof(int)));
-                            {
-                                if (intvalue > 500)
-                                {
-                                    Console.WriteLine("You can't do more that 500!");
-                                    Console.ReadKey();
-                                }
-                                else if (intvalue > 0)
-                                {
-                                    string stringvalue = intvalue.ToString();
-                                    Settings.Modify(setting, stringvalue);
-                                }
-                                else if (intvalue <= 0)
-                                {
-                                    Console.WriteLine("Are you trying to set value to 0 or lower?\nToo bad you can't");
-                                    Console.ReadKey();
-                                }
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("Something went worng...\nMore detail:\n");
-                            Console.WriteLine(e);
-                            Console.ReadKey();
-                        }
-                        */
                     }
                     else
                     {
