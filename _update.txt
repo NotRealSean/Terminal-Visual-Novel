@@ -1,6 +1,7 @@
 Don't forget to check if game version match this update note
-                0.0.51
-Nothing update...
+                0.0.52
+Bug fix
++- Fix Guide, Credit and Update not update correctly
 
 
             Framework Function

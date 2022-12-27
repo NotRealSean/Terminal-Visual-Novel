@@ -250,14 +250,12 @@ class Menu
                 case "5":
                 //Guide
                 Console.WriteLine("Checking for update...[Require internet]");
-                string _filename = @"./guide.txt";
-                if (!File.Exists(_filename) || File.Exists(_filename))
-                {
-                    string filename = "_guide.txt";
-                    System.Net.WebClient wc = new System.Net.WebClient();
-                    string webData = wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_guide.txt");
-                    File.WriteAllText(filename, webData);
-                }
+                string filename = @"./guide.txt";
+                //Write update
+                System.Net.WebClient wc = new System.Net.WebClient();
+                string webData = wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_guide.txt");
+                File.WriteAllText(filename, webData);
+
                 Console.Clear();
                 string update = File.ReadAllText("_guide.txt");
                 Console.WriteLine(update);
@@ -269,14 +267,12 @@ class Menu
                 case "6":
                 //Credits
                 Console.WriteLine("Checking for update...[Require internet]");
-                string __filename = @"./credits.txt";
-                if (!File.Exists(__filename) || File.Exists(__filename))
-                {
-                    string filename = "credits.txt";
-                    System.Net.WebClient wc = new System.Net.WebClient();
-                    string webData = wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/credits.txt");
-                    File.WriteAllText(filename, webData);
-                }
+                string _filename = @"./credits.txt";
+                //Write update
+                System.Net.WebClient _wc = new System.Net.WebClient();
+                string _webData = _wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/credits.txt");
+                File.WriteAllText(_filename, _webData);
+
                 Console.Clear();
                 string _update = File.ReadAllText("credits.txt");
                 Console.WriteLine(_update);
@@ -287,14 +283,12 @@ class Menu
                 case "7":
                 //News
                 Console.WriteLine("Checking for update...[Require internet]");
-                string ___filename = @"./_update.txt";
-                if (!File.Exists(___filename) || File.Exists(___filename))
-                {
-                    string filename = "_update.txt";
-                    System.Net.WebClient wc = new System.Net.WebClient();
-                    string webData = wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_update.txt");
-                    File.WriteAllText(filename, webData);
-                }
+                string __filename = "_update.txt";
+                //Write update
+                System.Net.WebClient __wc = new System.Net.WebClient();
+                string __webData = __wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_update.txt");
+                File.WriteAllText(__filename, __webData);
+
                 Console.Clear();
                 string __update = File.ReadAllText("_update.txt");
                 Console.WriteLine(__update);
