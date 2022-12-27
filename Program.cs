@@ -20,9 +20,7 @@ public class coreGame
     public static void prologue()
     {
         Settings.check();
-        JsonNode _jsonData = Settings.Read()!;
-        string speed = _jsonData[0]["TextSpeed"].ToString();
-        int textspeed = Convert.ToInt32(speed);
+        int textspeed = Convert.ToInt32(Settings.Read(0, "TextSpeed"));
         //Prologue
         TextTool.TextGen("England 2079\n", textspeed, true, false, 2000);
         TextTool.StoryGen("Girl", "I-Is this ok...?", textspeed, true, true);
@@ -34,7 +32,7 @@ public class coreGame
         TextTool.StoryGen("Girl", "...", textspeed, true, true);
         TextTool.StoryGen("Co-worker 1", "Can you help me with this work?", textspeed, true, true);
         TextTool.StoryGen("Girl", "I-I still hav- \n", textspeed, true, false, 200);
-        TextTool.StoryGen("Co-worker 1", "Thank you.", textspeed, true, false, 2000);
+        TextTool.StoryGen("Co-worker 1", "Thank you.", textspeed, false, false, 2000);
         TextTool.StoryGen("Girl", "... ", textspeed, true, false, 1000);
         TextTool.TextGen("Again...", textspeed, false, true);
         TextTool.TextGen("She sometimes thinks about quitting her job and finding a better one, but no one wants to hire her to work because they already have a lot of employees at their office.", textspeed, true, true);
@@ -47,7 +45,7 @@ public class coreGame
         TextTool.TextGen("She likes to read isekai novels during her free time. She often thinks about killing herself and living a happier life in the afterlife.", textspeed, true, true);
         TextTool.StoryGen("Girl", "It's 8 PM already? ", textspeed, true , false, 1000);
         TextTool.TextGen("Maybe I should go home and make something to eat for dinne-", textspeed, false, false, 1200);
-        TextTool.TextGen("...", textspeed, true, false, 3000);
+        TextTool.TextGen("", textspeed, true, false, 3000);
         TextTool.StoryGen("Girl", "... ", textspeed, true, false, 1200);
         TextTool.TextGen("Why is everything black... ", textspeed, false, false, 1200);
         TextTool.TextGen("I can't see anything.... ", textspeed, false, false, 1200);
@@ -57,34 +55,11 @@ public class coreGame
     }
     public static void chapter1()
     {
-      Settings.check();
-      JsonNode _jsonData = Settings.Read()!;
-      string speed = _jsonData[0]["TextSpeed"].ToString();
-      int textspeed = Convert.ToInt32(speed);
         //Chapter 1
     }
     public static void chapter2()
     {
-      Settings.check();
-      JsonNode _jsonData = Settings.Read()!;
-      string speed = _jsonData[0]["TextSpeed"].ToString();
-      int textspeed = Convert.ToInt32(speed);
-        //Chapter 2
-        TextTool.TextGen("This is chapter 2 test text", textspeed, true);
-        string choose = FileTool.ChoiceRoute("Rate this game", "Like", "Normal", "Hate");
-        if (choose == "1")
-        {
-          FileTool.SaveChaper("save2-1", "save", 2, 1, true);
-        }
-        if (choose == "2")
-        {
-          FileTool.SaveChaper("save2-2", "save", 2, 2, true);
-        }
-        if (choose == "3")
-        {
-          TextTool.TextGen("Fine", textspeed, true, true);
-          FileTool.SaveChaper("save2-3", "save", 2, 3, true);
-        }
+        //chapter 2
     }
 }
 class Menu
@@ -123,40 +98,39 @@ class Menu
                     Console.WriteLine("[Type number and hit Enter to comfirm]");
                     TextTool.TextGen("Key command -=>", textspeed);
                     string chapterSelect = Console.ReadLine();
-                    if (chapterSelect == "1")
+
+                    switch (chapterSelect)
                     {
-                        coreGame.prologue();
+                        case "1":
+                            coreGame.prologue();
+                            break;
+                        case "2":
+                            coreGame.chapter1();
+                            break;
+                        case "3":
+                            coreGame.chapter2();
+                            break;
+                        case "0":
+                            Console.WriteLine("Why are you trying to return 0?");
+                            Console.ReadKey();
+                            break;
+
+                        case "9":
+                            break;
+                        case "":
+                            Console.WriteLine("You enter nothing...");
+                            break;
+                        case " ":
+                            Console.WriteLine("You enter nothing...");
+                            break;
+                        default:
+                            Console.Write("You enter worng key");
+                            Console.ReadKey();
+                            break;
                     }
-                    else if (chapterSelect == "2")
-                    {
-                        coreGame.chapter1();
-                    }
-                    else if (chapterSelect == "3")
-                    {
-                        coreGame.chapter2();
-                    }
-                    else if (chapterSelect == "9")
+                    if (chapterSelect == "9")
                     {
                         break;
-                    }
-
-                    //Joke zone
-                    else if (chapterSelect == "0")
-                    {
-                        Console.WriteLine("Why are you trying to return 0?");
-                        Console.ReadKey();
-                    }
-
-                    //Worng key handler
-                    else if (chapterSelect == "" || chapterSelect == " ")
-                    {
-                        Console.Write("You enter nothing...");
-                        Console.ReadKey();
-                    }
-                    else
-                    {
-                        Console.Write("You enter worng key");
-                        Console.ReadKey();
                     }
                 }
                 break;
@@ -252,7 +226,7 @@ class Menu
                                 string stringvalue = result.ToString();
                                 Settings.Modify(setting, stringvalue);
                             }
-                            else if (result <= 0)
+                            else
                             {
                                 Console.WriteLine("You can't do 0 or less!");
                                 Console.ReadKey();
@@ -371,7 +345,7 @@ class Menu
 *    WARNING THIS IS TOOLS FUNCTION ZONE!
 
 *   IF YOU EDIT ANYTHING IN THIS YOUR FUNCTION MIGHT BROKE OR CANT BE USE!
-*   BECAREFUL IF YOU WANT TO EDIT SOMETHING.
+*   BESURE WHAT YOU'RE DOING BEFORE EDIT FUNCTION!
 
 
 
@@ -579,6 +553,14 @@ class Settings
         string jsondata = File.ReadAllText(_filename);
         var _loadJson = JsonNode.Parse(jsondata);
         return _loadJson;
+    }
+    public static string Read(int slot, string name)
+    {
+        string _filename = "setting.json";
+        string jsondata = File.ReadAllText(_filename);
+        var _loadJson = JsonNode.Parse(jsondata);
+        string data = _loadJson[slot][name].ToString();
+        return data;
     }
     public static void Modify(string type, string value)
     {

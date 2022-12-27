@@ -1,4 +1,13 @@
 Don't forget to check if game version match this update note
                 0.0.51
-Framework
-+- Switch from if else to switch case
+Nothing update...
+
+
+            Framework Function
++ Setting.Read() Function is now can enter slot and name of settings in json file
+
+    Function structure:
+    public static string Read(int slot, string name)
+
+    Example :
+    int textspeed = Convert.ToInt32(Settings.Read(0, "TextSpeed"));
