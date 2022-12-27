@@ -5,7 +5,7 @@ Bug fix
 
 
             Framework Function
-+ Setting.Read() Function is now can enter slot and name of settings in json file
++ Settings.Read() Function is now can enter slot and name of settings in json file
 
     Function structure:
     public static string Read(int slot, string name)
