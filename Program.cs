@@ -67,14 +67,26 @@ class Menu
     static void Main()
     {
         TextTool.TextGen("", 1, true, false, 1000);
-        TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n", 1, true, false);
-        Console.WriteLine("\nLoading settings...[Require internet]");
+        TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n\n\n", 1, true, false);
+        Console.WriteLine("Loading log :\nLoading settings[Require internet]");
         Settings.check();
         FileTool.CheckCreatedFolder("save");
         Console.WriteLine("Settings loaded");
-        Console.WriteLine("Checking for update");
-        string version = "0.0.51";
-        
+        Console.WriteLine("Checking for update[Require internet]");
+        string version = "0.0.53";
+        System.Net.WebClient gitversion = new System.Net.WebClient();
+        string versionData = gitversion.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/version");
+        if (version != versionData)
+        {
+            Console.WriteLine("Your game version is outdated\nYour game version : " + version + "\nNew version : " + versionData);
+            Console.WriteLine("Download new version here : https://github.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/releases");
+            Console.WriteLine("You can still play the game by press any key to continue...");
+        }
+        else if (version == versionData)
+        {
+            Console.WriteLine("Your game is up to date : " + versionData);
+            Console.WriteLine("Press any key to continue...");
+        }
         Console.ReadKey();
         while (true)
         {

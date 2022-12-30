@@ -1,14 +1,4 @@
 Don't forget to check if game version match this update note
-                0.0.52
-Bug fix
-+- Fix Guide, Credit and Update not update correctly
-
-
-            Framework Function
-+ Settings.Read() Function is now can enter slot and name of settings in json file
-
-    Function structure:
-    public static string Read(int slot, string name)
-
-    Example :
-    int textspeed = Convert.ToInt32(Settings.Read(0, "TextSpeed"));
+                0.0.53
+Settings
++ Added version checker
