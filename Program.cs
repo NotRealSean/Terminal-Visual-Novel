@@ -70,7 +70,11 @@ class Menu
         TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n", 1, true, false);
         Console.WriteLine("\nLoading settings...[Require internet]");
         Settings.check();
-        Console.WriteLine("Settings loaded press any key to continue");
+        FileTool.CheckCreatedFolder("save");
+        Console.WriteLine("Settings loaded");
+        Console.WriteLine("Checking for update");
+        string version = "0.0.51";
+        
         Console.ReadKey();
         while (true)
         {
@@ -80,7 +84,7 @@ class Menu
             Console.Clear();
             //Main menu
             Console.WriteLine("=======================================================");
-            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t[1] New Game\n\t[2] Load\n\t[3] Quick Load\n\t[4] Settings\n\t[5] Guide[Require internet]\n\t[6] Credits[Require internet]\n\t[7] News[Require internet]\n\n\t[9] Exit\t\t\t\t0.0.51");
+            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t[1] New Game\n\t[2] Load\n\t[3] Quick Load\n\t[4] Settings\n\t[5] Guide[Require internet]\n\t[6] Credits[Require internet]\n\t[7] News[Require internet]\n\n\t[9] Exit\t\t\t\t" + version);
             Console.WriteLine("=======================================================");
             Console.WriteLine("[Type number and hit Enter to comfirm]");
             TextTool.TextGen("Key command -=>", textspeed);
@@ -149,9 +153,9 @@ class Menu
                     Console.ReadKey();
                     break;
                   }
-                  DirectoryInfo d = new DirectoryInfo(@"save"); //Assuming Test is your Folder
+                  DirectoryInfo d = new DirectoryInfo(@"save");
 
-                  FileInfo[] Files = d.GetFiles(""); //Getting Text files
+                  FileInfo[] Files = d.GetFiles("");
                   string str = "";
 
                   foreach(FileInfo file in Files)
@@ -209,10 +213,6 @@ class Menu
                     {
                         TextTool.TextGen("Key value -=>", textspeed);
                         string value = Console.ReadLine();
-                        if (value == "exit")
-                        {
-                            break;
-                        }
                         try
                         {
                             int result = int.Parse(value);
