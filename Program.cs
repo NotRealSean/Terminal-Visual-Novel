@@ -31,7 +31,7 @@ public class coreGame
         TextTool.TextGen("An office worker girl had been working hard for a month straight, but her boss complains again. She tries her best on her work, but other co-workers like to put their work on her, and only her, for some reason, which makes her work not progress at all. All the co-workers already know this, but they don't care.", textspeed, true, true, 500);
         TextTool.StoryGen("Girl", "...", textspeed, true, true);
         TextTool.StoryGen("Co-worker 1", "Can you help me with this work?", textspeed, true, true);
-        TextTool.StoryGen("Girl", "I-I still hav- \n", textspeed, true, false, 200);
+        TextTool.StoryGen("Girl", "I-I still hav- \n", textspeed, true, false, 700);
         TextTool.StoryGen("Co-worker 1", "Thank you.", textspeed, false, false, 2000);
         TextTool.StoryGen("Girl", "... ", textspeed, true, false, 1000);
         TextTool.TextGen("Again...", textspeed, false, true);
@@ -73,7 +73,7 @@ class Menu
         FileTool.CheckCreatedFolder("save");
         Console.WriteLine("Settings loaded");
         Console.WriteLine("Checking for update[Require internet]");
-        string version = "0.0.53";
+        string version = "0.0.54 Dev";
         System.Net.WebClient gitversion = new System.Net.WebClient();
         string versionData = gitversion.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/version");
         if (version != versionData)
@@ -90,16 +90,20 @@ class Menu
         Console.ReadKey();
         while (true)
         {
-          JsonNode _jsonData = Settings.Read()!;
-          string speed = _jsonData[0]["TextSpeed"].ToString();
-          int textspeed = Convert.ToInt32(speed);
+            JsonNode _jsonData = Settings.Read()!;
+            int textspeed = Convert.ToInt32(_jsonData[0]["TextSpeed"].ToString());
+            int arrow = Convert.ToInt32(_jsonData[0]["Arrow"].ToString());
+            string UIarrow = (arrow == 1) ? " -=>" : (arrow == 2) ? " -+>" : (arrow == 3) ? " :" : (arrow == 4) ? " >" : (arrow >= 5) ? " -=>": "";
             Console.Clear();
             //Main menu
+            Console.WriteLine("[Debug log]");
+            Console.WriteLine(arrow);
+            Console.WriteLine(UIarrow);
             Console.WriteLine("=======================================================");
             Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t[1] New Game\n\t[2] Load\n\t[3] Quick Load\n\t[4] Settings\n\t[5] Guide[Require internet]\n\t[6] Credits[Require internet]\n\t[7] News[Require internet]\n\n\t[9] Exit\t\t\t\t" + version);
             Console.WriteLine("=======================================================");
             Console.WriteLine("[Type number and hit Enter to comfirm]");
-            TextTool.TextGen("Key command -=>", textspeed);
+            TextTool.TextGen("Key command" + UIarrow, textspeed);
             string inPut = Console.ReadLine();
             switch (inPut)
             {
@@ -112,7 +116,7 @@ class Menu
                     Console.WriteLine("\t\tSelect Chapter\n\t[1] Prologue\n\t[2] Chapter 1\n\t[3] Chapter 2\n\n\t[9] Back to main menu");
                     Console.WriteLine("=======================================================");
                     Console.WriteLine("[Type number and hit Enter to comfirm]");
-                    TextTool.TextGen("Key command -=>", textspeed);
+                    TextTool.TextGen("Key command" + UIarrow, textspeed);
                     string chapterSelect = Console.ReadLine();
 
                     switch (chapterSelect)
@@ -157,44 +161,44 @@ class Menu
                 //Load
                 while (true)
                 {
-                  string dir = @"save";
-                  int dircount = Directory.GetFiles(dir).Length;
-                  if (dircount <= 0)
-                  {
-                    Console.WriteLine("You don't have save file");
-                    Console.ReadKey();
-                    break;
-                  }
-                  DirectoryInfo d = new DirectoryInfo(@"save");
+                    string dir = @"save";
+                    int dircount = Directory.GetFiles(dir).Length;
+                    if (dircount <= 0)
+                    {
+                        Console.WriteLine("You don't have save file");
+                        Console.ReadKey();
+                        break;
+                    }
+                    DirectoryInfo d = new DirectoryInfo(@"save");
 
-                  FileInfo[] Files = d.GetFiles("");
-                  string str = "";
+                    FileInfo[] Files = d.GetFiles("");
+                    string str = "";
 
-                  foreach(FileInfo file in Files)
-                  {
-                    str = str + "\n" + file.Name;
-                    Console.Clear();
-                    Console.WriteLine("=======================================================");
-                    Console.WriteLine("\t\tYour save file\n"+ str +"\n\n\t[9] Exit");
-                    Console.WriteLine("=======================================================");
-                    Console.WriteLine("[Type filename and hit Enter to comfirm / Type del to select delete file]");
-                  }
-                  TextTool.TextGen("Load file -=>", textspeed);
-                  string LoadSelect = Console.ReadLine();
-                  if (LoadSelect == "9")
-                  {
-                      break;
-                  }
-                  if (LoadSelect.ToLower() == "del")
-                  {
-                      TextTool.TextGen("Delete file -=>", textspeed);
-                      string DelSelect = Console.ReadLine();
-                      FileTool.DeleteSave(DelSelect, "save");
-                  }
-                  else
-                  {
-                      FileTool.LoadChapter(LoadSelect);
-                  }
+                    foreach(FileInfo file in Files)
+                    {
+                        str = str + "\n" + file.Name;
+                        Console.Clear();
+                        Console.WriteLine("=======================================================");
+                        Console.WriteLine("\t\tYour save file\n"+ str +"\n\n\t[9] Exit");
+                        Console.WriteLine("=======================================================");
+                        Console.WriteLine("[Type filename and hit Enter to comfirm / Type del to select delete file]");
+                    }
+                    TextTool.TextGen("Load file" + UIarrow, textspeed);
+                    string LoadSelect = Console.ReadLine();
+                    if (LoadSelect == "9")
+                    {
+                        break;
+                    }
+                    if (LoadSelect.ToLower() == "del")
+                    {
+                        TextTool.TextGen("Delete file" + UIarrow, textspeed);
+                        string DelSelect = Console.ReadLine();
+                        FileTool.DeleteSave(DelSelect, "save");
+                    }
+                    else
+                    {
+                        FileTool.LoadChapter(LoadSelect);
+                    }
                 }
                 break;
 
@@ -208,14 +212,14 @@ class Menu
                 case "4":
                 //Settings
                 Settings.check();
-                  while (true)
-                  {
+                while (true)
+                {
                     Console.Clear();
                     Console.WriteLine("=======================================================");
-                    Console.WriteLine("\t\tSettings\n\t[1] Text Speed(Delay in ms)\n\t[2] Test\n\n\t[9] Return to menu");
+                    Console.WriteLine("\t\tSettings\n\t[1] Text Speed(Delay in ms)\n\t[2] Arrow\n\n\t[9] Return to menu");
                     Console.WriteLine("=======================================================");
                     Console.WriteLine("[Type number and hit Enter to comfirm]\n[You can't see change until you exit settings(But value is saved)]");
-                    TextTool.TextGen("Key command -=>", textspeed);
+                    TextTool.TextGen("Key command" + UIarrow, textspeed);
                     string setting = Console.ReadLine();
                     if (setting == "9")
                     {
@@ -223,7 +227,11 @@ class Menu
                     }
                     else if (setting == "1" || setting == "2")
                     {
-                        TextTool.TextGen("Key value -=>", textspeed);
+                        if (setting == "2")
+                        {
+                            Console.WriteLine("[1] -=>\n[2] -+>\n[3] :\n[4] >\nHigher than this will set to 1 by default");
+                        }
+                        TextTool.TextGen("Key value" + UIarrow, textspeed);
                         string value = Console.ReadLine();
                         try
                         {
@@ -586,7 +594,7 @@ class Settings
           {
               string jsondata = File.ReadAllText(_filename);
               var _loadJson = JsonNode.Parse(jsondata);
-              _loadJson[0]["Test"] = value;
+              _loadJson[0]["Arrow"] = value;
 
               string _save = JsonSerializer.Serialize(_loadJson);
               File.WriteAllText(_filename, _save);
@@ -612,7 +620,7 @@ class Settings
           var _save = new settingsave
           {
               TextSpeed = "30",
-              Test = "1"
+              Arrow = "1"
           };
 
           arr[0] = _save;
@@ -783,7 +791,7 @@ public class FileTool : coreGame
 public class settingsave
 {
     public string TextSpeed {get; set;}
-    public string Test {get; set;}
+    public string Arrow {get; set;}
 }
 public class dataSave
 {
