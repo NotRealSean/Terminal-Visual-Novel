@@ -52,14 +52,29 @@ public class coreGame
         TextTool.TextGen("What happened to me?", textspeed, false, true);
         TextTool.TextGen("To be continue...", textspeed, true, true);
         FileTool.SaveChaper("save1-1", "save", 1, 1, true);
+        TextTool.TextGen("Do you want to continue?[y] ", textspeed, true);
+        string Respond = Console.ReadLine().ToLower();
+        if (Respond == "y")
+        {
+            chapter1();
+        }
     }
     public static void chapter1()
     {
         //Chapter 1
+        int textspeed = Convert.ToInt32(Settings.Read(0, "TextSpeed"));
+        TextTool.TextGen("Do you want to continue?[y] ", textspeed, true);
+        string Respond = Console.ReadLine().ToLower();
+        if (Respond == "y")
+        {
+            chapter2();
+        }
     }
     public static void chapter2()
     {
         //chapter 2
+        int textspeed = Convert.ToInt32(Settings.Read(0, "TextSpeed"));
+        TextTool.TextGen("Testing chapter 2", textspeed, true, true);
     }
 }
 class Menu
@@ -90,20 +105,19 @@ class Menu
         Console.ReadKey();
         while (true)
         {
+            //Get Textspeed and arrow
             JsonNode _jsonData = Settings.Read()!;
             int textspeed = Convert.ToInt32(_jsonData[0]["TextSpeed"].ToString());
             int arrow = Convert.ToInt32(_jsonData[0]["Arrow"].ToString());
-            string UIarrow = (arrow == 1) ? " -=>" : (arrow == 2) ? " -+>" : (arrow == 3) ? " :" : (arrow == 4) ? " >" : (arrow >= 5) ? " -=>": "";
+            string UIarrow = (arrow == 1) ? " -=>" : (arrow == 2) ? " -+>" : (arrow == 3) ? " :" : (arrow == 4) ? " >" : (arrow == 69) ? " <-+{69 NICE 69}-+>" : (arrow >= 5) ? " -=>": "";
             Console.Clear();
+
             //Main menu
-            Console.WriteLine("[Debug log]");
-            Console.WriteLine(arrow);
-            Console.WriteLine(UIarrow);
             Console.WriteLine("=======================================================");
             Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t[1] New Game\n\t[2] Load\n\t[3] Quick Load\n\t[4] Settings\n\t[5] Guide[Require internet]\n\t[6] Credits[Require internet]\n\t[7] News[Require internet]\n\n\t[9] Exit\t\t\t\t" + version);
             Console.WriteLine("=======================================================");
             Console.WriteLine("[Type number and hit Enter to comfirm]");
-            TextTool.TextGen("Key command" + UIarrow, textspeed);
+            TextTool.TextGen("Command" + UIarrow, textspeed);
             string inPut = Console.ReadLine();
             switch (inPut)
             {
@@ -116,7 +130,7 @@ class Menu
                     Console.WriteLine("\t\tSelect Chapter\n\t[1] Prologue\n\t[2] Chapter 1\n\t[3] Chapter 2\n\n\t[9] Back to main menu");
                     Console.WriteLine("=======================================================");
                     Console.WriteLine("[Type number and hit Enter to comfirm]");
-                    TextTool.TextGen("Key command" + UIarrow, textspeed);
+                    TextTool.TextGen("Command" + UIarrow, textspeed);
                     string chapterSelect = Console.ReadLine();
 
                     switch (chapterSelect)
@@ -216,29 +230,33 @@ class Menu
                 {
                     Console.Clear();
                     Console.WriteLine("=======================================================");
-                    Console.WriteLine("\t\tSettings\n\t[1] Text Speed(Delay in ms)\n\t[2] Arrow\n\n\t[9] Return to menu");
+                    Console.WriteLine("\t\tSettings\n\t[1] Text Speed\n\t[2] Arrow\n\n\t[9] Return to menu");
                     Console.WriteLine("=======================================================");
                     Console.WriteLine("[Type number and hit Enter to comfirm]\n[You can't see change until you exit settings(But value is saved)]");
-                    TextTool.TextGen("Key command" + UIarrow, textspeed);
+                    TextTool.TextGen("Command" + UIarrow, textspeed);
                     string setting = Console.ReadLine();
                     if (setting == "9")
                     {
-                       break;
+                    break;
                     }
                     else if (setting == "1" || setting == "2")
                     {
+                        if (setting == "1")
+                        {
+                            Console.WriteLine("0 - 100(Higher you put is slower text can generate)\n[Default : 30]");
+                        }
                         if (setting == "2")
                         {
                             Console.WriteLine("[1] -=>\n[2] -+>\n[3] :\n[4] >\nHigher than this will set to 1 by default");
                         }
-                        TextTool.TextGen("Key value" + UIarrow, textspeed);
+                        TextTool.TextGen("Value" + UIarrow, textspeed);
                         string value = Console.ReadLine();
                         try
                         {
                             int result = int.Parse(value);
-                            if (result > 500)
+                            if (result > 100)
                             {
-                                Console.WriteLine("You can't do more then 500!");
+                                Console.WriteLine("You can't do more then 100!");
                                 Console.ReadLine();
                             }
                             else if (result > 0)
@@ -578,55 +596,55 @@ class Settings
     }
     public static void Modify(string type, string value)
     {
-      string _filename = "setting.json";
-      try
-      {
-          if (type == "1")
-          {
-              string jsondata = File.ReadAllText(_filename);
-              var _loadJson = JsonNode.Parse(jsondata);
-              _loadJson[0]["TextSpeed"] = value;
+        string _filename = "setting.json";
+        try
+        {
+            if (type == "1")
+            {
+                string jsondata = File.ReadAllText(_filename);
+                var _loadJson = JsonNode.Parse(jsondata);
+                _loadJson[0]["TextSpeed"] = value;
 
-              string _save = JsonSerializer.Serialize(_loadJson);
-              File.WriteAllText(_filename, _save);
-          }
-          else if (type == "2")
-          {
-              string jsondata = File.ReadAllText(_filename);
-              var _loadJson = JsonNode.Parse(jsondata);
-              _loadJson[0]["Arrow"] = value;
+                string _save = JsonSerializer.Serialize(_loadJson);
+                File.WriteAllText(_filename, _save);
+            }
+            else if (type == "2")
+            {
+                string jsondata = File.ReadAllText(_filename);
+                var _loadJson = JsonNode.Parse(jsondata);
+                _loadJson[0]["Arrow"] = value;
 
-              string _save = JsonSerializer.Serialize(_loadJson);
-              File.WriteAllText(_filename, _save);
-          }
-          else
-          {
-              Console.WriteLine("Setting not found!");
-          }
-      }
-      catch (Exception e)
-      {
-          Console.WriteLine("Something went worng...\nMore detail:\n");
-          Console.WriteLine(e);
-      }
+                string _save = JsonSerializer.Serialize(_loadJson);
+                File.WriteAllText(_filename, _save);
+            }
+            else
+            {
+                Console.WriteLine("Setting not found!");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Something went worng...\nMore detail:\n");
+            Console.WriteLine(e);
+        }
     }
     public static void check()
     {
-      string _filename = @"./setting.json";
-      if (!File.Exists(_filename))
-      {
-          string filename = "setting.json";
-          object[] arr = new object[1];
-          var _save = new settingsave
-          {
-              TextSpeed = "30",
-              Arrow = "1"
-          };
+    string _filename = @"./setting.json";
+    if (!File.Exists(_filename))
+    {
+        string filename = "setting.json";
+        object[] arr = new object[1];
+        var _save = new settingsave
+        {
+            TextSpeed = "30",
+            Arrow = "1"
+        };
 
-          arr[0] = _save;
+        arr[0] = _save;
 
-          string _savedata = JsonSerializer.Serialize(arr);
-          File.WriteAllText(filename, _savedata);
+        string _savedata = JsonSerializer.Serialize(arr);
+        File.WriteAllText(filename, _savedata);
         }
     }
 }
@@ -635,152 +653,152 @@ public class FileTool : coreGame
 {
     public static void SaveChaper(string filename, string path, int chapter, int route, bool quicksave)
     {
-      string schapter = chapter.ToString();
-      string sroute = route.ToString();
-      string dir = path;
-      if (!Directory.Exists(dir))
-      {
-          Directory.CreateDirectory(dir);
-      }
-      object[] obj = new object[1];
-      var save = new dataSave
-      {
-          chapter = schapter,
-          route = sroute
-      };
-      obj[0] = save;
+        string schapter = chapter.ToString();
+        string sroute = route.ToString();
+        string dir = path;
+        if (!Directory.Exists(dir))
+        {
+            Directory.CreateDirectory(dir);
+        }
+        object[] obj = new object[1];
+        var save = new dataSave
+        {
+            chapter = schapter,
+            route = sroute
+        };
+        obj[0] = save;
 
-      string savedata = JsonSerializer.Serialize(obj);
-      File.WriteAllText(Path.Combine(dir, filename), savedata);
-      if (quicksave = true)
-      {
-          File.WriteAllText(Path.Combine(dir, "QuickSave"), savedata);
-      }
+        string savedata = JsonSerializer.Serialize(obj);
+        File.WriteAllText(Path.Combine(dir, filename), savedata);
+        if (quicksave = true)
+        {
+            File.WriteAllText(Path.Combine(dir, "QuickSave"), savedata);
+        }
     }
     public static void CheckCreatedFolder(string foldername)
     {
-      if (!Directory.Exists(foldername))
-      {
-          Directory.CreateDirectory(foldername);
-      }
-    }
-    public static void LoadChapter(string filename)
-    {
-      string[] path = {"save", filename};
-      string fullpath = Path.Combine(path);
-      if (!File.Exists(fullpath))
-      {
-          Console.WriteLine("File save not found");
-          Console.ReadKey();
-      }
-      if (File.Exists(fullpath))
-      {
-        string _filename = fullpath;
-        string jsondata = File.ReadAllText(_filename);
-        var loadJson = JsonNode.Parse(jsondata);
-        string Lchapter = loadJson[0]["chapter"].ToString();
-        if (Lchapter == "1")
+        if (!Directory.Exists(foldername))
         {
-            chapter1();
+            Directory.CreateDirectory(foldername);
         }
-        else if (Lchapter == "2")
-        {
-            chapter2();
         }
-        else
+        public static void LoadChapter(string filename)
         {
-            Console.WriteLine("Save file not found");
+        string[] path = {"save", filename};
+        string fullpath = Path.Combine(path);
+        if (!File.Exists(fullpath))
+        {
+            Console.WriteLine("File save not found");
             Console.ReadKey();
         }
-      }
+        if (File.Exists(fullpath))
+        {
+            string _filename = fullpath;
+            string jsondata = File.ReadAllText(_filename);
+            var loadJson = JsonNode.Parse(jsondata);
+            string Lchapter = loadJson[0]["chapter"].ToString();
+            if (Lchapter == "1")
+            {
+                chapter1();
+            }
+            else if (Lchapter == "2")
+            {
+                chapter2();
+            }
+            else
+            {
+                Console.WriteLine("Save file not found");
+                Console.ReadKey();
+            }
+        }
     }
     public static void QLoadChapter()
     {
-      string filename = "QuickSave";
-      string fullqpath = @"save/QuickSave";
-      if (!File.Exists(fullqpath))
-      {
-          Console.WriteLine("You don't have quick save file");
-          Console.ReadKey();
-      }
-      if (File.Exists(fullqpath))
-      {
-        string _filename = fullqpath;
-        string jsondata = File.ReadAllText(_filename);
-        var loadJson = JsonNode.Parse(jsondata);
-        string Lchapter = loadJson[0]["chapter"].ToString();
-        Console.WriteLine("Warning:\nYour last saved checkpoint is Chapter " + Lchapter + "\nDo you want to load this chapter?\n[Type Y to continue/Type anything else to return]");
-        string Cload = Console.ReadLine();
-        if (Cload.ToLower() == "y")
+        string filename = "QuickSave";
+        string fullqpath = @"save/QuickSave";
+        if (!File.Exists(fullqpath))
         {
-          if (Lchapter == "1")
-          {
-              chapter1();
-          }
-          else if (Lchapter == "2")
-          {
-              chapter2();
-          }
-          else
-          {
-              Console.WriteLine("Save file not found");
-              Console.ReadKey();
-          }
+            Console.WriteLine("You don't have quick save file");
+            Console.ReadKey();
         }
-      }
+        if (File.Exists(fullqpath))
+        {
+            string _filename = fullqpath;
+            string jsondata = File.ReadAllText(_filename);
+            var loadJson = JsonNode.Parse(jsondata);
+            string Lchapter = loadJson[0]["chapter"].ToString();
+            Console.WriteLine("Warning:\nYour last saved checkpoint is Chapter " + Lchapter + "\nDo you want to load this chapter?\n[Type Y to continue/Type anything else to return]");
+            string Cload = Console.ReadLine();
+            if (Cload.ToLower() == "y")
+            {
+            if (Lchapter == "1")
+            {
+                chapter1();
+            }
+            else if (Lchapter == "2")
+            {
+                chapter2();
+            }
+            else
+            {
+                Console.WriteLine("Save file not found");
+                Console.ReadKey();
+            }
+            }
+        }
     }
     public static void DeleteSave(string filename, string path)
     {
-      //Doing
-      if (filename == "")
-      {
-        Console.WriteLine("You didn't enter save file name");
-        Console.ReadKey();
-      }
-      else
-      {
-        Console.WriteLine("Are you sure to delete " + filename +"?[Type Y to confirm]");
-        string DelComfirm = Console.ReadLine();
-        if (DelComfirm.ToLower() == "y" || DelComfirm == "")
+        //Doing
+        if (filename == "")
         {
-          try
-          {
-            string[] fpath = {path, filename};
-            string fullpath = Path.Combine(fpath);
-            File.Delete(fullpath);
-          }
-          catch (Exception e)
-          {
-            Console.WriteLine("Something went worng\nMore info:");
-            Console.WriteLine(e);
-            Console.ReadLine();
-          }
-        }
-      }
-    }
-    public static void Choice(string Question, string Choice1, string Choice2, string Choice3)
-    {
-      //Choice that doesn't affect anything
-
-    }
-    public static string ChoiceRoute(string Question, string Choice1, string Choice2, string Choice3)
-    {
-      //Choice that affect gameplay/ending
-      while (true)
-      {
-        TextTool.TextGen("\n" + Question);
-        Console.WriteLine("\n1 " + Choice1 + "\n2 " + Choice2 + "\n3 " + Choice3 + "\n");
-        TextTool.TextGen("Your answer(1-3) >");
-        string Choose = Console.ReadLine();
-        if (Choose == "1" || Choose == "2" || Choose == "3")
-        {
-          return Choose;
+            Console.WriteLine("You didn't enter save file name");
+            Console.ReadKey();
         }
         else
         {
-          Console.Clear();
+            Console.WriteLine("Are you sure to delete " + filename +"?[Type Y to confirm]");
+            string DelComfirm = Console.ReadLine();
+            if (DelComfirm.ToLower() == "y" || DelComfirm == "")
+            {
+            try
+            {
+                string[] fpath = {path, filename};
+                string fullpath = Path.Combine(fpath);
+                File.Delete(fullpath);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Something went worng\nMore info:");
+                Console.WriteLine(e);
+                Console.ReadLine();
+            }
+            }
         }
-      }
+    }
+    public static void Choice(string Question, string Choice1, string Choice2, string Choice3)
+    {
+    //Choice that doesn't affect anything
+
+    }
+    public static string ChoiceRoute(string Question, string Choice1, string Choice2, string Choice3)
+        {
+        //Choice that affect gameplay/ending
+        while (true)
+        {
+            TextTool.TextGen("\n" + Question);
+            Console.WriteLine("\n1 " + Choice1 + "\n2 " + Choice2 + "\n3 " + Choice3 + "\n");
+            TextTool.TextGen("Your answer(1-3) >");
+            string Choose = Console.ReadLine();
+            if (Choose == "1" || Choose == "2" || Choose == "3")
+            {
+                return Choose;
+            }
+            else
+            {
+                Console.Clear();
+            }
+        }
     }
 }
 
