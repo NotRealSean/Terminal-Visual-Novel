@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/cs.csproj",
+      "projectUniqueName": "/home/notrealsean/Desktop/code/Vngame/cs.csproj",
       "projectName": "cs",
-      "projectPath": "/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/cs.csproj",
+      "projectPath": "/home/notrealsean/Desktop/code/Vngame/cs.csproj",
       "packagesPath": "/home/notrealsean/.nuget/packages/",
-      "outputPath": "/home/notrealsean/Desktop/Code/cs/consoleapp/VNgame/obj/",
+      "outputPath": "/home/notrealsean/Desktop/code/Vngame/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/notrealsean/.nuget/NuGet/NuGet.Config"
@@ -59,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.101/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
       }
     }
   }
