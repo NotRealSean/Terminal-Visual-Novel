@@ -2,3 +2,10 @@ Don't forget to check if game version match this update note
                 0.0.53
 Settings
 + Added version checker
+
+                0.0.54 Dev.1
+Settings
++ Added Debug_mode V.1
+
+In test
++ Reset command(Restart game)

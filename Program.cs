@@ -81,288 +81,317 @@ class Menu
 {
     static void Main()
     {
-        TextTool.TextGen("", 1, true, false, 1000);
-        TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n\n\n", 1, true, false);
-        Console.WriteLine("Loading log :\nLoading settings[Require internet]");
-        Settings.check();
-        FileTool.CheckCreatedFolder("save");
-        Console.WriteLine("Settings loaded");
-        Console.WriteLine("Checking for update[Require internet]");
-        string version = "0.0.54 Dev";
-        System.Net.WebClient gitversion = new System.Net.WebClient();
-        string versionData = gitversion.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/version");
-        if (version != versionData)
+        string reset = "reset";
+        while (reset == "reset")
         {
-            Console.WriteLine("Your game version is outdated\nYour game version : " + version + "\nNew version : " + versionData);
-            Console.WriteLine("Download new version here : https://github.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/releases");
-            Console.WriteLine("You can still play the game by press any key to continue...");
-        }
-        else if (version == versionData)
-        {
-            Console.WriteLine("Your game is up to date : " + versionData);
-            Console.WriteLine("Press any key to continue...");
-        }
-        Console.ReadKey();
-        while (true)
-        {
-            //Get Textspeed and arrow
-            JsonNode _jsonData = Settings.Read()!;
-            int textspeed = Convert.ToInt32(_jsonData[0]["TextSpeed"].ToString());
-            int arrow = Convert.ToInt32(_jsonData[0]["Arrow"].ToString());
-            string UIarrow = (arrow == 1) ? " -=>" : (arrow == 2) ? " -+>" : (arrow == 3) ? " :" : (arrow == 4) ? " >" : (arrow == 69) ? " <-+{69 NICE 69}-+>" : (arrow >= 5) ? " -=>": "";
-            Console.Clear();
-
-            //Main menu
-            Console.WriteLine("=======================================================");
-            Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t[1] New Game\n\t[2] Load\n\t[3] Quick Load\n\t[4] Settings\n\t[5] Guide[Require internet]\n\t[6] Credits[Require internet]\n\t[7] News[Require internet]\n\n\t[9] Exit\t\t\t\t" + version);
-            Console.WriteLine("=======================================================");
-            Console.WriteLine("[Type number and hit Enter to comfirm]");
-            TextTool.TextGen("Command" + UIarrow, textspeed);
-            string inPut = Console.ReadLine();
-            switch (inPut)
+            TextTool.TextGen("", 1, true, false, 1000);
+            TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n\n\n", 1, true, false);
+            Console.WriteLine("Loading log :\nLoading settings[Require internet]");
+            Settings.check();
+            FileTool.CheckCreatedFolder("save");
+            Console.WriteLine("Settings loaded");
+            Console.WriteLine("Checking for update[Require internet]");
+            string version = "0.0.54 Dev.1";
+            System.Net.WebClient gitversion = new System.Net.WebClient();
+            string versionData = gitversion.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/version");
+            if (version != versionData)
             {
-                case "1":
-                while (true)
+                Console.WriteLine("Your game version is outdated\nYour game version : " + version + "\nNew version : " + versionData);
+                Console.WriteLine("Download new version here : https://github.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/releases");
+                Console.WriteLine("You can still play the game by press any key to continue...");
+            }
+            else if (version == versionData)
+            {
+                Console.WriteLine("Your game is up to date : " + versionData);
+                Console.WriteLine("Press any key to continue...");
+            }
+            string debug_mode = Console.ReadLine();
+            bool debugEnable = (debug_mode == "debug_mode") ? true : false;
+            while (true)
+            {
+                //Get Textspeed and arrow
+                JsonNode _jsonData = Settings.Read()!;
+                int textspeed = Convert.ToInt32(_jsonData[0]["TextSpeed"].ToString());
+                int arrow = Convert.ToInt32(_jsonData[0]["Arrow"].ToString());
+                string UIarrow = (arrow == 1) ? " -=>" : (arrow == 2) ? " -+>" : (arrow == 3) ? " :" : (arrow == 4) ? " >" : (arrow == 69) ? " <-+{69 NICE 69}-+>" : (arrow >= 5) ? " -=>": "";
+                Console.Clear();
+
+                //Main menu
+                if (debugEnable == true)
                 {
-                    //chapter select
-                    Console.Clear();
-                    Console.WriteLine("=======================================================");
-                    Console.WriteLine("\t\tSelect Chapter\n\t[1] Prologue\n\t[2] Chapter 1\n\t[3] Chapter 2\n\n\t[9] Back to main menu");
-                    Console.WriteLine("=======================================================");
-                    Console.WriteLine("[Type number and hit Enter to comfirm]");
-                    TextTool.TextGen("Command" + UIarrow, textspeed);
-                    string chapterSelect = Console.ReadLine();
-
-                    switch (chapterSelect)
-                    {
-                        case "1":
-                            coreGame.prologue();
-                            break;
-                        case "2":
-                            coreGame.chapter1();
-                            break;
-                        case "3":
-                            coreGame.chapter2();
-                            break;
-                        case "0":
-                            Console.WriteLine("Why are you trying to return 0?");
-                            Console.ReadKey();
-                            break;
-
-                        case "9":
-                            break;
-                        case "":
-                            Console.WriteLine("You enter nothing...");
-                            break;
-                        case " ":
-                            Console.WriteLine("You enter nothing...");
-                            break;
-                        default:
-                            Console.Write("You enter worng key");
-                            Console.ReadKey();
-                            break;
-                    }
-                    if (chapterSelect == "9")
-                    {
-                        break;
-                    }
+                    Console.WriteLine("[Debug mode is enable]");
+                    Console.WriteLine("TextSpeed [" + textspeed + " ms]");
+                    Console.WriteLine("Arrow [" + arrow + "][" + UIarrow + "]");
                 }
-                break;
-
-
-                case "2":
-                FileTool.CheckCreatedFolder("save");
-                //Load
-                while (true)
+                Console.WriteLine("=======================================================");
+                Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t[1] New Game\n\t[2] Load\n\t[3] Quick Load\n\t[4] Settings\n\t[5] Guide[Require internet]\n\t[6] Credits[Require internet]\n\t[7] News[Require internet]\n\n\t[9] Exit\t\t\t\t" + version);
+                Console.WriteLine("=======================================================");
+                Console.WriteLine("[Type number and hit Enter to comfirm]");
+                TextTool.TextGen("Command" + UIarrow, textspeed);
+                string inPut = Console.ReadLine();
+                switch (inPut)
                 {
-                    string dir = @"save";
-                    int dircount = Directory.GetFiles(dir).Length;
-                    if (dircount <= 0)
+                    case "1":
+                    while (true)
                     {
-                        Console.WriteLine("You don't have save file");
-                        Console.ReadKey();
-                        break;
-                    }
-                    DirectoryInfo d = new DirectoryInfo(@"save");
-
-                    FileInfo[] Files = d.GetFiles("");
-                    string str = "";
-
-                    foreach(FileInfo file in Files)
-                    {
-                        str = str + "\n" + file.Name;
+                        //chapter select
                         Console.Clear();
                         Console.WriteLine("=======================================================");
-                        Console.WriteLine("\t\tYour save file\n"+ str +"\n\n\t[9] Exit");
+                        Console.WriteLine("\t\tSelect Chapter\n\t[1] Prologue\n\t[2] Chapter 1\n\t[3] Chapter 2\n\n\t[9] Back to main menu");
                         Console.WriteLine("=======================================================");
-                        Console.WriteLine("[Type filename and hit Enter to comfirm / Type del to select delete file]");
-                    }
-                    TextTool.TextGen("Load file" + UIarrow, textspeed);
-                    string LoadSelect = Console.ReadLine();
-                    if (LoadSelect == "9")
-                    {
-                        break;
-                    }
-                    if (LoadSelect.ToLower() == "del")
-                    {
-                        TextTool.TextGen("Delete file" + UIarrow, textspeed);
-                        string DelSelect = Console.ReadLine();
-                        FileTool.DeleteSave(DelSelect, "save");
-                    }
-                    else
-                    {
-                        FileTool.LoadChapter(LoadSelect);
-                    }
-                }
-                break;
+                        Console.WriteLine("[Type number and hit Enter to comfirm]");
+                        TextTool.TextGen("Command" + UIarrow, textspeed);
+                        string chapterSelect = Console.ReadLine();
 
+                        switch (chapterSelect)
+                        {
+                            case "1":
+                                coreGame.prologue();
+                                break;
+                            case "2":
+                                coreGame.chapter1();
+                                break;
+                            case "3":
+                                coreGame.chapter2();
+                                break;
+                            case "0":
+                                Console.WriteLine("Why are you trying to return 0?");
+                                Console.ReadKey();
+                                break;
 
-                case "3":
-                //Quick load
-                FileTool.QLoadChapter();
-                break;
-
-
-                case "4":
-                //Settings
-                Settings.check();
-                while (true)
-                {
-                    Console.Clear();
-                    Console.WriteLine("=======================================================");
-                    Console.WriteLine("\t\tSettings\n\t[1] Text Speed\n\t[2] Arrow\n\n\t[9] Return to menu");
-                    Console.WriteLine("=======================================================");
-                    Console.WriteLine("[Type number and hit Enter to comfirm]\n[You can't see change until you exit settings(But value is saved)]");
-                    TextTool.TextGen("Command" + UIarrow, textspeed);
-                    string setting = Console.ReadLine();
-                    if (setting == "9")
-                    {
+                            case "9":
+                                break;
+                            case "":
+                                Console.WriteLine("You enter nothing...");
+                                break;
+                            case " ":
+                                Console.WriteLine("You enter nothing...");
+                                break;
+                            default:
+                                Console.Write("You enter worng key");
+                                Console.ReadKey();
+                                break;
+                        }
+                        if (chapterSelect == "9")
+                        {
+                            break;
+                        }
+                    }
                     break;
-                    }
-                    else if (setting == "1" || setting == "2")
+
+
+                    case "2":
+                    FileTool.CheckCreatedFolder("save");
+                    //Load
+                    while (true)
                     {
-                        if (setting == "1")
+                        string dir = @"save";
+                        int dircount = Directory.GetFiles(dir).Length;
+                        if (dircount <= 0)
                         {
-                            Console.WriteLine("0 - 100(Higher you put is slower text can generate)\n[Default : 30]");
+                            Console.WriteLine("You don't have save file");
+                            Console.ReadKey();
+                            break;
                         }
-                        if (setting == "2")
+                        DirectoryInfo d = new DirectoryInfo(@"save");
+
+                        FileInfo[] Files = d.GetFiles("");
+                        string str = "";
+
+                        foreach(FileInfo file in Files)
                         {
-                            Console.WriteLine("[1] -=>\n[2] -+>\n[3] :\n[4] >\nHigher than this will set to 1 by default");
+                            str = str + "\n" + file.Name;
+                            Console.Clear();
+                            Console.WriteLine("=======================================================");
+                            Console.WriteLine("\t\tYour save file\n"+ str +"\n\n\t[9] Exit");
+                            Console.WriteLine("=======================================================");
+                            Console.WriteLine("[Type filename and hit Enter to comfirm / Type del to select delete file]");
                         }
-                        TextTool.TextGen("Value" + UIarrow, textspeed);
-                        string value = Console.ReadLine();
-                        try
+                        TextTool.TextGen("Load file" + UIarrow, textspeed);
+                        string LoadSelect = Console.ReadLine();
+                        if (LoadSelect == "9")
                         {
-                            int result = int.Parse(value);
-                            if (result > 100)
+                            break;
+                        }
+                        if (LoadSelect.ToLower() == "del")
+                        {
+                            TextTool.TextGen("Delete file" + UIarrow, textspeed);
+                            string DelSelect = Console.ReadLine();
+                            FileTool.DeleteSave(DelSelect, "save");
+                        }
+                        else
+                        {
+                            FileTool.LoadChapter(LoadSelect);
+                        }
+                    }
+                    break;
+
+
+                    case "3":
+                    //Quick load
+                    FileTool.QLoadChapter();
+                    break;
+
+
+                    case "4":
+                    //Settings
+                    Settings.check();
+                    while (true)
+                    {
+                        string DBtextspeed = Settings.Read(0, "TextSpeed");
+                        string DBarrow = Settings.Read(0, "Arrow");
+                        Console.Clear();
+                        if (debugEnable == true)
+                        {
+                            Console.WriteLine("[Debug mode is enable]");
+                            Console.WriteLine("JsonTextSpeed[" + DBtextspeed + "]");
+                            Console.WriteLine("JsonArrow[" + DBarrow + "]");
+                        }
+                        Console.WriteLine("=======================================================");
+                        Console.WriteLine("\t\tSettings\n\t[1] Text Speed[" + DBtextspeed + "]\n\t[2] Arrow" + DBarrow + "\n\n\t[9] Return to menu");
+                        Console.WriteLine("=======================================================");
+                        Console.WriteLine("[Type number and hit Enter to comfirm]\n[You can't see change until you exit settings(But value is saved)]");
+                        TextTool.TextGen("Command" + UIarrow, textspeed);
+                        string setting = Console.ReadLine();
+                        if (setting == "9")
+                        {
+                        break;
+                        }
+                        else if (setting == "1" || setting == "2")
+                        {
+                            if (setting == "1")
                             {
-                                Console.WriteLine("You can't do more then 100!");
-                                Console.ReadLine();
+                                Console.WriteLine("0 - 100(Higher you put is slower text can generate)\n[Default : 30]");
                             }
-                            else if (result > 0)
+                            if (setting == "2")
                             {
-                                string stringvalue = result.ToString();
-                                Settings.Modify(setting, stringvalue);
+                                Console.WriteLine("[1] -=>\n[2] -+>\n[3] :\n[4] >\nHigher than this will set to 1 by default");
                             }
-                            else
+                            TextTool.TextGen("Value" + UIarrow, textspeed);
+                            string value = Console.ReadLine();
+                            try
                             {
-                                Console.WriteLine("You can't do 0 or less!");
+                                int result = int.Parse(value);
+                                if (result > 100)
+                                {
+                                    Console.WriteLine("You can't do more then 100!");
+                                    Console.ReadLine();
+                                }
+                                else if (result > 0)
+                                {
+                                    string stringvalue = result.ToString();
+                                    Settings.Modify(setting, stringvalue);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("You can't do 0 or less!");
+                                    Console.ReadKey();
+                                }
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("You didn't enter integer value!");
                                 Console.ReadKey();
                             }
                         }
-                        catch (FormatException)
+                        else
                         {
-                            Console.WriteLine("You didn't enter integer value!");
+                            Console.WriteLine("You enter worng key!");
                             Console.ReadKey();
                         }
                     }
-                    else
-                    {
-                        Console.WriteLine("You enter worng key!");
-                        Console.ReadKey();
-                    }
+                    break;
+
+
+                    case "5":
+                    //Guide
+                    Console.WriteLine("Checking for update...[Require internet]");
+                    string filename = @"./guide.txt";
+                    //Write update
+                    System.Net.WebClient wc = new System.Net.WebClient();
+                    string webData = wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_guide.txt");
+                    File.WriteAllText(filename, webData);
+
+                    Console.Clear();
+                    string update = File.ReadAllText("_guide.txt");
+                    Console.WriteLine(update);
+                    TextTool.TextGen("Press anykey to go back to main menu...", 10);
+                    Console.ReadKey();
+                    break;
+
+
+                    case "6":
+                    //Credits
+                    Console.WriteLine("Checking for update...[Require internet]");
+                    string _filename = @"./credits.txt";
+                    //Write update
+                    System.Net.WebClient _wc = new System.Net.WebClient();
+                    string _webData = _wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/credits.txt");
+                    File.WriteAllText(_filename, _webData);
+
+                    Console.Clear();
+                    string _update = File.ReadAllText("credits.txt");
+                    Console.WriteLine(_update);
+                    TextTool.TextGen("Press anykey to go back to main menu...", 10);
+                    Console.ReadKey();
+                    break;
+
+                    case "7":
+                    //News
+                    Console.WriteLine("Checking for update...[Require internet]");
+                    string __filename = "_update.txt";
+                    //Write update
+                    System.Net.WebClient __wc = new System.Net.WebClient();
+                    string __webData = __wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_update.txt");
+                    File.WriteAllText(__filename, __webData);
+
+                    Console.Clear();
+                    string __update = File.ReadAllText("_update.txt");
+                    Console.WriteLine(__update);
+                    TextTool.TextGen("Press anykey to go back to main menu...", 10);
+                    Console.ReadKey();
+                    break;
+
+
+                    //Joke zone
+                    case "0":
+                    Console.WriteLine("Why are you trying to return 0?");
+                    Console.ReadKey();
+                    break;
+
+
+                    case "":
+                    Console.Write("You enter nothing...");
+                    Console.ReadKey();
+                    break;
+
+
+                    case " ":
+                    Console.Write("You enter nothing...");
+                    Console.ReadKey();
+                    break;
+
+                    case "9":
+                    break;
+
+                    case "reset":
+
+                    break;
+
+                    default:
+                    Console.WriteLine("You enter worng key!");
+                    break;
                 }
-                break;
-
-
-                case "5":
-                //Guide
-                Console.WriteLine("Checking for update...[Require internet]");
-                string filename = @"./guide.txt";
-                //Write update
-                System.Net.WebClient wc = new System.Net.WebClient();
-                string webData = wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_guide.txt");
-                File.WriteAllText(filename, webData);
-
-                Console.Clear();
-                string update = File.ReadAllText("_guide.txt");
-                Console.WriteLine(update);
-                TextTool.TextGen("Press anykey to go back to main menu...", 10);
-                Console.ReadKey();
-                break;
-
-
-                case "6":
-                //Credits
-                Console.WriteLine("Checking for update...[Require internet]");
-                string _filename = @"./credits.txt";
-                //Write update
-                System.Net.WebClient _wc = new System.Net.WebClient();
-                string _webData = _wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/credits.txt");
-                File.WriteAllText(_filename, _webData);
-
-                Console.Clear();
-                string _update = File.ReadAllText("credits.txt");
-                Console.WriteLine(_update);
-                TextTool.TextGen("Press anykey to go back to main menu...", 10);
-                Console.ReadKey();
-                break;
-
-                case "7":
-                //News
-                Console.WriteLine("Checking for update...[Require internet]");
-                string __filename = "_update.txt";
-                //Write update
-                System.Net.WebClient __wc = new System.Net.WebClient();
-                string __webData = __wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_update.txt");
-                File.WriteAllText(__filename, __webData);
-
-                Console.Clear();
-                string __update = File.ReadAllText("_update.txt");
-                Console.WriteLine(__update);
-                TextTool.TextGen("Press anykey to go back to main menu...", 10);
-                Console.ReadKey();
-                break;
-
-
-                //Joke zone
-                case "0":
-                Console.WriteLine("Why are you trying to return 0?");
-                Console.ReadKey();
-                break;
-
-
-                case "":
-                Console.Write("You enter nothing...");
-                Console.ReadKey();
-                break;
-
-
-                case " ":
-                Console.Write("You enter nothing...");
-                Console.ReadKey();
-                break;
-
-                case "9":
-                break;
-
-                default:
-                Console.WriteLine("You enter worng key!");
-                break;
-            }
-            if (inPut == "9")
-            {
-                break;
+                if (inPut == "9")
+                {
+                    reset = "exit";
+                    break;
+                }
+                if (inPut == "reset")
+                {
+                    reset = "reset";
+                    break;
+                }
             }
         }
     }
