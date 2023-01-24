@@ -3,9 +3,14 @@ Don't forget to check if game version match this update note
 Settings
 + Added version checker
 
-                0.0.54 Dev.1
-Settings
-+ Added Debug_mode V.1
+                0.0.54 Dev.2
+debug_mode V.2
++ Added disable debug_mode in settings(only shown/turn off when on debug_mode)
 
-In test
-+ Reset command(Restart game)
+UI
++ "You enter worng key!" on main menu is now work
++ Any value that less than 1 on UIarrow is not empty any more
++- Make UI on loading more like linux terminal
+
+                Planing
+Offline mode(If you open game while offline you'll get error and crashed)

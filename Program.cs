@@ -86,24 +86,27 @@ class Menu
         {
             TextTool.TextGen("", 1, true, false, 1000);
             TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n\n\n", 1, true, false);
-            Console.WriteLine("Loading log :\nLoading settings[Require internet]");
+            Console.Write("Loading log :\nLoading settings[Require internet]...");
             Settings.check();
+            Console.WriteLine("Done");
+            Console.Write("Checking save folder...");
             FileTool.CheckCreatedFolder("save");
-            Console.WriteLine("Settings loaded");
-            Console.WriteLine("Checking for update[Require internet]");
-            string version = "0.0.54 Dev.1";
+            Console.WriteLine("Done");
+            Console.Write("Checking for update[Require internet]...");
+            string version = "0.0.54 Dev.2";
             System.Net.WebClient gitversion = new System.Net.WebClient();
             string versionData = gitversion.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/version");
+            Console.WriteLine("Done");
             if (version != versionData)
             {
                 Console.WriteLine("Your game version is outdated\nYour game version : " + version + "\nNew version : " + versionData);
                 Console.WriteLine("Download new version here : https://github.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/releases");
-                Console.WriteLine("You can still play the game by press any key to continue...");
+                Console.WriteLine("You can still play the game by press enter key to continue...");
             }
             else if (version == versionData)
             {
                 Console.WriteLine("Your game is up to date : " + versionData);
-                Console.WriteLine("Press any key to continue...");
+                Console.WriteLine("Press enter key to continue...");
             }
             string debug_mode = Console.ReadLine();
             bool debugEnable = (debug_mode == "debug_mode") ? true : false;
@@ -113,7 +116,7 @@ class Menu
                 JsonNode _jsonData = Settings.Read()!;
                 int textspeed = Convert.ToInt32(_jsonData[0]["TextSpeed"].ToString());
                 int arrow = Convert.ToInt32(_jsonData[0]["Arrow"].ToString());
-                string UIarrow = (arrow == 1) ? " -=>" : (arrow == 2) ? " -+>" : (arrow == 3) ? " :" : (arrow == 4) ? " >" : (arrow == 69) ? " <-+{69 NICE 69}-+>" : (arrow >= 5) ? " -=>": "";
+                string UIarrow = (arrow == 1) ? " -=>" : (arrow == 2) ? " -+>" : (arrow == 3) ? " :" : (arrow == 4) ? " >" : (arrow == 69) ? " <-+{69 NICE 69}-+>" : (arrow >= 5) ? " -=>": " <{[YOUR ARROW SETTINGS IS LOWER THAN 1!]}>>>";
                 Console.Clear();
 
                 //Main menu
@@ -248,7 +251,12 @@ class Menu
                             Console.WriteLine("JsonArrow[" + DBarrow + "]");
                         }
                         Console.WriteLine("=======================================================");
-                        Console.WriteLine("\t\tSettings\n\t[1] Text Speed[" + DBtextspeed + "]\n\t[2] Arrow" + DBarrow + "\n\n\t[9] Return to menu");
+                        Console.WriteLine("\t\tSettings\n\t[1] Text Speed[" + DBtextspeed + "]\n\t[2] Arrow[" + DBarrow + "]");
+                        if (debugEnable == true)
+                        {
+                            Console.WriteLine("\n\t[5] Disable debug_mode\n");
+                        }
+                        Console.WriteLine("\n\t[9] Back to main menu");
                         Console.WriteLine("=======================================================");
                         Console.WriteLine("[Type number and hit Enter to comfirm]\n[You can't see change until you exit settings(But value is saved)]");
                         TextTool.TextGen("Command" + UIarrow, textspeed);
@@ -257,8 +265,23 @@ class Menu
                         {
                         break;
                         }
-                        else if (setting == "1" || setting == "2")
+                        else if (setting == "1" || setting == "2" || setting == "5")
                         {
+                            if (setting == "5" && debugEnable == true)
+                            {
+                                Console.Write("Are you sure to disble this settings[Y/n]");
+                                string DBdisableComfirm = Console.ReadLine().ToLower();
+                                if (DBdisableComfirm == "y")
+                                {
+                                    debugEnable = false;
+                                    break;
+                                }
+                            }
+                            if (setting == "5" && debugEnable == false)
+                            {
+                                Console.WriteLine("You enter worng key!");
+                                Console.ReadKey();
+                            }
                             if (setting == "1")
                             {
                                 Console.WriteLine("0 - 100(Higher you put is slower text can generate)\n[Default : 30]");
@@ -267,31 +290,34 @@ class Menu
                             {
                                 Console.WriteLine("[1] -=>\n[2] -+>\n[3] :\n[4] >\nHigher than this will set to 1 by default");
                             }
-                            TextTool.TextGen("Value" + UIarrow, textspeed);
-                            string value = Console.ReadLine();
-                            try
+                            if (setting == "1" || setting == "2")
                             {
-                                int result = int.Parse(value);
-                                if (result > 100)
+                                TextTool.TextGen("Value" + UIarrow, textspeed);
+                                string value = Console.ReadLine();
+                                try
                                 {
-                                    Console.WriteLine("You can't do more then 100!");
-                                    Console.ReadLine();
+                                    int result = int.Parse(value);
+                                    if (result > 100)
+                                    {
+                                        Console.WriteLine("You can't do more then 100!");
+                                        Console.ReadLine();
+                                    }
+                                    else if (result > 0)
+                                    {
+                                        string stringvalue = result.ToString();
+                                        Settings.Modify(setting, stringvalue);
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("You can't do 0 or less!");
+                                        Console.ReadKey();
+                                    }
                                 }
-                                else if (result > 0)
+                                catch (FormatException)
                                 {
-                                    string stringvalue = result.ToString();
-                                    Settings.Modify(setting, stringvalue);
-                                }
-                                else
-                                {
-                                    Console.WriteLine("You can't do 0 or less!");
+                                    Console.WriteLine("You didn't enter integer value!");
                                     Console.ReadKey();
                                 }
-                            }
-                            catch (FormatException)
-                            {
-                                Console.WriteLine("You didn't enter integer value!");
-                                Console.ReadKey();
                             }
                         }
                         else
@@ -380,6 +406,7 @@ class Menu
 
                     default:
                     Console.WriteLine("You enter worng key!");
+                    Console.ReadKey();
                     break;
                 }
                 if (inPut == "9")
@@ -710,9 +737,9 @@ public class FileTool : coreGame
         {
             Directory.CreateDirectory(foldername);
         }
-        }
-        public static void LoadChapter(string filename)
-        {
+    }
+    public static void LoadChapter(string filename)
+    {
         string[] path = {"save", filename};
         string fullpath = Path.Combine(path);
         if (!File.Exists(fullpath))
