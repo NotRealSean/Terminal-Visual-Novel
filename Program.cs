@@ -86,26 +86,35 @@ class Menu
         {
             TextTool.TextGen("", 1, true, false, 1000);
             TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n\n\n", 1, true, false);
-            Console.Write("Loading log :\nLoading settings[Require internet]...");
+            Console.Write("Loading log :\nLoading settings...");
             Settings.check();
             Console.WriteLine("Done");
             Console.Write("Checking save folder...");
             FileTool.CheckCreatedFolder("save");
             Console.WriteLine("Done");
             Console.Write("Checking for update[Require internet]...");
-            string version = "0.0.54 Dev.2";
-            System.Net.WebClient gitversion = new System.Net.WebClient();
-            string versionData = gitversion.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/version");
-            Console.WriteLine("Done");
-            if (version != versionData)
+            string version = "0.0.54 Dev.3";
+            bool connectEnable = Settings.CheckConnect();
+            if (connectEnable == true)
             {
-                Console.WriteLine("Your game version is outdated\nYour game version : " + version + "\nNew version : " + versionData);
-                Console.WriteLine("Download new version here : https://github.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/releases");
-                Console.WriteLine("You can still play the game by press enter key to continue...");
+                System.Net.WebClient gitversion = new System.Net.WebClient();
+                string versionData = gitversion.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/version");
+                Console.WriteLine("Done");
+                if (version != versionData)
+                {
+                    Console.WriteLine("Your game version is outdated\nYour game version : " + version + "\nNew version : " + versionData);
+                    Console.WriteLine("Download new version here : https://github.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/releases");
+                    Console.WriteLine("You can still play the game by press enter key to continue...");
+                }
+                else if (version == versionData)
+                {
+                    Console.WriteLine("Your game is up to date : " + versionData);
+                    Console.WriteLine("Press enter key to continue...");
+                }
             }
-            else if (version == versionData)
+            else
             {
-                Console.WriteLine("Your game is up to date : " + versionData);
+                Console.WriteLine("\nYou are in offline mode but you can still play the game");
                 Console.WriteLine("Press enter key to continue...");
             }
             string debug_mode = Console.ReadLine();
@@ -331,16 +340,33 @@ class Menu
 
                     case "5":
                     //Guide
-                    Console.WriteLine("Checking for update...[Require internet]");
-                    string filename = @"./guide.txt";
-                    //Write update
-                    System.Net.WebClient wc = new System.Net.WebClient();
-                    string webData = wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_guide.txt");
-                    File.WriteAllText(filename, webData);
+                    if (connectEnable == true)
+                    {
+                        Console.WriteLine("Checking for update...[Require internet]");
+                        string filename = @"./guide.txt";
+                        //Write update
+                        System.Net.WebClient wc = new System.Net.WebClient();
+                        string webData = wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_guide.txt");
+                        File.WriteAllText(filename, webData);
 
-                    Console.Clear();
-                    string update = File.ReadAllText("_guide.txt");
-                    Console.WriteLine(update);
+                        Console.Clear();
+                        string update = File.ReadAllText("_guide.txt");
+                        Console.WriteLine(update);
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("You are in offline mode!");
+                        if (!File.Exists(@"./_guide.txt"))
+                        {
+                            Console.WriteLine("You don't have _guide.txt file");
+                        }
+                        else
+                        {
+                            string update = File.ReadAllText("_guide.txt");
+                            Console.WriteLine(update);
+                        }
+                    }
                     TextTool.TextGen("Press anykey to go back to main menu...", 10);
                     Console.ReadKey();
                     break;
@@ -348,32 +374,67 @@ class Menu
 
                     case "6":
                     //Credits
-                    Console.WriteLine("Checking for update...[Require internet]");
-                    string _filename = @"./credits.txt";
-                    //Write update
-                    System.Net.WebClient _wc = new System.Net.WebClient();
-                    string _webData = _wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/credits.txt");
-                    File.WriteAllText(_filename, _webData);
+                    if (connectEnable == true)
+                    {
+                        Console.WriteLine("Checking for update...[Require internet]");
+                        string _filename = @"./credits.txt";
+                        //Write update
+                        System.Net.WebClient _wc = new System.Net.WebClient();
+                        string _webData = _wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/credits.txt");
+                        File.WriteAllText(_filename, _webData);
 
-                    Console.Clear();
-                    string _update = File.ReadAllText("credits.txt");
-                    Console.WriteLine(_update);
+                        Console.Clear();
+                        string _update = File.ReadAllText("credits.txt");
+                        Console.WriteLine(_update);
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("You are in offline mode!");
+                        if (!File.Exists(@"./credits.txt"))
+                        {
+                            Console.WriteLine("You don't have credits.txt file");
+                        }
+                        else
+                        {
+                            string update = File.ReadAllText("credits.txt");
+                            Console.WriteLine(update);
+                        }
+                    }
                     TextTool.TextGen("Press anykey to go back to main menu...", 10);
                     Console.ReadKey();
                     break;
 
                     case "7":
                     //News
-                    Console.WriteLine("Checking for update...[Require internet]");
-                    string __filename = "_update.txt";
-                    //Write update
-                    System.Net.WebClient __wc = new System.Net.WebClient();
-                    string __webData = __wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_update.txt");
-                    File.WriteAllText(__filename, __webData);
+                    if (connectEnable == true)
+                    {
+                        Console.WriteLine("Checking for update...[Require internet]");
+                        string __filename = "_update.txt";
+                        //Write update
+                        System.Net.WebClient __wc = new System.Net.WebClient();
+                        string __webData = __wc.DownloadString("https://raw.githubusercontent.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/main/_update.txt");
+                        File.WriteAllText(__filename, __webData);
 
-                    Console.Clear();
-                    string __update = File.ReadAllText("_update.txt");
-                    Console.WriteLine(__update);
+                        Console.Clear();
+                        string __update = File.ReadAllText("_update.txt");
+                        Console.WriteLine(__update);
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("You are in offline mode!");
+                        if (!File.Exists(@"./_update.txt"))
+                        {
+                            Console.WriteLine("You don't have _update.txt file");
+                        }
+                        else
+                        {
+                            string update = File.ReadAllText("_update.txt");
+                            Console.WriteLine(update);
+                        }
+                    }
+
                     TextTool.TextGen("Press anykey to go back to main menu...", 10);
                     Console.ReadKey();
                     break;
@@ -635,6 +696,20 @@ class TextTool
 
 class Settings
 {
+    public static bool CheckConnect()
+    {
+        string host = "8.8.8.8";
+        bool result = false;
+        Ping p = new Ping();
+        try
+        {
+            PingReply reply = p.Send(host, 3000);
+            if (reply.Status == IPStatus.Success)
+                return true;
+        }
+        catch { }
+        return result;
+    }
     public static JsonNode Read()
     {
         string _filename = "setting.json";
@@ -838,13 +913,13 @@ public class FileTool : coreGame
 
     }
     public static string ChoiceRoute(string Question, string Choice1, string Choice2, string Choice3)
-        {
+    {
         //Choice that affect gameplay/ending
         while (true)
         {
             TextTool.TextGen("\n" + Question);
             Console.WriteLine("\n1 " + Choice1 + "\n2 " + Choice2 + "\n3 " + Choice3 + "\n");
-            TextTool.TextGen("Your answer(1-3) >");
+            TextTool.TextGen("Your answer(1-3)- >");
             string Choose = Console.ReadLine();
             if (Choose == "1" || Choose == "2" || Choose == "3")
             {

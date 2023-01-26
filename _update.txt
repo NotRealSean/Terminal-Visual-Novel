@@ -3,6 +3,13 @@ Don't forget to check if game version match this update note
 Settings
 + Added version checker
 
+                0.0.54 Dev.3
+Function
++ Added Settings.CheckConnect()
+
+Settings
++ Check internet connection before enter the game
+
                 0.0.54 Dev.2
 debug_mode V.2
 + Added disable debug_mode in settings(only shown/turn off when on debug_mode)
@@ -12,5 +19,9 @@ UI
 + Any value that less than 1 on UIarrow is not empty any more
 +- Make UI on loading more like linux terminal
 
-                Planing
-Offline mode(If you open game while offline you'll get error and crashed)
+                0.0.54 Dev.1
+Settings
++ Added Debug_mode V.1
+
+In test
++ Reset command(Restart game)
