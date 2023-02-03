@@ -118,7 +118,7 @@ class Menu
                 Console.WriteLine("Press enter key to continue...");
             }
             string debug_mode = Console.ReadLine();
-            bool debugEnable = (debug_mode == "debug_mode") ? true : false;
+            string debugEnable = (debug_mode == "debug_mode") ? "true" : (debug_mode == "enable_loop") ? "resetLoop" : "false";
             while (true)
             {
                 //Get Textspeed and arrow
@@ -129,7 +129,7 @@ class Menu
                 Console.Clear();
 
                 //Main menu
-                if (debugEnable == true)
+                if (debugEnable == "true")
                 {
                     Console.WriteLine("[Debug mode is enable]");
                     Console.WriteLine("TextSpeed [" + textspeed + " ms]");
@@ -253,7 +253,7 @@ class Menu
                         string DBtextspeed = Settings.Read(0, "TextSpeed");
                         string DBarrow = Settings.Read(0, "Arrow");
                         Console.Clear();
-                        if (debugEnable == true)
+                        if (debugEnable == "true")
                         {
                             Console.WriteLine("[Debug mode is enable]");
                             Console.WriteLine("JsonTextSpeed[" + DBtextspeed + "]");
@@ -261,7 +261,7 @@ class Menu
                         }
                         Console.WriteLine("=======================================================");
                         Console.WriteLine("\t\tSettings\n\t[1] Text Speed[" + DBtextspeed + "]\n\t[2] Arrow[" + DBarrow + "]");
-                        if (debugEnable == true)
+                        if (debugEnable == "true")
                         {
                             Console.WriteLine("\n\t[5] Disable debug_mode\n");
                         }
@@ -276,17 +276,17 @@ class Menu
                         }
                         else if (setting == "1" || setting == "2" || setting == "5")
                         {
-                            if (setting == "5" && debugEnable == true)
+                            if (setting == "5" && debugEnable == "true")
                             {
                                 Console.Write("Are you sure to disble this settings[Y/n]");
                                 string DBdisableComfirm = Console.ReadLine().ToLower();
                                 if (DBdisableComfirm == "y")
                                 {
-                                    debugEnable = false;
+                                    debugEnable = "false";
                                     break;
                                 }
                             }
-                            if (setting == "5" && debugEnable == false)
+                            if (setting == "5" && debugEnable == "false")
                             {
                                 Console.WriteLine("You enter worng key!");
                                 Console.ReadKey();

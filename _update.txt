@@ -25,3 +25,7 @@ Settings
 
 In test
 + Reset command(Restart game)
+
+                Planing
+Settings
+? More cursor customization(Through json file)
