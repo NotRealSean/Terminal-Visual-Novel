@@ -1,18 +1,5 @@
-﻿using System;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Dynamic;
-using System.Globalization;
-using System.IO.Compression;
-using System.Security.Cryptography;
-using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
+﻿using System.Net.NetworkInformation;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Text.Json.Nodes;
 
 public class coreGame
@@ -93,7 +80,7 @@ class Menu
             FileTool.CheckCreatedFolder("save");
             Console.WriteLine("Done");
             Console.Write("Checking for update[Require internet]...");
-            string version = "0.0.54 Dev.3";
+            string version = "0.0.54 Dev.4";
             bool connectEnable = Settings.CheckConnect();
             if (connectEnable == true)
             {
@@ -117,8 +104,14 @@ class Menu
                 Console.WriteLine("\nYou are in offline mode but you can still play the game");
                 Console.WriteLine("Press enter key to continue...");
             }
-            string debug_mode = Console.ReadLine();
-            string debugEnable = (debug_mode == "debug_mode") ? "true" : (debug_mode == "enable_loop") ? "resetLoop" : "false";
+            string devc = Console.ReadLine();
+            string debugEnable = (devc == "debug_enable") ? "true" : (devc == "help") ? "help" : (devc == "offline_mode") ? "offline" : "online";
+            connectEnable = (debugEnable == "offline") ? false : true;
+            if (debugEnable == "help")
+            {
+                Console.WriteLine("debug_enable = enable debugging\noffline_mode = enable offline test\nPlease restart the game to re-enter debug commands");
+                Console.ReadKey();
+            }
             while (true)
             {
                 //Get Textspeed and arrow
@@ -138,11 +131,14 @@ class Menu
                 Console.WriteLine("=======================================================");
                 Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t[1] New Game\n\t[2] Load\n\t[3] Quick Load\n\t[4] Settings\n\t[5] Guide[Require internet]\n\t[6] Credits[Require internet]\n\t[7] News[Require internet]\n\n\t[9] Exit\t\t\t\t" + version);
                 Console.WriteLine("=======================================================");
-                Console.WriteLine("[Type number and hit Enter to comfirm]");
                 TextTool.TextGen("Command" + UIarrow, textspeed);
                 string inPut = Console.ReadLine();
                 switch (inPut)
                 {
+                    case "help":
+                    Console.WriteLine("Help: Type number and hit Enter to comfirm or type reset to restart the game");
+                    Console.ReadKey();
+                    break;
                     case "1":
                     while (true)
                     {
@@ -151,12 +147,15 @@ class Menu
                         Console.WriteLine("=======================================================");
                         Console.WriteLine("\t\tSelect Chapter\n\t[1] Prologue\n\t[2] Chapter 1\n\t[3] Chapter 2\n\n\t[9] Back to main menu");
                         Console.WriteLine("=======================================================");
-                        Console.WriteLine("[Type number and hit Enter to comfirm]");
                         TextTool.TextGen("Command" + UIarrow, textspeed);
                         string chapterSelect = Console.ReadLine();
 
                         switch (chapterSelect)
                         {
+                            case "help":
+                            Console.WriteLine("Help: Type number and hit Enter to comfirm");
+                            Console.ReadKey();
+                            break;
                             case "1":
                                 coreGame.prologue();
                                 break;
@@ -217,17 +216,21 @@ class Menu
                             Console.WriteLine("=======================================================");
                             Console.WriteLine("\t\tYour save file\n"+ str +"\n\n\t[9] Exit");
                             Console.WriteLine("=======================================================");
-                            Console.WriteLine("[Type filename and hit Enter to comfirm / Type del to select delete file]");
                         }
                         TextTool.TextGen("Load file" + UIarrow, textspeed);
                         string LoadSelect = Console.ReadLine();
+                        if (LoadSelect == "help")
+                        {
+                            Console.WriteLine("Help: Type file name and hit enter to continue or type del to enter delete mode");
+                            Console.ReadKey();
+                        }
                         if (LoadSelect == "9")
                         {
                             break;
                         }
                         if (LoadSelect.ToLower() == "del")
                         {
-                            TextTool.TextGen("Delete file" + UIarrow, textspeed);
+                            TextTool.TextGen("Enter file name you want to delete" + UIarrow, textspeed);
                             string DelSelect = Console.ReadLine();
                             FileTool.DeleteSave(DelSelect, "save");
                         }
@@ -267,9 +270,13 @@ class Menu
                         }
                         Console.WriteLine("\n\t[9] Back to main menu");
                         Console.WriteLine("=======================================================");
-                        Console.WriteLine("[Type number and hit Enter to comfirm]\n[You can't see change until you exit settings(But value is saved)]");
                         TextTool.TextGen("Command" + UIarrow, textspeed);
                         string setting = Console.ReadLine();
+                        if (setting == "help")
+                        {
+                            Console.WriteLine("Help: Type number and hit Enter to comfirm");
+                            Console.ReadKey();
+                        }
                         if (setting == "9")
                         {
                         break;

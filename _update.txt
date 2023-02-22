@@ -3,6 +3,13 @@ Don't forget to check if game version match this update note
 Settings
 + Added version checker
 
+                0.0.54 Dev.4
+Code
++- Make more spaghetti code
+
+Function
++ Help command(Usuage: just type help)
+
                 0.0.54 Dev.3
 Function
 + Added Settings.CheckConnect()
