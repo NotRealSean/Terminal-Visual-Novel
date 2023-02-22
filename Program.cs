@@ -90,7 +90,7 @@ class Menu
                 if (version != versionData)
                 {
                     Console.WriteLine("Your game version is outdated\nYour game version : " + version + "\nNew version : " + versionData);
-                    Console.WriteLine("Download new version here : https://github.com/NotRealSean/Console-Visual-Novel-Text-Base-Game/releases");
+                    Console.WriteLine("Download new version here : https://github.com/NotRealSean/Terminal-Visual-Novel/releases");
                     Console.WriteLine("You can still play the game by press enter key to continue...");
                 }
                 else if (version == versionData)
