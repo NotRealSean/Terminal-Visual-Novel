@@ -1,6 +1,6 @@
-#Terminal Visual Novel
+# Terminal Visual Novel
 This is a visual novel game run on your command line/terminal.
-#Build
+# Build
 ```bash
 # Git clone project
 git clone https://github.com/NotRealSean/Terminal-Visual-Novel && cd Terminal-Visual-Novel
