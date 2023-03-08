@@ -1,45 +1,44 @@
-﻿using System.Net.NetworkInformation;
-using System.Text.Json;
-using System.Text.Json.Nodes;
+﻿using System.Text.Json.Nodes;
+using home.notrealsean.Desktop.code.Vngame.VNLib;
 
 public class coreGame
 {
     public static void prologue()
     {
-        Settings.check();
-        int textspeed = Convert.ToInt32(Settings.Read(0, "TextSpeed"));
+        VNLib.Settings.check();
+        int textspeed = Convert.ToInt32(VNLib.Settings.Read(0, "TextSpeed"));
         //Prologue
-        TextTool.TextGen("England 2079\n", textspeed, true, false, 2000);
-        TextTool.StoryGen("Girl", "I-Is this ok...?", textspeed, true, true);
-        TextTool.StoryGen("Boss", "Is this all you can do in one week? USELESS. Don't come back if there's no progress at all!", textspeed, true, true);
-        TextTool.StoryGen("Girl", "!\n", textspeed, true, false, 1000);
-        TextTool.StoryGen("Girl", "...\n", textspeed, false, false, 1200);
-        TextTool.StoryGen("Girl", "yes...", textspeed, false, true);
-        TextTool.TextGen("An office worker girl had been working hard for a month straight, but her boss complains again. She tries her best on her work, but other co-workers like to put their work on her, and only her, for some reason, which makes her work not progress at all. All the co-workers already know this, but they don't care.", textspeed, true, true, 500);
-        TextTool.StoryGen("Girl", "...", textspeed, true, true);
-        TextTool.StoryGen("Co-worker 1", "Can you help me with this work?", textspeed, true, true);
-        TextTool.StoryGen("Girl", "I-I still hav- \n", textspeed, true, false, 700);
-        TextTool.StoryGen("Co-worker 1", "Thank you.", textspeed, false, false, 2000);
-        TextTool.StoryGen("Girl", "... ", textspeed, true, false, 1000);
-        TextTool.TextGen("Again...", textspeed, false, true);
-        TextTool.TextGen("She sometimes thinks about quitting her job and finding a better one, but no one wants to hire her to work because they already have a lot of employees at their office.", textspeed, true, true);
-        TextTool.StoryGen("Girl", "... ", textspeed, true, false, 1200);
-        TextTool.TextGen("Maybe... ", textspeed, false, false, 1200);
-        TextTool.TextGen("Just maybe... ", textspeed, false, false, 1200);
-        TextTool.TextGen("What if I die and was reborn in another world like in isekai novel.", textspeed, false, true);
-        TextTool.StoryGen("Girl", "Just saying ", textspeed, true, false, 1000);
-        TextTool.TextGen("Haha...", textspeed, false, true);
-        TextTool.TextGen("She likes to read isekai novels during her free time. She often thinks about killing herself and living a happier life in the afterlife.", textspeed, true, true);
-        TextTool.StoryGen("Girl", "It's 8 PM already? ", textspeed, true , false, 1000);
-        TextTool.TextGen("Maybe I should go home and make something to eat for dinne-", textspeed, false, false, 1200);
-        TextTool.TextGen("", textspeed, true, false, 3000);
-        TextTool.StoryGen("Girl", "... ", textspeed, true, false, 1200);
-        TextTool.TextGen("Why is everything black... ", textspeed, false, false, 1200);
-        TextTool.TextGen("I can't see anything.... ", textspeed, false, false, 1200);
-        TextTool.TextGen("What happened to me?", textspeed, false, true);
-        TextTool.TextGen("To be continue...", textspeed, true, true);
-        FileTool.SaveChaper("save1-1", "save", 1, 1, true);
-        TextTool.TextGen("Do you want to continue?[y] ", textspeed, true);
+        VNLib.TextTool.TextGen("England 2079\n", textspeed, true, false, 2000);
+        VNLib.TextTool.StoryGen("Girl", "I-Is this ok...?", textspeed, true, true);
+        VNLib.TextTool.StoryGen("Boss", "Is this all you can do in one week? USELESS. Don't come back if there's no progress at all!", textspeed, true, true);
+        VNLib.TextTool.StoryGen("Girl", "!\n", textspeed, true, false, 1000);
+        VNLib.TextTool.StoryGen("Girl", "...\n", textspeed, false, false, 1200);
+        VNLib.TextTool.StoryGen("Girl", "yes...", textspeed, false, true);
+        VNLib.TextTool.TextGen("An office worker girl had been working hard for a month straight, but her boss complains again. She tries her best on her work, but other co-workers like to put their work on her, and only her, for some reason, which makes her work not progress at all. All the co-workers already know this, but they don't care.", textspeed, true, true, 500);
+        VNLib.TextTool.StoryGen("Girl", "...", textspeed, true, true);
+        VNLib.TextTool.StoryGen("Co-worker 1", "Can you help me with this work?", textspeed, true, true);
+        VNLib.TextTool.StoryGen("Girl", "I-I still hav- \n", textspeed, true, false, 700);
+        VNLib.TextTool.StoryGen("Co-worker 1", "Thank you.", textspeed, false, false, 2000);
+        VNLib.TextTool.StoryGen("Girl", "... ", textspeed, true, false, 1000);
+        VNLib.TextTool.TextGen("Again...", textspeed, false, true);
+        VNLib.TextTool.TextGen("She sometimes thinks about quitting her job and finding a better one, but no one wants to hire her to work because they already have a lot of employees at their office.", textspeed, true, true);
+        VNLib.TextTool.StoryGen("Girl", "... ", textspeed, true, false, 1200);
+        VNLib.TextTool.TextGen("Maybe... ", textspeed, false, false, 1200);
+        VNLib.TextTool.TextGen("Just maybe... ", textspeed, false, false, 1200);
+        VNLib.TextTool.TextGen("What if I die and was reborn in another world like in isekai novel.", textspeed, false, true);
+        VNLib.TextTool.StoryGen("Girl", "Just saying ", textspeed, true, false, 1000);
+        VNLib.TextTool.TextGen("Haha...", textspeed, false, true);
+        VNLib.TextTool.TextGen("She likes to read isekai novels during her free time. She often thinks about killing herself and living a happier life in the afterlife.", textspeed, true, true);
+        VNLib.TextTool.StoryGen("Girl", "It's 8 PM already? ", textspeed, true , false, 1000);
+        VNLib.TextTool.TextGen("Maybe I should go home and make something to eat for dinne-", textspeed, false, false, 1200);
+        VNLib.TextTool.TextGen("", textspeed, true, false, 3000);
+        VNLib.TextTool.StoryGen("Girl", "... ", textspeed, true, false, 1200);
+        VNLib.TextTool.TextGen("Why is everything black... ", textspeed, false, false, 1200);
+        VNLib.TextTool.TextGen("I can't see anything.... ", textspeed, false, false, 1200);
+        VNLib.TextTool.TextGen("What happened to me?", textspeed, false, true);
+        VNLib.TextTool.TextGen("To be continue...", textspeed, true, true);
+        VNLib.FileTool.SaveChaper("save1-1", "save", 1, 1, true);
+        VNLib.TextTool.TextGen("Do you want to continue?[y] ", textspeed, true);
         string Respond = Console.ReadLine().ToLower();
         if (Respond == "y")
         {
@@ -49,8 +48,8 @@ public class coreGame
     public static void chapter1()
     {
         //Chapter 1
-        int textspeed = Convert.ToInt32(Settings.Read(0, "TextSpeed"));
-        TextTool.TextGen("Do you want to continue?[y] ", textspeed, true);
+        int textspeed = Convert.ToInt32(VNLib.Settings.Read(0, "TextSpeed"));
+        VNLib.TextTool.TextGen("Do you want to continue?[y] ", textspeed, true);
         string Respond = Console.ReadLine().ToLower();
         if (Respond == "y")
         {
@@ -60,8 +59,8 @@ public class coreGame
     public static void chapter2()
     {
         //chapter 2
-        int textspeed = Convert.ToInt32(Settings.Read(0, "TextSpeed"));
-        TextTool.TextGen("Testing chapter 2", textspeed, true, true);
+        int textspeed = Convert.ToInt32(VNLib.Settings.Read(0, "TextSpeed"));
+        VNLib.TextTool.TextGen("Testing chapter 2", textspeed, true, true);
     }
 }
 class Menu
@@ -71,17 +70,17 @@ class Menu
         string reset = "reset";
         while (reset == "reset")
         {
-            TextTool.TextGen("", 1, true, false, 1000);
-            TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n\n\n", 1, true, false);
+            VNLib.TextTool.TextGen("", 1, true, false, 1000);
+            VNLib.TextTool.TextGen("\n\n\t---< Game made by NotRealSean >---\n\n\nReport bug/suggestion at...\nDiscord - NotRealSean#4001\nTwitter - @Seankungzaza1\n\n\n", 1, true, false);
             Console.Write("Loading log :\nLoading settings...");
-            Settings.check();
+            VNLib.Settings.check();
             Console.WriteLine("Done");
             Console.Write("Checking save folder...");
-            FileTool.CheckCreatedFolder("save");
+            VNLib.FileTool.CheckCreatedFolder("save");
             Console.WriteLine("Done");
             Console.Write("Checking for update[Require internet]...");
             string version = "0.0.54 Dev.4";
-            bool connectEnable = Settings.CheckConnect();
+            bool connectEnable = VNLib.Settings.CheckConnect();
             if (connectEnable == true)
             {
                 System.Net.WebClient gitversion = new System.Net.WebClient();
@@ -115,7 +114,7 @@ class Menu
             while (true)
             {
                 //Get Textspeed and arrow
-                JsonNode _jsonData = Settings.Read()!;
+                JsonNode _jsonData = VNLib.Settings.Read()!;
                 int textspeed = Convert.ToInt32(_jsonData[0]["TextSpeed"].ToString());
                 int arrow = Convert.ToInt32(_jsonData[0]["Arrow"].ToString());
                 string UIarrow = (arrow == 1) ? " -=>" : (arrow == 2) ? " -+>" : (arrow == 3) ? " :" : (arrow == 4) ? " >" : (arrow == 69) ? " <-+{69 NICE 69}-+>" : (arrow >= 5) ? " -=>": " <{[YOUR ARROW SETTINGS IS LOWER THAN 1!]}>>>";
@@ -131,7 +130,7 @@ class Menu
                 Console.WriteLine("=======================================================");
                 Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t[1] New Game\n\t[2] Load\n\t[3] Quick Load\n\t[4] Settings\n\t[5] Guide[Require internet]\n\t[6] Credits[Require internet]\n\t[7] News[Require internet]\n\n\t[9] Exit\t\t\t\t" + version);
                 Console.WriteLine("=======================================================");
-                TextTool.TextGen("Command" + UIarrow, textspeed);
+                VNLib.TextTool.TextGen("Command" + UIarrow, textspeed);
                 string inPut = Console.ReadLine();
                 switch (inPut)
                 {
@@ -147,7 +146,7 @@ class Menu
                         Console.WriteLine("=======================================================");
                         Console.WriteLine("\t\tSelect Chapter\n\t[1] Prologue\n\t[2] Chapter 1\n\t[3] Chapter 2\n\n\t[9] Back to main menu");
                         Console.WriteLine("=======================================================");
-                        TextTool.TextGen("Command" + UIarrow, textspeed);
+                        VNLib.TextTool.TextGen("Command" + UIarrow, textspeed);
                         string chapterSelect = Console.ReadLine();
 
                         switch (chapterSelect)
@@ -192,7 +191,7 @@ class Menu
 
 
                     case "2":
-                    FileTool.CheckCreatedFolder("save");
+                    VNLib.FileTool.CheckCreatedFolder("save");
                     //Load
                     while (true)
                     {
@@ -217,7 +216,7 @@ class Menu
                             Console.WriteLine("\t\tYour save file\n"+ str +"\n\n\t[9] Exit");
                             Console.WriteLine("=======================================================");
                         }
-                        TextTool.TextGen("Load file" + UIarrow, textspeed);
+                        VNLib.TextTool.TextGen("Load file" + UIarrow, textspeed);
                         string LoadSelect = Console.ReadLine();
                         if (LoadSelect == "help")
                         {
@@ -230,13 +229,13 @@ class Menu
                         }
                         if (LoadSelect.ToLower() == "del")
                         {
-                            TextTool.TextGen("Enter file name you want to delete" + UIarrow, textspeed);
+                            VNLib.TextTool.TextGen("Enter file name you want to delete" + UIarrow, textspeed);
                             string DelSelect = Console.ReadLine();
-                            FileTool.DeleteSave(DelSelect, "save");
+                            VNLib.FileTool.DeleteSave(DelSelect, "save");
                         }
                         else
                         {
-                            FileTool.LoadChapter(LoadSelect);
+                            VNLib.FileTool.LoadChapter(LoadSelect);
                         }
                     }
                     break;
@@ -244,17 +243,17 @@ class Menu
 
                     case "3":
                     //Quick load
-                    FileTool.QLoadChapter();
+                    VNLib.FileTool.QLoadChapter();
                     break;
 
 
                     case "4":
                     //Settings
-                    Settings.check();
+                    VNLib.Settings.check();
                     while (true)
                     {
-                        string DBtextspeed = Settings.Read(0, "TextSpeed");
-                        string DBarrow = Settings.Read(0, "Arrow");
+                        string DBtextspeed = VNLib.Settings.Read(0, "TextSpeed");
+                        string DBarrow = VNLib.Settings.Read(0, "Arrow");
                         Console.Clear();
                         if (debugEnable == "true")
                         {
@@ -270,7 +269,7 @@ class Menu
                         }
                         Console.WriteLine("\n\t[9] Back to main menu");
                         Console.WriteLine("=======================================================");
-                        TextTool.TextGen("Command" + UIarrow, textspeed);
+                        VNLib.TextTool.TextGen("Command" + UIarrow, textspeed);
                         string setting = Console.ReadLine();
                         if (setting == "help")
                         {
@@ -308,7 +307,7 @@ class Menu
                             }
                             if (setting == "1" || setting == "2")
                             {
-                                TextTool.TextGen("Value" + UIarrow, textspeed);
+                                VNLib.TextTool.TextGen("Value" + UIarrow, textspeed);
                                 string value = Console.ReadLine();
                                 try
                                 {
@@ -321,7 +320,7 @@ class Menu
                                     else if (result > 0)
                                     {
                                         string stringvalue = result.ToString();
-                                        Settings.Modify(setting, stringvalue);
+                                        VNLib.Settings.Modify(setting, stringvalue);
                                     }
                                     else
                                     {
@@ -374,7 +373,7 @@ class Menu
                             Console.WriteLine(update);
                         }
                     }
-                    TextTool.TextGen("Press anykey to go back to main menu...", 10);
+                    VNLib.TextTool.TextGen("Press anykey to go back to main menu...", 10);
                     Console.ReadKey();
                     break;
 
@@ -408,7 +407,7 @@ class Menu
                             Console.WriteLine(update);
                         }
                     }
-                    TextTool.TextGen("Press anykey to go back to main menu...", 10);
+                    VNLib.TextTool.TextGen("Press anykey to go back to main menu...", 10);
                     Console.ReadKey();
                     break;
 
@@ -442,7 +441,7 @@ class Menu
                         }
                     }
 
-                    TextTool.TextGen("Press anykey to go back to main menu...", 10);
+                    VNLib.TextTool.TextGen("Press anykey to go back to main menu...", 10);
                     Console.ReadKey();
                     break;
 
@@ -490,467 +489,4 @@ class Menu
             }
         }
     }
-}
-/*
-
-
-
-
-
-
-*    WARNING THIS IS TOOLS FUNCTION ZONE!
-
-*   IF YOU EDIT ANYTHING IN THIS YOUR FUNCTION MIGHT BROKE OR CANT BE USE!
-*   BESURE WHAT YOU'RE DOING BEFORE EDIT FUNCTION!
-
-
-
-
-
-
-*/
-class TextTool
-{
-    //Normal text generation
-    public static void TextGen(string text, int textSpeed, bool clearConsole, bool pressOnKey, int delay)
-    {
-        if (clearConsole == true)
-        {
-            Console.Clear();
-        }
-        if (pressOnKey == true)
-        {
-            for (int i = 0; i < text.Length + 1; i++)
-            {
-                if (i >= text.Length)
-                {
-                    Thread.Sleep(delay);
-                    Console.WriteLine("\n\n--\tContinue\t-->>");
-                    break;
-                }
-                Console.Write(text[i]);
-                Thread.Sleep(textSpeed);
-            }
-            while (Console.ReadKey(true).Key != ConsoleKey.Enter && Console.ReadKey(true).Key != ConsoleKey.Spacebar){}
-        }
-        if (pressOnKey == false)
-        {
-            for (int i = 0; i < text.Length; i++)
-            {
-                Console.Write(text[i]);
-                Thread.Sleep(textSpeed);
-            }
-            Thread.Sleep(delay);
-        }
-    }
-    public static void TextGen(string text, int textSpeed, bool clearConsole, bool pressOnKey)
-    {
-        if (clearConsole == true)
-        {
-            Console.Clear();
-        }
-        if (pressOnKey == true)
-        {
-            for (int i = 0; i < text.Length + 1; i++)
-            {
-                if (i >= text.Length)
-                {
-                    Thread.Sleep(500);
-                    Console.WriteLine("\n\n--\tContinue\t-->>");
-                    break;
-                }
-                Console.Write(text[i]);
-                Thread.Sleep(textSpeed);
-            }
-            while (Console.ReadKey(true).Key != ConsoleKey.Enter && Console.ReadKey(true).Key != ConsoleKey.Spacebar){}
-        }
-        if (pressOnKey == false)
-        {
-            for (int i = 0; i < text.Length; i++)
-            {
-                Console.Write(text[i]);
-                Thread.Sleep(textSpeed);
-            }
-        }
-    }
-    public static void TextGen(string text, int textSpeed, bool clearConsole)
-    {
-        if (clearConsole == true)
-        {
-            Console.Clear();
-        }
-        for (int i = 0; i < text.Length; i++)
-        {
-            Console.Write(text[i]);
-            Thread.Sleep(textSpeed);
-        }
-    }
-    public static void TextGen(string text, int textSpeed)
-    {
-        for (int i = 0; i < text.Length; i++)
-        {
-            Console.Write(text[i]);
-            Thread.Sleep(textSpeed);
-        }
-    }
-    public static void TextGen(string text)
-    {
-        for (int i = 0; i < text.Length; i++)
-        {
-            Console.Write(text[i]);
-            Thread.Sleep(1);
-        }
-    }
-
-    //Story text generation[WIP]
-    public static void StoryGen(string name, string text, int textSpeed, bool clearConsole, bool pressOnKey, int delay)
-    {
-        if (clearConsole == true)
-        {
-            Console.Clear();
-        }
-        if (pressOnKey == true)
-        {
-            Console.Write("[" + name + "]: ");
-            for (int i = 0; i < text.Length + 1; i++)
-            {
-                if (i >= text.Length)
-                {
-                    Thread.Sleep(delay);
-                    Console.WriteLine("\n\n--\tContinue\t-->>");
-                    break;
-                }
-                Console.Write(text[i]);
-                Thread.Sleep(textSpeed);
-            }
-            while (Console.ReadKey(true).Key != ConsoleKey.Enter && Console.ReadKey(true).Key != ConsoleKey.Spacebar){}
-        }
-        if (pressOnKey == false)
-        {
-            Console.Write("[" + name + "]: ");
-            for (int i = 0; i < text.Length; i++)
-            {
-                Console.Write(text[i]);
-                Thread.Sleep(textSpeed);
-            }
-            Thread.Sleep(delay);
-        }
-    }
-    public static void StoryGen(string name, string text, int textSpeed, bool clearConsole, bool pressOnKey)
-    {
-        if (clearConsole == true)
-        {
-            Console.Clear();
-        }
-        if (pressOnKey == true)
-        {
-            Console.Write("[" + name + "]: ");
-            for (int i = 0; i < text.Length + 1; i++)
-            {
-                if (i >= text.Length)
-                {
-                    Thread.Sleep(500);
-                    Console.WriteLine("\n\n--\tContinue\t-->>");
-                    break;
-                }
-                Console.Write(text[i]);
-                Thread.Sleep(textSpeed);
-            }
-            while (Console.ReadKey(true).Key != ConsoleKey.Enter && Console.ReadKey(true).Key != ConsoleKey.Spacebar){}
-        }
-        if (pressOnKey == false)
-        {
-            Console.Write("[" + name + "]: ");
-            for (int i = 0; i < text.Length; i++)
-            {
-                Console.Write(text[i]);
-                Thread.Sleep(textSpeed);
-            }
-        }
-    }
-    public static void StoryGen(string name, string text, int textSpeed, bool clearConsole)
-    {
-        if (clearConsole == true)
-        {
-            Console.Clear();
-        }
-        Console.Write("[" + name + "]: ");
-        for (int i = 0; i < text.Length; i++)
-        {
-            Console.Write(text[i]);
-            Thread.Sleep(textSpeed);
-        }
-    }
-    public static void StoryGen(string name, string text, int textSpeed)
-    {
-        Console.Write("[" + name + "]: ");
-        for (int i = 0; i < text.Length; i++)
-        {
-            Console.Write(text[i]);
-            Thread.Sleep(textSpeed);
-        }
-    }
-    public static void StoryGen(string name, string text)
-    {
-        Console.Write("[" + name + "]: ");
-        for (int i = 0; i < text.Length; i++)
-        {
-            Console.Write(text[i]);
-            Thread.Sleep(1);
-        }
-    }
-}
-
-class Settings
-{
-    public static bool CheckConnect()
-    {
-        string host = "8.8.8.8";
-        bool result = false;
-        Ping p = new Ping();
-        try
-        {
-            PingReply reply = p.Send(host, 3000);
-            if (reply.Status == IPStatus.Success)
-                return true;
-        }
-        catch { }
-        return result;
-    }
-    public static JsonNode Read()
-    {
-        string _filename = "setting.json";
-        string jsondata = File.ReadAllText(_filename);
-        var _loadJson = JsonNode.Parse(jsondata);
-        return _loadJson;
-    }
-    public static string Read(int slot, string name)
-    {
-        string _filename = "setting.json";
-        string jsondata = File.ReadAllText(_filename);
-        var _loadJson = JsonNode.Parse(jsondata);
-        string data = _loadJson[slot][name].ToString();
-        return data;
-    }
-    public static void Modify(string type, string value)
-    {
-        string _filename = "setting.json";
-        try
-        {
-            if (type == "1")
-            {
-                string jsondata = File.ReadAllText(_filename);
-                var _loadJson = JsonNode.Parse(jsondata);
-                _loadJson[0]["TextSpeed"] = value;
-
-                string _save = JsonSerializer.Serialize(_loadJson);
-                File.WriteAllText(_filename, _save);
-            }
-            else if (type == "2")
-            {
-                string jsondata = File.ReadAllText(_filename);
-                var _loadJson = JsonNode.Parse(jsondata);
-                _loadJson[0]["Arrow"] = value;
-
-                string _save = JsonSerializer.Serialize(_loadJson);
-                File.WriteAllText(_filename, _save);
-            }
-            else
-            {
-                Console.WriteLine("Setting not found!");
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine("Something went worng...\nMore detail:\n");
-            Console.WriteLine(e);
-        }
-    }
-    public static void check()
-    {
-    string _filename = @"./setting.json";
-    if (!File.Exists(_filename))
-    {
-        string filename = "setting.json";
-        object[] arr = new object[1];
-        var _save = new settingsave
-        {
-            TextSpeed = "30",
-            Arrow = "1"
-        };
-
-        arr[0] = _save;
-
-        string _savedata = JsonSerializer.Serialize(arr);
-        File.WriteAllText(filename, _savedata);
-        }
-    }
-}
-
-public class FileTool : coreGame
-{
-    public static void SaveChaper(string filename, string path, int chapter, int route, bool quicksave)
-    {
-        string schapter = chapter.ToString();
-        string sroute = route.ToString();
-        string dir = path;
-        if (!Directory.Exists(dir))
-        {
-            Directory.CreateDirectory(dir);
-        }
-        object[] obj = new object[1];
-        var save = new dataSave
-        {
-            chapter = schapter,
-            route = sroute
-        };
-        obj[0] = save;
-
-        string savedata = JsonSerializer.Serialize(obj);
-        File.WriteAllText(Path.Combine(dir, filename), savedata);
-        if (quicksave = true)
-        {
-            File.WriteAllText(Path.Combine(dir, "QuickSave"), savedata);
-        }
-    }
-    public static void CheckCreatedFolder(string foldername)
-    {
-        if (!Directory.Exists(foldername))
-        {
-            Directory.CreateDirectory(foldername);
-        }
-    }
-    public static void LoadChapter(string filename)
-    {
-        string[] path = {"save", filename};
-        string fullpath = Path.Combine(path);
-        if (!File.Exists(fullpath))
-        {
-            Console.WriteLine("File save not found");
-            Console.ReadKey();
-        }
-        if (File.Exists(fullpath))
-        {
-            string _filename = fullpath;
-            string jsondata = File.ReadAllText(_filename);
-            var loadJson = JsonNode.Parse(jsondata);
-            string Lchapter = loadJson[0]["chapter"].ToString();
-            if (Lchapter == "1")
-            {
-                chapter1();
-            }
-            else if (Lchapter == "2")
-            {
-                chapter2();
-            }
-            else
-            {
-                Console.WriteLine("Save file not found");
-                Console.ReadKey();
-            }
-        }
-    }
-    public static void QLoadChapter()
-    {
-        string filename = "QuickSave";
-        string fullqpath = @"save/QuickSave";
-        if (!File.Exists(fullqpath))
-        {
-            Console.WriteLine("You don't have quick save file");
-            Console.ReadKey();
-        }
-        if (File.Exists(fullqpath))
-        {
-            string _filename = fullqpath;
-            string jsondata = File.ReadAllText(_filename);
-            var loadJson = JsonNode.Parse(jsondata);
-            string Lchapter = loadJson[0]["chapter"].ToString();
-            Console.WriteLine("Warning:\nYour last saved checkpoint is Chapter " + Lchapter + "\nDo you want to load this chapter?\n[Type Y to continue/Type anything else to return]");
-            string Cload = Console.ReadLine();
-            if (Cload.ToLower() == "y")
-            {
-            if (Lchapter == "1")
-            {
-                chapter1();
-            }
-            else if (Lchapter == "2")
-            {
-                chapter2();
-            }
-            else
-            {
-                Console.WriteLine("Save file not found");
-                Console.ReadKey();
-            }
-            }
-        }
-    }
-    public static void DeleteSave(string filename, string path)
-    {
-        //Doing
-        if (filename == "")
-        {
-            Console.WriteLine("You didn't enter save file name");
-            Console.ReadKey();
-        }
-        else
-        {
-            Console.WriteLine("Are you sure to delete " + filename +"?[Type Y to confirm]");
-            string DelComfirm = Console.ReadLine();
-            if (DelComfirm.ToLower() == "y" || DelComfirm == "")
-            {
-            try
-            {
-                string[] fpath = {path, filename};
-                string fullpath = Path.Combine(fpath);
-                File.Delete(fullpath);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Something went worng\nMore info:");
-                Console.WriteLine(e);
-                Console.ReadLine();
-            }
-            }
-        }
-    }
-    public static void Choice(string Question, string Choice1, string Choice2, string Choice3)
-    {
-    //Choice that doesn't affect anything
-
-    }
-    public static string ChoiceRoute(string Question, string Choice1, string Choice2, string Choice3)
-    {
-        //Choice that affect gameplay/ending
-        while (true)
-        {
-            TextTool.TextGen("\n" + Question);
-            Console.WriteLine("\n1 " + Choice1 + "\n2 " + Choice2 + "\n3 " + Choice3 + "\n");
-            TextTool.TextGen("Your answer(1-3)- >");
-            string Choose = Console.ReadLine();
-            if (Choose == "1" || Choose == "2" || Choose == "3")
-            {
-                return Choose;
-            }
-            else
-            {
-                Console.Clear();
-            }
-        }
-    }
-}
-
-
-
-
-//Data zone
-public class settingsave
-{
-    public string TextSpeed {get; set;}
-    public string Arrow {get; set;}
-}
-public class dataSave
-{
-    public string chapter {get; set;}
-    public string route {get; set;}
 }
