@@ -21,4 +21,4 @@ git clone https://github.com/NotRealSean/Terminal-Visual-Novel && cd Terminal-Vi
 dotnet build
 ```
 # VNLib documentation
-https://app.gitbook.com/s/NUG8EjWrgeNhnv8vk6DV/
+https://seankungzaza.gitbook.io/vnlib-documentation/
