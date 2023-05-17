@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/notrealsean/Desktop/code/Vngame/cs.csproj",
+      "projectUniqueName": "/home/notrealsean/Documents/Terminal-Visual-Novel/cs.csproj",
       "projectName": "cs",
-      "projectPath": "/home/notrealsean/Desktop/code/Vngame/cs.csproj",
+      "projectPath": "/home/notrealsean/Documents/Terminal-Visual-Novel/cs.csproj",
       "packagesPath": "/home/notrealsean/.nuget/packages/",
-      "outputPath": "/home/notrealsean/Desktop/code/Vngame/obj/",
+      "outputPath": "/home/notrealsean/Documents/Terminal-Visual-Novel/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/notrealsean/.nuget/NuGet/NuGet.Config"
@@ -54,12 +54,18 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.3, 7.0.3]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.201/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.103/RuntimeIdentifierGraph.json"
       }
     }
   }

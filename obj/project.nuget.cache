@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "K4dpmUF7dLGccmfPvOXHH6A741//fB9+yrO+/oRE/1QxHxXC8Td2yYo5AYaGZEEoCEI6IZsa8HjHy64dVGzp+A==",
+  "dgSpecHash": "Zf7InK5bvNc299yFHfLBGBSpbGB4qpVQ2+0/FKK+kezCUWtmLJjf3c1Zevpr52zpyRAetRaH5AN9h15bWTgyiQ==",
   "success": true,
-  "projectFilePath": "/home/notrealsean/Desktop/code/Vngame/cs.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/notrealsean/Documents/Terminal-Visual-Novel/cs.csproj",
+  "expectedPackageFiles": [
+    "/home/notrealsean/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.3/microsoft.aspnetcore.app.ref.7.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

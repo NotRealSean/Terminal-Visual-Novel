@@ -1,5 +1,5 @@
 ﻿using System.Text.Json.Nodes;
-using home.notrealsean.Desktop.code.Vngame.VNLib;
+using CSVNLib;
 
 public class coreGame
 {

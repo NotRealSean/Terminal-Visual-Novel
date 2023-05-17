@@ -2,7 +2,7 @@ using System.Net.NetworkInformation;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
-namespace home.notrealsean.Desktop.code.Vngame.VNLib
+namespace CSVNLib
 {
     public class VNLib
     {
