@@ -1,7 +1,7 @@
 # Terminal Visual Novel
 This is a visual novel game run on your command line/terminal.
 
-# Requirement
+# Dependency
 - Dotnet 7.0
 
 ### Dotnet 7.0 installation
