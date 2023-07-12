@@ -57,7 +57,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[7.0.3, 7.0.3]"
+            "version": "[7.0.7, 7.0.7]"
           }
         ],
         "frameworkReferences": {
@@ -65,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.103/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.107/RuntimeIdentifierGraph.json"
       }
     }
   }

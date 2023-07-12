@@ -10,7 +10,7 @@ namespace CSVNLib
         {
             //Normal text generation
             public static void TextGen(string text, int textSpeed, bool clearConsole, bool pressOnKey, int delay)
-            {
+            {   
                 if (clearConsole == true)
                 {
                     Console.Clear();
@@ -214,7 +214,7 @@ namespace CSVNLib
                 catch { }
                 return result;
             }
-            public static JsonNode Read()
+            public static JsonNode? Read()
             {
                 string _filename = "setting.json";
                 string jsondata = File.ReadAllText(_filename);
@@ -413,7 +413,7 @@ namespace CSVNLib
             }
             public static void Choice(string Question, string Choice1, string Choice2, string Choice3)
             {
-            //Choice that doesn't affect anything
+                //Choice that doesn't affect anything
 
             }
             public static string ChoiceRoute(string Question, string Choice1, string Choice2, string Choice3)
@@ -424,7 +424,7 @@ namespace CSVNLib
                     TextTool.TextGen("\n" + Question);
                     Console.WriteLine("\n1 " + Choice1 + "\n2 " + Choice2 + "\n3 " + Choice3 + "\n");
                     TextTool.TextGen("Your answer(1-3)- >");
-                    string Choose = Console.ReadLine();
+                        string Choose = Console.ReadLine();
                     if (Choose == "1" || Choose == "2" || Choose == "3")
                     {
                         return Choose;
@@ -443,13 +443,13 @@ namespace CSVNLib
         //Data zone
         public class settingsave
         {
-            public string TextSpeed {get; set;}
-            public string Arrow {get; set;}
+            public string? TextSpeed {get; set;}
+            public string? Arrow {get; set;}
         }
         public class dataSave
         {
-            public string chapter {get; set;}
-            public string route {get; set;}
+            public string? chapter {get; set;}
+            public string? route {get; set;}
         }
 
     }
