@@ -80,6 +80,7 @@ class Menu
             Console.WriteLine("Done");
             Console.Write("Checking for update[Require internet]...");
             string version = "0.0.54 Dev.4";
+            File.WriteAllText("gameVersion", version);
             bool connectEnable = VNLib.Settings.CheckConnect();
             if (connectEnable == true)
             {

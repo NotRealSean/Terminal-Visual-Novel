@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "/home/notrealsean/.nuget/packages/": {}
+    "/home/lunar/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/notrealsean/Documents/Terminal-Visual-Novel/cs.csproj",
+      "projectUniqueName": "/home/lunar/Documents/Terminal-Visual-Novel/cs.csproj",
       "projectName": "cs",
-      "projectPath": "/home/notrealsean/Documents/Terminal-Visual-Novel/cs.csproj",
-      "packagesPath": "/home/notrealsean/.nuget/packages/",
-      "outputPath": "/home/notrealsean/Documents/Terminal-Visual-Novel/obj/",
+      "projectPath": "/home/lunar/Documents/Terminal-Visual-Novel/cs.csproj",
+      "packagesPath": "/home/lunar/.nuget/packages/",
+      "outputPath": "/home/lunar/Documents/Terminal-Visual-Novel/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/notrealsean/.nuget/NuGet/NuGet.Config"
+        "/home/lunar/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -57,7 +57,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[7.0.7, 7.0.7]"
+            "version": "[7.0.10, 7.0.10]"
           }
         ],
         "frameworkReferences": {
@@ -65,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.107/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.110/RuntimeIdentifierGraph.json"
       }
     }
   }
