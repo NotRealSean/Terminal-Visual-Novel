@@ -44,7 +44,7 @@ if [ "$UPDATE_COMFIRM" = "y" ]; then
       mkdir .cache
       cd .cache
       git clone https://github.com/NotRealSean/Terminal-Visual-Novel
-      cp -rf ./Terminal-Visual-Novel/* ../*
+      cp -rf ./Terminal-Visual-Novel/* ../
       cd ..
       rm -rf .cache
     else
