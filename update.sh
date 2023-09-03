@@ -28,18 +28,27 @@ if [ "$UPDATE_COMFIRM" = "y" ]; then
   echo "2) Stable"
   echo -n " >" && read UPDATE_VERSION
   if [ "$UPDATE_VERSION" = "1" ]; then
-    echo "Downloading Git version..."
-    if [ -f "./.cache" ]; then
-      cd .cache
-      git clone https://github.com/NotRealSean/Terminal-Visual-Novel
-      cd Terminal-Visual-Novel
-      cp Program.cs ../ ../Program.cs
-    else 
+    echo "1) Only Program.cs"
+    echo "2) Everything"
+    read GITPATCH
+    if [ "$GITPATCH" = "1" ]; then
+      echo "Downloading Git version..."
       mkdir .cache
       cd .cache
-      git clone https://github.com/NotRealSean/Terminal-Visual-Novel 
-      cd Terminal-Visual-Novel
-      cp Program.cs ../ ../Program.cs
+      git clone https://github.com/NotRealSean/Terminal-Visual-Novel
+      cp ./Terminal-Visual-Novel/Program.cs ../
+      cd ..
+      rm -rf .cache
+    elif [ "$GITPATCH" = "2" ]; then
+      echo "Downloading Git version..."
+      mkdir .cache
+      cd .cache
+      git clone https://github.com/NotRealSean/Terminal-Visual-Novel
+      cp -rf ./Terminal-Visual-Novel/* ../*
+      cd ..
+      rm -rf .cache
+    else
+      echo "You didn't choose"
     fi
   elif [ "$UPDATE_VERSION" = "2" ]; then
     echo "You select $UPDATE_VERSION"
