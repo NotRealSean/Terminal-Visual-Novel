@@ -1,7 +1,2 @@
-# Ignore bin and obj directories
+*.json
 bin/
-obj/
-save/
-# Ignore setting.json file
-setting.json
-
