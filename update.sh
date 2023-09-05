@@ -23,38 +23,29 @@ echo "Stable release version: $STABLE_VERSION"
 echo -n "Would you like to update the game?(y/N)"
 read UPDATE_COMFIRM
 if [ "$UPDATE_COMFIRM" = "y" ]; then
-  echo "Select version you want to update"
-  echo "1) Git"
-  echo "2) Stable"
-  echo -n " >" && read UPDATE_VERSION
-  if [ "$UPDATE_VERSION" = "1" ]; then
+  echo "Please remember that this update script only work on git version of this game"
+  echo "If you want to download stable version you have to do it manually from this link"
+  echo "-- https://github.com/NotRealSean/Terminal-Visual-Novel/releases/ --"
+  echo -n " (y/N)>" && read UPDATEGITCOMFIRM
+  if [ "$UPDATEGITCOMFIRM" = "y" ]; then
     echo "1) Only Program.cs"
     echo "2) Everything"
-    read GITPATCH
+    echo -n " >" && read GITPATCH
+    mkdir .cache
+    cd .cache
+    git clone https://github.com/NotRealSean/Terminal-Visual-Novel
     if [ "$GITPATCH" = "1" ]; then
-      echo "Downloading Git version..."
-      mkdir .cache
-      cd .cache
-      git clone https://github.com/NotRealSean/Terminal-Visual-Novel
       cp ./Terminal-Visual-Novel/Program.cs ../
       cd ..
       rm -rf .cache
     elif [ "$GITPATCH" = "2" ]; then
-      echo "Downloading Git version..."
-      mkdir .cache
-      cd .cache
-      git clone https://github.com/NotRealSean/Terminal-Visual-Novel
       cp -rf ./Terminal-Visual-Novel/* ../
       cd ..
       rm -rf .cache
     else
       echo "You didn't choose"
     fi
-  elif [ "$UPDATE_VERSION" = "2" ]; then
-    echo "You select $UPDATE_VERSION"
-  else
-    echo "You didn't select"
-  fi
+   fi
 else
   echo "You denied"  
 fi
