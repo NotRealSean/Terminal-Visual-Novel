@@ -98,7 +98,7 @@ class Menu
                     Console.WriteLine("Arrow [" + arrow + "][" + UIarrow + "]");
                 }
                 Console.WriteLine("=======================================================");
-                Console.WriteLine(" A Text-base game name(Can't think of name just yet)\n\t[1] New Game\n\t[2] Load\n\t[3] Quick Load\n\t[4] Settings\n\t[5] Guide[Require internet]\n\t[6] Credits[Require internet]\n\t[7] News[Require internet]\n\n\t[9] Exit\t\t\t\t" + version);
+                Console.WriteLine("   Sanvitalia and Iris\n\t[1] New Game\n\t[2] Load\n\t[3] Quick Load\n\t[4] Settings\n\t[5] Guide[Require internet]\n\t[6] Credits[Require internet]\n\t[7] News[Require internet]\n\n\t[9] Exit\t\t\t\t" + version);
                 Console.WriteLine("=======================================================");
                 VNLib.TextTool.TextGen("Command" + UIarrow, textspeed);
                 string inPut = Console.ReadLine();
