@@ -28,6 +28,7 @@ if [ "$UPDATE_COMFIRM" = "y" ]; then
   echo "-- https://github.com/NotRealSean/Terminal-Visual-Novel/releases/ --"
   echo -n " (y/N)>" && read UPDATEGITCOMFIRM
   if [ "$UPDATEGITCOMFIRM" = "y" ]; then
+    echo "Which way do you want to update?"
     echo "1) Only Program.cs"
     echo "2) Everything"
     echo -n " >" && read GITPATCH
